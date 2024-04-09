@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>BAC Calculator &mdash; Calculator.iO</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="The Blood Alcohol Concentration Calculator provides an accurate estimate of your current blood alcohol concentration based on several key inputs and personal characteristics. "
+    />
+    <meta
+      name="keywords"
+      content="bac calculator, blood alcohol content tool, estimate bac online, calculate alcohol level, drunk driving bac estimate, legal bac limit checker, alcohol impairment calculator, bac computation tool, breath alcohol concentration calculator, safe driving alcohol calculator"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/assets/css/main.min.css" />
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-regular.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-500.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-600.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-800.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <script
+      src="/assets/js/all-calculators.js"
+      defer
+      type="863edcad9c59e33fc56251c6-text/javascript"
+    ></script>
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/bac-calculator/"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/es/calculadora-de-concentraci%C3%B3n-de-alcohol-en-sangre-bac/"
+      hreflang="es"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fr/calculateur-d-alcool%C3%A9mie/"
+      hreflang="fr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/de/promille-rechner/"
+      hreflang="de"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pt/calculadora-de-tas/"
+      hreflang="pt"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/it/calcolatore-di-tasso-alcolemico/"
+      hreflang="it"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/hi/bac-%E0%A4%95%E0%A5%88%E0%A4%B2%E0%A4%95%E0%A5%81%E0%A4%B2%E0%A5%87%E0%A4%9F%E0%A4%B0/"
+      hreflang="hi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/id/kalkulator-bac/"
+      hreflang="id"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ar/%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9-%D8%AA%D8%B1%D9%83%D9%8A%D8%B2-%D8%A7%D9%84%D9%83%D8%AD%D9%88%D9%84-%D9%81%D9%8A-%D8%A7%D9%84%D8%AF%D9%85/"
+      hreflang="ar"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ru/%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-%D0%BA%D0%BE%D0%BD%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D0%B0%D0%BB%D0%BA%D0%BE%D0%B3%D0%BE%D0%BB%D1%8F-%D0%B2-%D0%BA%D1%80%D0%BE%D0%B2%D0%B8/"
+      hreflang="ru"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ja/bac%E8%A8%88%E7%AE%97%E6%A9%9F/"
+      hreflang="ja"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/zh/bac-%E8%AE%A1%E7%AE%97%E5%99%A8/"
+      hreflang="zh"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pl/kalkulator-bac/"
+      hreflang="pl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fa/%D9%85%D8%AD%D8%A7%D8%B3%D8%A8%D9%87%E2%80%8C%DA%AF%D8%B1-%D8%BA%D9%84%D8%B8%D8%AA-%D8%A7%D9%84%DA%A9%D9%84-%D8%AE%D9%88%D9%86-%E2%80%8Cbac/"
+      hreflang="fa"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/nl/bac-calculator/"
+      hreflang="nl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ko/bac-%EA%B3%84%EC%82%B0%EA%B8%B0/"
+      hreflang="ko"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/th/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%93-bac/"
+      hreflang="th"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/tr/bac-hesaplay%C4%B1c%C4%B1/"
+      hreflang="tr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/vi/m%C3%A1y-t%C3%ADnh-n%E1%BB%93ng-%C4%91%E1%BB%99-c%E1%BB%93n-trong-m%C3%A1u/"
+      hreflang="vi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/bac-calculator/"
+      hreflang="x-default"
+    />
+    <link
+      rel="canonical"
+      href="https://www.calculator.io/bac-calculator/"
+      hreflang="en"
+    />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/bac-calculator/assets/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/bac-calculator/assets/images/icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/bac-calculator/assets/images/icon-128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/bac-calculator/assets/images/icon-192.png"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="/bac-calculator/assets/images/icon-196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/bac-calculator/assets/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <link rel="stylesheet" href="./assets/css/main.min.css" />
+    <script src="./assets/js/all-calculators.js" defer></script>
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BAC Calculator" />
+    <meta
+      property="og:description"
+      content="The Blood Alcohol Concentration Calculator provides an accurate estimate of your current blood alcohol concentration based on several key inputs and personal characteristics. "
+    />
+    <meta
+      property="og:url"
+      content="https://www.calculator.io/bac-calculator/"
+    />
+    <meta property="og:determiner" content="the" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Calculator.iO" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="BAC Calculator" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="BAC Calculator" />
+    <meta
+      name="twitter:description"
+      content="The Blood Alcohol Concentration Calculator provides an accurate estimate of your current blood alcohol concentration based on several key inputs and personal characteristics. "
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.calculator.io/bac-calculator/"
+    />
+    <meta name="twitter:image:alt" content="BAC Calculator" />
+    <meta
+      name="twitter:image"
+      content="https://www.calculator.io/bac-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.calculator.io/bac-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.calculator.io/bac-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      name="thumbnail"
+      content="https://www.calculator.io/assets/images/thumbnails/bac-calculator.png"
+    />
+    <meta
+      itemprop="image"
+      content="https://www.calculator.io/assets/images/thumbnails/bac-calculator.png"
+    />
+    <meta
+      class="swiftype"
+      name="image"
+      data-type="enum"
+      content="https://www.calculator.io/assets/images/thumbnails/bac-calculator.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="863edcad9c59e33fc56251c6-text/javascript"
+    ></script>
+    <script type="863edcad9c59e33fc56251c6-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+    <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2652191922412683"
+      crossorigin="anonymous"
+      async
+      type="863edcad9c59e33fc56251c6-text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="Calculator.iO">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+             
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+             
+            </nav>
+           
+            
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="Calculator.io"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg
+            ></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <a
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              href="/health-and-fitness-calculators/"
+              title="Health &amp; Fitness Calculators"
+              >Health &amp; Fitness Calculators</a
+            >
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >BAC Calculator</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Calculator.io",
+                  "item": "https://www.calculator.io/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Health &amp; Fitness Calculators",
+                  "item": "https://www.calculator.io/health-and-fitness-calculators/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "BAC Calculator"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+      
+     
+      <div class="calculator">
+        <div
+          class="container calculator__container calculator__container--title row"
+        >
+          <div class="calculator__logo">
+            <img
+              src="/bac-calculator/assets/images/icon-96.png"
+              alt="BAC Calculator Logo"
+            />
+          </div>
+          <div class="calculator__info col">
+            <h1 class="calculator__title">BAC Calculator</h1>
+            <p class="calculator__subtitle">
+              The Blood Alcohol Concentration Calculator provides an accurate
+              estimate of your current blood alcohol concentration based on
+              several key inputs and personal characteristics.
+            </p>
+          </div>
+        </div>
+        <div
+          class="container calculator__container calculator__container--main row"
+        >
+        <div style="width: 350px; float: left; padding: 15px">
+            <div class="calculator-settings">
+              <div class="calculator-setting" id="calculator_form">
+                <div class="calculator-content col">
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <input type="hidden" value="male" id="gender" />
+                      <p class="input__title">Gender</p>
+                      <button
+                        class="button-switcher button-switcher--active"
+                        type="button"
+                        onclick="switcher(this, 'gender', '')"
+                        value="male"
+                        id="gender-a"
+                      >
+                        <svg
+                          width="21"
+                          height="20"
+                          viewBox="0 0 21 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke="#9CA3AF"
+                            d="M8.875 17.5C11.9816 17.5 14.5 14.9816 14.5 11.875C14.5 8.7684 11.9816 6.25 8.875 6.25C5.7684 6.25 3.25 8.7684 3.25 11.875C3.25 14.9816 5.7684 17.5 8.875 17.5Z"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                          <path
+                            stroke="#9CA3AF"
+                            d="M12.8516 7.89844L17.625 3.125"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                          <path
+                            stroke="#9CA3AF"
+                            d="M13.875 3.125H17.625V6.875"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                        </svg>
+                        <span
+                          class="button-switcher__text button-switcher__text--active"
+                          >Male</span
+                        >
+                      </button>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title"></p>
+                      <button
+                        class="button-switcher"
+                        type="button"
+                        onclick="switcher(this, 'gender', '')"
+                        value="female"
+                        id="gender-b"
+                      >
+                        <svg
+                          width="21"
+                          height="20"
+                          viewBox="0 0 21 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke="#9CA3AF"
+                            d="M10.75 13.125C13.8566 13.125 16.375 10.6066 16.375 7.5C16.375 4.3934 13.8566 1.875 10.75 1.875C7.6434 1.875 5.125 4.3934 5.125 7.5C5.125 10.6066 7.6434 13.125 10.75 13.125Z"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                          <path
+                            stroke="#9CA3AF"
+                            d="M10.75 13.125V18.75"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                          <path
+                            stroke="#9CA3AF"
+                            d="M7.625 16.25H13.875"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                        </svg>
+                        <span class="button-switcher__text">Female</span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <p class="input__title">Body Weight</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input imperial-system-item"
+                          id="weight_imperial"
+                          data-target="weight"
+                          data-formula="value * 2.20462262185"
+                          value="176.4"
+                          onchange="sysnumconv(this)"
+                        />
+                        <span class="input-field__hint imperial-system-item"
+                          >pounds</span
+                        >
+    
+                        <input
+                          type="text"
+                          class="input-field__input metric-system-item system-item-hidden"
+                          id="weight"
+                          data-target="weight"
+                          data-formula="value / 2.20462262185"
+                          value="80"
+                          onchange="sysnumconv(this)"
+                        />
+                        <span
+                          class="input-field__hint metric-system-item system-item-hidden"
+                          >kg</span
+                        >
+                      </div>
+                    </label>
+                  </div>
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <p class="input__title">Time Since First Drink</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="hours"
+                          value="1"
+                        />
+                        <span class="input-field__hint">hours</span>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="minutes"
+                          value="30"
+                        />
+                        <span class="input-field__hint">minutes</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  class="calculator-content calculator-content--active calculator-content--options col"
+                >
+                  <div
+                    class="calculator-content-head calculator-content-head--always row"
+                  >
+                    <p class="calculator-content-head__title">
+                      Amount of Alcohol Consumed
+                    </p>
+                  </div>
+                  <div class="calculator-content-body col">
+                    <div class="input-wrapper row">
+                      <div class="input-wrapper row">
+                        <label class="input col">
+                          <p class="input__title">Amount</p>
+                          <div class="input-field row">
+                            <input
+                              type="text"
+                              class="input-field__input"
+                              placeholder=""
+                              id="beer_amount"
+                              value="2"
+                            />
+                            <span class="input-field__hint">beer</span>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <p class="input__title">Size</p>
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select class="input-field__text" id="beer_size">
+                                <optgroup label="Bottles">
+                                  <option value="100">100mL bottle</option>
+                                  <option value="250">250mL bottle</option>
+                                  <option value="330">12oz/330mL bottle</option>
+                                  <option value="375">375ml bottle</option>
+                                  <option value="500">16oz/500ml bottle</option>
+                                  <option value="750">750ml bottle</option>
+                                  <option value="1000">1L bottle</option>
+                                  <option value="1500">1.5L bottle</option>
+                                </optgroup>
+                                <optgroup label="Cups">
+                                  <option value="60">2oz/60ml cup (small)</option>
+                                  <option value="150">5oz/150ml cup</option>
+                                  <option value="250">8oz/250ml cup (big)</option>
+                                  <option value="330">
+                                    12oz/330ml bar cup (small)
+                                  </option>
+                                  <option value="500">16oz/500ml bar cup</option>
+                                  <option value="600">
+                                    20oz/600ml bar cup (tall)
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Cans">
+                                  <option value="330" selected>
+                                    12oz/330ml can
+                                  </option>
+                                  <option value="500">16oz/500ml can</option>
+                                  <option value="600">20oz/600ml can</option>
+                                  <option value="1000">1 liter</option>
+                                </optgroup>
+                                <optgroup label="Shots">
+                                  <option value="15">0.5oz/15ml shot</option>
+                                  <option value="30">1oz/30ml shot</option>
+                                  <option value="50">1.5oz/50ml shot</option>
+                                </optgroup>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <p class="input__title">ABV</p>
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select
+                                class="input-field__text"
+                                onchange="toggleRelatedInputs(this)"
+                                id="beer_abv"
+                              >
+                                <option value="4.2%">4.2%</option>
+                                <option value="5%">5%</option>
+                                <option value="8%">8%</option>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="input-wrapper input-wrapper--none-title row">
+                      <div class="input-wrapper row">
+                        <label class="input col">
+                          <div class="input-field row">
+                            <input
+                              type="text"
+                              class="input-field__input"
+                              placeholder=""
+                              id="wine_amount"
+                              value="1"
+                            />
+                            <span class="input-field__hint">wine</span>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select class="input-field__text" id="wine_size">
+                                <optgroup label="Bottles">
+                                  <option value="100">100mL bottle</option>
+                                  <option value="250">250mL bottle</option>
+                                  <option value="330">12oz/330mL bottle</option>
+                                  <option value="375">375ml bottle</option>
+                                  <option value="500">16oz/500ml bottle</option>
+                                  <option value="750">750ml bottle</option>
+                                  <option value="1000">1L bottle</option>
+                                  <option value="1500">1.5L bottle</option>
+                                </optgroup>
+                                <optgroup label="Cups">
+                                  <option value="60">2oz/60ml cup (small)</option>
+                                  <option value="150">5oz/150ml cup</option>
+                                  <option value="250" selected>
+                                    8oz/250ml cup (big)
+                                  </option>
+                                  <option value="330">
+                                    12oz/330ml bar cup (small)
+                                  </option>
+                                  <option value="500">16oz/500ml bar cup</option>
+                                  <option value="600">
+                                    20oz/600ml bar cup (tall)
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Cans">
+                                  <option value="330">12oz/330ml can</option>
+                                  <option value="500">16oz/500ml can</option>
+                                  <option value="600">20oz/600ml can</option>
+                                  <option value="1000">1 liter</option>
+                                </optgroup>
+                                <optgroup label="Shots">
+                                  <option value="15">0.5oz/15ml shot</option>
+                                  <option value="30">1oz/30ml shot</option>
+                                  <option value="50">1.5oz/50ml shot</option>
+                                </optgroup>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select
+                                class="input-field__text"
+                                onchange="toggleRelatedInputs(this)"
+                                id="wine_abv"
+                              >
+                                <option value="6%">6%</option>
+                                <option value="7%">7%</option>
+                                <option value="8%">8%</option>
+                                <option value="9%">9%</option>
+                                <option value="10%">10%</option>
+                                <option value="11%">11%</option>
+                                <option value="12%">12%</option>
+                                <option value="13%">13%</option>
+                                <option value="14%">14%</option>
+                                <option value="15%">15%</option>
+                                <option value="16%">16%</option>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="input-wrapper input-wrapper--none-title row">
+                      <div class="input-wrapper row">
+                        <label class="input col">
+                          <div class="input-field row">
+                            <input
+                              type="text"
+                              class="input-field__input"
+                              placeholder=""
+                              id="liquor_amount"
+                              value=""
+                            />
+                            <span class="input-field__hint">liquor</span>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select class="input-field__text" id="liquor_size">
+                                <optgroup label="Bottles">
+                                  <option value="100">100mL bottle</option>
+                                  <option value="250">250mL bottle</option>
+                                  <option value="330">12oz/330mL bottle</option>
+                                  <option value="375">375ml bottle</option>
+                                  <option value="500">16oz/500ml bottle</option>
+                                  <option value="750">750ml bottle</option>
+                                  <option value="1000">1L bottle</option>
+                                  <option value="1500">1.5L bottle</option>
+                                </optgroup>
+                                <optgroup label="Cups">
+                                  <option value="60">2oz/60ml cup (small)</option>
+                                  <option value="150">5oz/150ml cup</option>
+                                  <option value="250">8oz/250ml cup (big)</option>
+                                  <option value="330">
+                                    12oz/330ml bar cup (small)
+                                  </option>
+                                  <option value="500">16oz/500ml bar cup</option>
+                                  <option value="600">
+                                    20oz/600ml bar cup (tall)
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Cans">
+                                  <option value="330">12oz/330ml can</option>
+                                  <option value="500">16oz/500ml can</option>
+                                  <option value="600">20oz/600ml can</option>
+                                  <option value="1000">1 liter</option>
+                                </optgroup>
+                                <optgroup label="Shots">
+                                  <option value="15">0.5oz/15ml shot</option>
+                                  <option value="30">1oz/30ml shot</option>
+                                  <option value="50" selected>
+                                    1.5oz/50ml shot
+                                  </option>
+                                </optgroup>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select
+                                class="input-field__text"
+                                onchange="toggleRelatedInputs(this)"
+                                id="liquor_abv"
+                              >
+                                <option value="35%">35%</option>
+                                <option value="40%">40%</option>
+                                <option value="45%">45%</option>
+                                <option value="50%">50%</option>
+                                <option value="55%">55%</option>
+                                <option value="60%">60%</option>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="input-wrapper input-wrapper--none-title row">
+                      <div class="input-wrapper row">
+                        <label class="input col">
+                          <div class="input-field row">
+                            <input
+                              type="text"
+                              class="input-field__input"
+                              placeholder=""
+                              id="other_amount"
+                              value=""
+                            />
+                            <span class="input-field__hint">other</span>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="dropdown-wrapper">
+                            <div class="input-field row" tabindex="0">
+                              <select class="input-field__text" id="other_size">
+                                <optgroup label="Bottles">
+                                  <option value="100">100mL bottle</option>
+                                  <option value="250">250mL bottle</option>
+                                  <option value="330">12oz/330mL bottle</option>
+                                  <option value="375">375ml bottle</option>
+                                  <option value="500">16oz/500ml bottle</option>
+                                  <option value="750">750ml bottle</option>
+                                  <option value="1000" selected>1L bottle</option>
+                                  <option value="1500">1.5L bottle</option>
+                                </optgroup>
+                                <optgroup label="Cups">
+                                  <option value="60">2oz/60ml cup (small)</option>
+                                  <option value="150">5oz/150ml cup</option>
+                                  <option value="250">8oz/250ml cup (big)</option>
+                                  <option value="330">
+                                    12oz/330ml bar cup (small)
+                                  </option>
+                                  <option value="500">16oz/500ml bar cup</option>
+                                  <option value="600">
+                                    20oz/600ml bar cup (tall)
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Cans">
+                                  <option value="330">12oz/330ml can</option>
+                                  <option value="500">16oz/500ml can</option>
+                                  <option value="600">20oz/600ml can</option>
+                                  <option value="1000" selected>1 liter</option>
+                                </optgroup>
+                                <optgroup label="Shots">
+                                  <option value="15">0.5oz/15ml shot</option>
+                                  <option value="30">1oz/30ml shot</option>
+                                  <option value="50">1.5oz/50ml shot</option>
+                                </optgroup>
+                              </select>
+                            </div>
+                          </div>
+                        </label>
+                        <label class="input col">
+                          <div class="input-field row">
+                            <input
+                              type="text"
+                              class="input-field__input"
+                              placeholder=""
+                              id="other_abv"
+                              value=""
+                            />
+                            <span class="input-field__hint">%</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row"
+                >
+                  <button class="system-switcher" onclick="toggleSystem(this)">
+                    <div class="system-switcher__circle"></div>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.5 9.5H10C9.44772 9.5 9 9.05228 9 8.5V2.5M4.5 2.5H3.5C2.94772 2.5 2.5 2.94772 2.5 3.5L2.5 9.5M7.5 4.5L10.5 4.5M1.5 5.5L4.5 5.5"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      ></path>
+                    </svg>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 3.5L2 8.5M2 8L2 5.5C2 4.39543 2.89543 3.5 4 3.5C5.10457 3.5 6 4.39543 6 5.5M6 5.5L6 8.5M6 5.5L6 8M6 5.5C6 4.39543 6.89543 3.5 8 3.5C9.10457 3.5 10 4.39543 10 5.5V8.5"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      ></path>
+                    </svg>
+                  </button>
+    
+                  <script type="text/javascript">
+                    $$(".imperial-system-item, .metric-system-item").forEach(
+                      function (element, index) {
+                        element.classList.remove("system-item-hidden");
+                      }
+                    );
+                    $$(
+                      defaultSystem == "metric"
+                        ? ".imperial-system-item"
+                        : ".metric-system-item"
+                    ).forEach(function (element, index) {
+                      element.classList.add("system-item-hidden");
+                    });
+                    if (defaultSystem == "metric")
+                      $(".system-switcher").classList.add(
+                        "system-switcher--active"
+                      );
+                  </script>
+    
+                  <button
+                    class="button button--primary ml-auto"
+                    onclick="calculate(this)"
+                  >
+                    Calculate
+                  </button>
+                </div>
+    
+                <script
+                  type="text/javascript"
+                  src="./assets/js/calculator.js"
+                ></script>
+              </div>
+            </div>
+
+            <!-- related -->
+
+          </div>
+          <div class="calculator-main col" id="result-container">
+             <div style="float: left; padding: 15px; overflow: scroll">
+        <div
+          class="calculator-result calculator-result--error col"
+          id="error-box"
+        >
+          <div class="row">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+        						7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+        						12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+        						11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z"
+                fill="#F87171"
+                class="dark:fill-red-200"
+              ></path>
+            </svg>
+            <p class="calculator-error__title">
+              There was an error with your calculation.
+            </p>
+          </div>
+          <div class="col" id="error-list"></div>
+        </div>
+        <span id="calculator_result"
+          ><div class="calculator-result col">
+            <p
+              class="table-cell table-cell--dark table-cell--top table-cell--only-title"
+            >
+              Blood Alcohol Content (BAC)
+            </p>
+            <p class="table-cell table-cell--only" id="result">
+              BAC is around <span id="bac_result">0.039</span>%<br />
+              It will take around <span id="time_result">2.6</span> more hours
+              to reach 0%
+            </p>
+          </div>
+        </span>
+      </div>
+        
+            <section id="blockText" class="col">
+              <div class="calculator-about">
+                <h2>Table of Contents</h2>
+                <ol>
+                  <li>
+                    <a
+                      href="#the-ultimate-guide-to-the-blood-alcohol-concentration-calculator-1"
+                      >The Ultimate Guide to the Blood Alcohol Concentration
+                      Calculator</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#what-a-blood-alcohol-concentration-calculator-is-2"
+                      >What a Blood Alcohol Concentration Calculator is</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#how-a-blood-alcohol-concentration-calculator-works-3"
+                      >How a Blood Alcohol Concentration Calculator Works</a
+                    >
+                  </li>
+                  <li><a href="#example-4">Example</a></li>
+                  <li>
+                    <a
+                      href="#tips-for-staying-within-the-safe-limits-of-blood-alcohol-concentration-5"
+                      >Tips For Staying Within the Safe Limits of Blood Alcohol
+                      Concentration</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#don’t-drink-and-drive-6">Don’t Drink and Drive</a>
+                  </li>
+                  <li>
+                    <a href="#understand-your-own-limits-7"
+                      >Understand Your Own Limits</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#understand-the-definition-of-“one-drink”-8"
+                      >Understand the Definition of “One Drink”</a
+                    >
+                  </li>
+                </ol>
+                <svg
+                  width="404"
+                  height="404"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="calculator-main__decoration"
+                >
+                  <path
+                    d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                    fill="#E5E7EB"
+                    class="fill-gray-200 dark:fill-gray-700"
+                  ></path>
+                </svg>
+                <div class="calculator-about__wrapper">
+                  <h2>
+                    The Ultimate Guide to the Blood Alcohol Concentration
+                    Calculator<a
+                      name="the-ultimate-guide-to-the-blood-alcohol-concentration-calculator-1"
+                    ></a>
+                  </h2>
+                  <p>
+                    Those of legal age who are drinking recreationally do not
+                    often seek out their blood alcohol concentration levels.
+                    After all, the primary purpose of consuming alcohol is to
+                    become somewhat disinhibited.
+                  </p>
+                  <p>
+                    Developing a habit, or at least being aware of your BAC
+                    levels based on the amount of alcohol you consume, can be
+                    very helpful, especially if you plan to get behind the wheel
+                    after a few drinks.
+                  </p>
+                  <p>
+                    If you’re indulging in alcohol, driving should be,
+                    unquestionably, avoided, for it not only puts you in danger
+                    but those around you in danger; not to mention, it’s against
+                    the law to drive impaired.
+                  </p>
+                  <p>
+                    One way to somewhat accurately measure your blood alcohol
+                    concentration levels is by using an online BAC calculator.
+                  </p>
+                  <p>
+                    With that said, in what follows, we’ll define a blood
+                    alcohol concentration, how the blood alcohol concentration
+                    calculator works, what problems it solves, and why you, the
+                    user, can benefit from its function. So, if you’re ready to
+                    ensure that you remain under the legal limits of blood
+                    alcohol concentration, this article is for you.
+                  </p>
+                  <p>Continue reading to learn more.</p>
+                  <h2>
+                    What a Blood Alcohol Concentration Calculator is<a
+                      name="what-a-blood-alcohol-concentration-calculator-is-2"
+                    ></a>
+                  </h2>
+                  <p>
+                    Before defining a blood alcohol concentration calculator,
+                    it’s crucial to determine your blood alcohol concentration.
+                  </p>
+                  <p>
+                    Blood alcohol concentration is used to identify how
+                    intoxicated and inebriated someone is. The measurement is
+                    typically expressed as a percentage of the volume of alcohol
+                    found in the blood at the time of measurement.
+                  </p>
+                  <p>
+                    In the U.S., the legal limit for blood alcohol concentration
+                    (BAC) while driving is typically 0.08%. Driving with a BAC
+                    exceeding this limit is prohibited in all states. BAC is
+                    measured as the number of grams of alcohol per 100
+                    milliliters of blood. For example, a BAC of 0.08% means
+                    there are 0.08 grams of alcohol per 100 milliliters of
+                    blood.
+                  </p>
+                  <p>
+                    A Blood Alcohol Concentration Calculator is a mechanism,
+                    resource, or tool used to derive an accurate BAC percentage
+                    based on several required inputs.
+                  </p>
+                  <p>
+                    The inputs involved with the Blood Alcohol Concentration
+                    Calculator include the following:
+                  </p>
+                  <ul>
+                    <li>Gender;</li>
+                    <li>Body Weight;</li>
+                    <li>Time Since Your First Drink;</li>
+                    <li>The Amount of Alcohol Consumed;</li>
+                    <li>The Type of Alcohol Consumed;</li>
+                    <li>
+                      ABV% of each type of alcoholic beverage you’ve consumed.
+                    </li>
+                  </ul>
+                  <p>
+                    While individuals may know the quantity of alcohol they
+                    consume, such as the volume in a standard beer or wine
+                    glass, they might not always be aware of how this translates
+                    into blood alcohol concentration (BAC). BAC calculators
+                    require exact measurements to provide accurate estimates,
+                    which necessitates precise knowledge of alcohol volume and
+                    content.
+                  </p>
+                  <p>
+                    Law enforcement does not use online BAC calculators when
+                    assessing drivers for impairment. Instead, they employ
+                    professionally calibrated devices known as breathalyzers,
+                    which provide immediate and legally admissible BAC levels.
+                  </p>
+                  <p>
+                    Online BAC calculators, however, can serve as educational
+                    resources. They help individuals estimate their BAC based on
+                    their alcohol intake, offering insight into how alcohol
+                    affects their body and informing safer drinking decisions.
+                  </p>
+                  <h2>
+                    How a Blood Alcohol Concentration Calculator Works<a
+                      name="how-a-blood-alcohol-concentration-calculator-works-3"
+                    ></a>
+                  </h2>
+                  <p>
+                    Wondering how to calculate your blood alcohol concentration,
+                    but unsure where to start? Luckily, it’s pretty simple,
+                    especially when you use the free blood alcohol concentration
+                    calculator.
+                  </p>
+                  <p>
+                    As mentioned, the BAC calculator requires the user to input
+                    several pieces of basic information regarding personal
+                    characteristics (gender and body weight) and factors related
+                    to alcohol consumption (amount of alcohol consumed, etc.).
+                  </p>
+                  <p>
+                    Based on the relative inputs, the calculator uses algorithms
+                    to calculate and derive a real-time measurement of an
+                    individual’s BAC. Provided in a singular percentage (ex.
+                    0.05%), the BAC calculator is an effective alternative for
+                    those curious to know how intoxicated they are or may
+                    become.
+                  </p>
+                  <p>
+                    To further illustrate how to use the BAC calculator and in
+                    what context it’s to be used, consider the following
+                    practical example of an individual seeking to know whether
+                    three drinks is too much to get behind the wheel and drive.
+                  </p>
+                  <h2>Example<a name="example-4"></a></h2>
+                  <p>
+                    John, a 35-year-old man, attends a wedding reception where
+                    he enjoys some drinks during the evening. He is aware of the
+                    dangers of drinking and driving and has made a personal
+                    limit of two drinks to ensure he stays well below the legal
+                    limit before he considers driving. He also plans to wait a
+                    significant amount of time after his last drink before
+                    leaving.
+                  </p>
+                  <p>
+                    Throughout the night, he tracks his consumption: two glasses
+                    of wine over the course of the first two hours. Before even
+                    considering whether he might drive at the end of the
+                    evening, John decides to use an online BAC calculator to
+                    estimate his blood alcohol concentration as a way to
+                    reinforce his decision to drink responsibly.
+                  </p>
+                  <p>
+                    He inputs his gender, weight, the type and quantity of
+                    alcohol consumed, and the time over which he consumed his
+                    drinks. The calculator estimates that his BAC should be
+                    below the legal limit by the time he plans to leave, but
+                    this is only an estimate.
+                  </p>
+                  <p>
+                    John knows the calculator doesn't account for individual
+                    factors such as his metabolism, recent food intake, or how
+                    his body processes alcohol. With this in mind, he uses the
+                    calculator as a general guide and not as a definitive
+                    measure of his ability to drive. He decides to wait an
+                    additional hour and drink water to ensure his body has time
+                    to metabolize the alcohol.
+                  </p>
+                  <p>
+                    In the end, even though the calculator indicated he might be
+                    legally safe to drive, John chooses to take a taxi home
+                    instead. He understands that the calculator's estimate isn't
+                    foolproof and that the safest option is to not drive at all
+                    after drinking.
+                  </p>
+                  <h2>
+                    Tips For Staying Within the Safe Limits of Blood Alcohol
+                    Concentration<a
+                      name="tips-for-staying-within-the-safe-limits-of-blood-alcohol-concentration-5"
+                    ></a>
+                  </h2>
+                  <p>
+                    If you decide to drive, the desire not to exceed the legal
+                    limit of blood alcohol concentration is important both for
+                    your safety and for the safety of others.
+                  </p>
+                  <p>
+                    To stay below the legal limits, you need to drink
+                    responsibly and have a better understanding of what it takes
+                    to reach the statutory BAC limit.
+                  </p>
+                  <p>
+                    With that said, the following are a few helpful insights and
+                    tips on how to remain under the legal BAC limit while still
+                    enjoying a drink or two with friends. Some of these tips
+                    involve explicitly measuring your own BAC levels.
+                  </p>
+                  <h2>
+                    Don’t Drink and Drive <a name="don’t-drink-and-drive-6"></a>
+                  </h2>
+                  <p>
+                    Why is it first on the list? It is not just advice or a
+                    recommendation, but a law introduced to keep citizens who
+                    drink alcohol safe from the risk of traffic accidents.
+                  </p>
+                  <p>
+                    If you choose to drink over the recommended amounts that
+                    would otherwise keep your blood alcohol concentration at a
+                    safe and legal level, plan and act accordingly; book a cab
+                    home, find a designated driver, etc.
+                  </p>
+                  <p>Whatever you do, don’t step behind the wheel.</p>
+                  <h2>
+                    Understand Your Own Limits<a
+                      name="understand-your-own-limits-7"
+                    ></a>
+                  </h2>
+                  <p>
+                    Everyone metabolizes alcohol differently, and several
+                    factors influence this process beyond just weight and sex,
+                    including genetics, health, and individual tolerance levels.
+                    A 150-pound female typically will not process alcohol the
+                    same way as a 215-pound male, and the effects can vary
+                    widely even among people of the same weight and gender.
+                  </p>
+                  <p>
+                    Relying solely on weight and gender, as suggested by some
+                    online calculators or measurement charts, oversimplifies the
+                    complexity of alcohol metabolism. These tools may offer a
+                    basic guide, but they cannot account for all personal
+                    factors that affect your BAC. Furthermore, it's crucial to
+                    understand that the ability to legally drive should not be
+                    determined by BAC estimates alone. Even if you are under the
+                    legal limit, your driving could still be impaired. The
+                    safest approach is to avoid driving after drinking any
+                    amount of alcohol.
+                  </p>
+                  <h2>
+                    Understand the Definition of “One Drink”
+                    <a name="understand-the-definition-of-“one-drink”-8"></a>
+                  </h2>
+                  <p>
+                    Finally, understanding the definition of &quot;one
+                    drink&quot; is imperative to remaining under the legal BAC
+                    limit. Failure to clearly define these parameters will only
+                    result in you mistakenly over-consuming alcohol, thus
+                    increasing the likelihood of breaking the law should you
+                    decide to drive.
+                  </p>
+                  <p>
+                    Health professionals define “one drink” as the following:
+                  </p>
+                  <ul>
+                    <li>12 ounces of beer (5% ABV) or about 350 ml;</li>
+                    <li>8 ounces of malt liquor (7% ABV) or about 240 ml;</li>
+                    <li>5 ounces of wine (12% ABV) or about 150 ml;</li>
+                    <li>
+                      1.5 ounces of distilled spirits (40% ABV) or about 40 ml.
+                    </li>
+                  </ul>
+                  <p>
+                    By using this as a guide, you inevitably set yourself up for
+                    success in avoiding exceeding the legal limit of blood
+                    alcohol concentration when driving.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <center class="ads-hero-bottom">
+        <div>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-2652191922412683"
+            data-ad-slot="6452811756"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script type="863edcad9c59e33fc56251c6-text/javascript">
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </center>
+      <link rel="stylesheet" href="/assets/js/lib/katex/katex.min.css" />
+      <script
+        defer
+        src="/assets/js/lib/katex/katex.min.js"
+        type="863edcad9c59e33fc56251c6-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/lib/katex/auto-render.min.js"
+        onload="renderMathInElement(
+	document.getElementById('blockText'),
+	{ delimiters: [
+	  {left: '$$', right: '$$', display: true},
+	  {left: '\\$', right: '\\$', display: false},
+	  {left: '\\(', right: '\\)', display: false},
+	  {left: '\\[', right: '\\]', display: true}
+	]});
+"
+        type="863edcad9c59e33fc56251c6-text/javascript"
+      ></script>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.calculator.io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="863edcad9c59e33fc56251c6-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="863edcad9c59e33fc56251c6-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="863edcad9c59e33fc56251c6-text/javascript"
+      ></script>
+
+      <script type="863edcad9c59e33fc56251c6-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+    <script async src="./assets/js/lib/math.min.js"></script>
+    <script defer src="./assets/js/functions.js"></script>
+  </body>
+</html>

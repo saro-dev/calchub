@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Privacy Policy &mdash; CalcHub</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Your privacy is our top priority. Learn more about our policies and how we keep your data secure when you use our collection of practical calculators."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/assets/css/main.min.css" />
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Privacy Policy" />
+    <meta
+      property="og:description"
+      content="Your privacy is our top priority. Learn more about our policies and how we keep your data secure when you use our collection of practical calculators."
+    />
+    <meta
+      property="og:url"
+      content="https://www.calculator.io/privacy-policy/"
+    />
+    <meta property="og:determiner" content="the" />
+    
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="Privacy Policy" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="Privacy Policy" />
+    <meta
+      name="twitter:description"
+      content="Your privacy is our top priority. Learn more about our policies and how we keep your data secure when you use our collection of practical calculators."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.calculator.io/privacy-policy/"
+    />
+    <meta name="twitter:image:alt" content="Privacy Policy" />
+    <meta
+      name="twitter:image"
+      content="https://www.calculator.io/assets/images/logo/icon-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.calculator.io/assets/images/logo/icon-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.calculator.io/assets/images/logo/icon-og.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="59d47a63fab3459bec349a54-text/javascript"
+    ></script>
+    <script type="59d47a63fab3459bec349a54-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+    <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2652191922412683"
+      crossorigin="anonymous"
+      async
+      type="59d47a63fab3459bec349a54-text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="CalcHub">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+              
+            </nav>
+            
+       
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="Calculator.io"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg
+            ></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >Privacy Policy</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Calculator.io",
+                  "item": "https://www.calculator.io/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Privacy Policy"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+   
+      <div class="page-about">
+        <div class="page-about__container container">
+          <div class="about__wrapper">
+            <section class="about">
+              <svg
+                width="404"
+                height="404"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="about__decoration about__decoration--first"
+              >
+                <path
+                  d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                />
+              </svg>
+              <svg
+                width="404"
+                height="404"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="about__decoration about__decoration--second"
+              >
+                <path
+                  d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                />
+              </svg>
+              <div class="about__container container">
+                <div class="about__header">
+                  <h1 class="about__suptitle">CalcHub</h1>
+                  <h2 class="about__title">Privacy Policy</h2>
+                </div>
+                <div class="about__text-container">
+                  <h2>Privacy Policy<a name="privacy-policy-1"></a></h2>
+                  <p>
+                    Our Privacy Policy was last updated and posted on March 25,
+                    2023. It governs the privacy terms of our Website, located
+                    at CalcHub, sub-domains, and any
+                    associated web-based and mobile applications (collectively,
+                    &quot;Website&quot;), as owned and operated by CALCULATOR
+                    LLC. Any capitalized terms not defined in our Privacy
+                    Policy, have the meaning as specified in our Terms of
+                    Service.
+                  </p>
+                  <p>
+                    Your privacy is very important to us. Accordingly, we have
+                    developed this Policy in order for you to understand how we
+                    collect, use, communicate and disclose and make use of
+                    personal information. We use your Personal Information only
+                    for providing and improving the website. By using the
+                    website, you agree to the collection and use of information
+                    in accordance with this policy. Unless otherwise defined in
+                    this Privacy Policy, terms used in this Privacy Policy have
+                    the same meanings as in our Terms and Conditions, accessible
+                    at CalcHub. The following outlines our
+                    privacy policy.
+                  </p>
+                  <p>
+                    Before or at the time of collecting personal information, we
+                    will identify the purposes for which information is being
+                    collected. We will collect and use personal information
+                    solely with the objective of fulfilling those purposes
+                    specified by us and for other compatible purposes, unless we
+                    obtain the consent of the individual concerned or as
+                    required by law.
+                  </p>
+                  <p>
+                    We will only retain personal information as long as
+                    necessary for the fulfillment of those purposes.
+                  </p>
+                  <p>
+                    We will collect personal information by lawful and fair
+                    means and, where appropriate, with the knowledge or consent
+                    of the individual concerned.
+                  </p>
+                  <p>
+                    Personal data should be relevant to the purposes for which
+                    it is to be used, and, to the extent necessary for those
+                    purposes, should be accurate, complete, and up-to-date.
+                  </p>
+                  <p>
+                    We will protect personal information by reasonable security
+                    safeguards against loss or theft, as well as unauthorized
+                    access, disclosure, copying, use or modification.
+                  </p>
+                  <p>
+                    We will make readily available to customers information
+                    about our policies and practices relating to the management
+                    of personal information.
+                  </p>
+                  <h3>Your Privacy<a name="your-privacy-2"></a></h3>
+                  <p>
+                    CALCULATOR LLC follows all legal requirements to protect
+                    your privacy. Our Privacy Policy is a legal statement that
+                    explains how we may collect information from you, how we may
+                    share your information, and how you can limit our sharing of
+                    your information.
+                  </p>
+                  <p>
+                    We utilize the Personal Data you offer in a way that is
+                    consistent with this Personal privacy Policy. If you provide
+                    Personal Data for a particular reason, we could make use of
+                    the Personal Data in connection with the reason for which it
+                    was provided. For example, registration info sent when
+                    developing your account, might be used to suggest products
+                    to you based on past acquisitions.
+                  </p>
+                  <p>
+                    We might use your Personal Data to offer access to services
+                    on the Website and monitor your use of such services.
+                    CALCULATOR LLC may also utilize your Personal Data and
+                    various other personally non-identifiable info gathered
+                    through the Website to assist us with improving the material
+                    and functionality of the Website, to much better comprehend
+                    our users, and to improve our services.
+                  </p>
+                  <p>
+                    You will see terms in our Privacy Policy that are
+                    capitalized. These terms have meanings as described in the
+                    Definitions section below.
+                  </p>
+                  <h3>Definitions<a name="definitions-3"></a></h3>
+                  <p>
+                    &quot;Non Personal Information&quot; is information that is
+                    not personally identifiable to you and that we automatically
+                    collect when you access our Website with a web browser. It
+                    may also include publicly available information that is
+                    shared between you and others.
+                  </p>
+                  <p>
+                    &quot;Personally Identifiable Information&quot; is
+                    non-public information that is personally identifiable to
+                    you and obtained in order for us to provide you our Website.
+                    Personally Identifiable Information may include information
+                    such as your name, email address, and other related
+                    information that you provide to us or that we obtain about
+                    you.
+                  </p>
+                  <h3>
+                    Information We Collect<a
+                      name="information-we-collect-4"
+                    ></a>
+                  </h3>
+                  <p>
+                    Generally, you control the amount and type of information
+                    you provide to us when using our Website.
+                  </p>
+                  <p>
+                    As a Visitor, you can browse our website to find out more
+                    about our Website. You are not required to provide us with
+                    any Personally Identifiable Information as a Visitor.
+                  </p>
+                  <h3>
+                    Computer Information Collected<a
+                      name="computer-information-collected-5"
+                    ></a>
+                  </h3>
+                  <p>
+                    When you use our Website, we automatically collect certain
+                    computer information by the interaction of your mobile phone
+                    or web browser with our Website. Such information is
+                    typically considered Non Personal Information. We also
+                    collect the following:
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>Cookies:</strong> Our Website uses
+                        &quot;Cookies&quot; to identify the areas of our Website
+                        that you have visited. A Cookie is a small piece of data
+                        stored on your computer or mobile device by your web
+                        browser. We use Cookies to personalize the Content that
+                        you see on our Website. Most web browsers can be set to
+                        disable the use of Cookies. However, if you disable
+                        Cookies, you may not be able to access functionality on
+                        our Website correctly or at all. We never place
+                        Personally Identifiable Information in Cookies.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Geographical Information:</strong> When you use
+                        the mobile application, we may use GPS technology (or
+                        other similar technology) to determine your current
+                        location in order to determine the city you are located
+                        in and display information with relevant data or
+                        advertisements. We will not share your current location
+                        with other users or partners. If you do not want us to
+                        use your location for the purposes set forth above, you
+                        should turn off the location services for the mobile
+                        application located in your account settings or in your
+                        mobile phone settings and/or within the mobile
+                        application.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Automatic Information:</strong> We automatically
+                        receive information from your web browser or mobile
+                        device. This information includes the name of the
+                        website from which you entered our Website, if any, as
+                        well as the name of the website to which you're headed
+                        when you leave our website. This information also
+                        includes the IP address of your computer/proxy server
+                        that you use to access the Internet, your Internet
+                        Website provider name, web browser type, type of mobile
+                        device, and computer operating system. We use all of
+                        this information to analyze trends among our Users to
+                        help improve our Website.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Log Data:</strong> Like many Website operators,
+                        we collect information that your browser sends whenever
+                        you visit our Website (&quot;Log Data&quot;). This Log
+                        Data may include information such as your computer's
+                        Internet Protocol (&quot;IP&quot;) address, browser
+                        type, browser version, the pages of our Website that you
+                        visit, the time and date of your visit, the time spent
+                        on those pages and other statistics.
+                      </p>
+                    </li>
+                  </ul>
+                  <p>
+                    Under the Child's Online Privacy Security Act, no Website
+                    operator can require, as a condition to involvement in an
+                    activity, that a child younger than 13 years of age divulge
+                    more details than is reasonably required. CALCULATOR LLC
+                    abides by this demand.
+                  </p>
+                  <p>
+                    CALCULATOR LLC just collects information willingly offered;
+                    no information is gathered passively. children under 13 can
+                    submit only their email address when sending us an email in
+                    our &quot;Contact Us&quot; area.
+                  </p>
+                  <p>
+                    CALCULATOR LLC makes use of the email address to respond to
+                    a one-time demand from a child under 13 and afterwards
+                    deletes the email address. In case CALCULATOR LLC collects
+                    and maintains personal information relating to a child under
+                    13, the parent may send out an email to us to review, alter
+                    and/or erase such info as well as to decline to enable any
+                    additional collection or use of the child's information.
+                  </p>
+                  <h3>
+                    How We Use Your Information<a
+                      name="how-we-use-your-information-6"
+                    ></a>
+                  </h3>
+                  <p>We use the information we receive from you as follows:</p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>Customizing Our Website:</strong> We may use the
+                        Personally Identifiable information you provide to us
+                        along with any computer information we receive to
+                        customize our Website.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong
+                          >Sharing Information with Affiliates and Other Third
+                          Parties:</strong
+                        >
+                        We do not sell, rent, or otherwise provide your
+                        Personally Identifiable Information to third parties for
+                        marketing purposes. We may provide your Personally
+                        Identifiable Information to affiliates that provide
+                        services to us with regards to our Website (i.e. payment
+                        processors, Website hosting companies, etc.); such
+                        affiliates will only receive information necessary to
+                        provide the respective services and will be bound by
+                        confidentiality agreements limiting the use of such
+                        information.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Data Aggregation:</strong> We retain the right
+                        to collect and use any Non Personal Information
+                        collected from your use of our Website and aggregate
+                        such data for internal analytics that improve our
+                        Website and Service as well as for use or resale to
+                        others. At no time is your Personally Identifiable
+                        Information included in such data aggregations.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong
+                          >Legally Required Releases of Information:</strong
+                        >
+                        We may be legally required to disclose your Personally
+                        Identifiable Information, if such disclosure is (a)
+                        required by subpoena, law, or other legal process; (b)
+                        necessary to assist law enforcement officials or
+                        government enforcement agencies; (c) necessary to
+                        investigate violations of or otherwise enforce our Legal
+                        Terms; (d) necessary to protect us from legal action or
+                        claims from third parties including you and/or other
+                        Members; and/or (e) necessary to protect the legal
+                        rights, personal/real property, or personal safety of
+                        CALCULATOR LLC, our Users, employees, and affiliates.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Opt-Out:</strong> We offer you the chance to
+                        &quot;opt-out&quot; from having your personally
+                        identifiable information used for particular functions,
+                        when we ask you for this detail. When you register for
+                        the website, if you do not want to receive any
+                        additional material or notifications from us, you can
+                        show your preference on our registration form.
+                      </p>
+                    </li>
+                  </ul>
+                  <h3>
+                    Links to Other Websites<a
+                      name="links-to-other-websites-7"
+                    ></a>
+                  </h3>
+                  <p>
+                    Our Website may contain links to other websites that are not
+                    under our direct control. These websites may have their own
+                    policies regarding privacy. We have no control of or
+                    responsibility for linked websites and provide these links
+                    solely for the convenience and information of our visitors.
+                    You access such linked Websites at your own risk. These
+                    websites are not subject to this Privacy Policy.
+                  </p>
+                  <p>
+                    You should check the privacy policies, if any, of those
+                    individual websites to see how the operators of those
+                    third-party websites will utilize your personal information.
+                    In addition, these websites may contain a link to Websites
+                    of our affiliates. The websites of our affiliates are not
+                    subject to this Privacy Policy, and you should check their
+                    individual privacy policies to see how the operators of such
+                    websites will utilize your personal information.
+                  </p>
+                  <h3>Security<a name="security-8"></a></h3>
+                  <p>
+                    The security of your Personal Information is important to
+                    us, but remember that no method of transmission over the
+                    Internet, or method of electronic storage, is 100% secure.
+                    While we strive to use commercially acceptable means to
+                    protect your Personal Information, we cannot guarantee its
+                    absolute security. We utilize practical protection measures
+                    to safeguard against the loss, abuse, and modification of
+                    the individual Data under our control.
+                  </p>
+                  <p>
+                    Personal Data is kept in a secured database and always sent
+                    out by means of an encrypted SSL method when supported by
+                    your web browser. No Web or email transmission is ever
+                    totally protected or mistake cost-free. For example, email
+                    sent out to or from the Website may not be protected. You
+                    must take unique care in deciding what info you send to us
+                    by means of email.
+                  </p>
+                  <h3>
+                    Privacy Policy Updates<a
+                      name="privacy-policy-updates-9"
+                    ></a>
+                  </h3>
+                  <p>
+                    We reserve the right to modify this Privacy Policy at any
+                    time. You should review this Privacy Policy frequently. If
+                    we make material changes to this policy, we may notify you
+                    on our Website, by a blog post, by email, or by any method
+                    we determine. The method we chose is at our sole discretion.
+                    We will also change the &quot;Last Updated&quot; date at the
+                    beginning of this Privacy Policy. Any changes we make to our
+                    Privacy Policy are effective as of this Last Updated date
+                    and replace any prior Privacy Policies.
+                  </p>
+                  <h3>
+                    Questions About Our Privacy Practices or This Privacy
+                    Policy<a
+                      name="questions-about-our-privacy-practices-or-this-privacy-policy-10"
+                    ></a>
+                  </h3>
+                  <p>
+                    We are committed to conducting our business in accordance
+                    with these principles in order to ensure that the
+                    confidentiality of personal information is protected and
+                    maintained. If you have any questions about our Privacy
+                    Practices or this Policy, please contact us.
+                    
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.calculator.io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        data-cfasync="false"
+        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+      ></script>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="59d47a63fab3459bec349a54-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="59d47a63fab3459bec349a54-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="59d47a63fab3459bec349a54-text/javascript"
+      ></script>
+
+      <script type="59d47a63fab3459bec349a54-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+  </body>
+</html>

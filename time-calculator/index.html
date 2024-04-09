@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Time Calculator &mdash; Calculator.iO</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="This free time calculator allows you to add and subtract time values using days, hours, minutes, and seconds. Learn about the different concepts of time here as well."
+    />
+    <meta
+      name="keywords"
+      content="time calculator, add time, subtract time, days, hours, minutes, seconds, time duration calculation, time point equation"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/assets/css/main.min.css" />
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <script src="./assets/js/all-calculators.js" defer></script>
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-regular.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-500.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-600.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-800.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <script
+      src="/assets/js/all-calculators.js"
+      defer
+      type="2de05c5740862e81dcb078cd-text/javascript"
+    ></script>
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/time-calculator/"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/es/calculadora-de-tiempo/"
+      hreflang="es"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fr/calculateur-de-temps/"
+      hreflang="fr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/de/zeitrechner/"
+      hreflang="de"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pt/calculadora-de-tempo/"
+      hreflang="pt"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/it/calcolatore-di-tempo/"
+      hreflang="it"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/hi/%E0%A4%9F%E0%A4%BE%E0%A4%87%E0%A4%AE-%E0%A4%95%E0%A5%88%E0%A4%B2%E0%A4%95%E0%A5%81%E0%A4%B2%E0%A5%87%E0%A4%9F%E0%A4%B0/"
+      hreflang="hi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/id/kalkulator-waktu/"
+      hreflang="id"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ar/%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9-%D8%A7%D9%84%D9%88%D9%82%D8%AA/"
+      hreflang="ar"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ru/%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8/"
+      hreflang="ru"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ja/%E6%99%82%E9%96%93%E8%A8%88%E7%AE%97%E6%A9%9F/"
+      hreflang="ja"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/zh/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97%E5%99%A8/"
+      hreflang="zh"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pl/kalkulator-czasu/"
+      hreflang="pl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fa/%D9%85%D8%A7%D8%B4%DB%8C%D9%86-%D8%AD%D8%B3%D8%A7%D8%A8-%D8%B2%D9%85%D8%A7%D9%86/"
+      hreflang="fa"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/nl/tijdcalculator/"
+      hreflang="nl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ko/%EC%8B%9C%EA%B0%84-%EA%B3%84%EC%82%B0%EA%B8%B0/"
+      hreflang="ko"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/th/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%93%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2/"
+      hreflang="th"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/tr/zaman-hesaplay%C4%B1c%C4%B1/"
+      hreflang="tr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/vi/m%C3%A1y-t%C3%ADnh-th%E1%BB%9Di-gian/"
+      hreflang="vi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/time-calculator/"
+      hreflang="x-default"
+    />
+    <link
+      rel="canonical"
+      href="https://www.calculator.io/time-calculator/"
+      hreflang="en"
+    />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/time-calculator/assets/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/time-calculator/assets/images/icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/time-calculator/assets/images/icon-128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/time-calculator/assets/images/icon-192.png"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="/time-calculator/assets/images/icon-196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/time-calculator/assets/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Time Calculator" />
+    <meta
+      property="og:description"
+      content="This free time calculator allows you to add and subtract time values using days, hours, minutes, and seconds. Learn about the different concepts of time here as well."
+    />
+    <meta
+      property="og:url"
+      content="https://www.calculator.io/time-calculator/"
+    />
+    <meta property="og:determiner" content="the" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Calculator.iO" />
+    <meta property="og:locale:alternate" content="en" />
+    <meta property="og:locale:alternate" content="es" />
+    <meta property="og:locale:alternate" content="fr" />
+    <meta property="og:locale:alternate" content="de" />
+    <meta property="og:locale:alternate" content="pt" />
+    <meta property="og:locale:alternate" content="it" />
+    <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="id" />
+    <meta property="og:locale:alternate" content="ar" />
+    <meta property="og:locale:alternate" content="ru" />
+    <meta property="og:locale:alternate" content="ja" />
+    <meta property="og:locale:alternate" content="zh" />
+    <meta property="og:locale:alternate" content="pl" />
+    <meta property="og:locale:alternate" content="fa" />
+    <meta property="og:locale:alternate" content="nl" />
+    <meta property="og:locale:alternate" content="ko" />
+    <meta property="og:locale:alternate" content="th" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="vi" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="Time Calculator" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="Time Calculator" />
+    <meta
+      name="twitter:description"
+      content="This free time calculator allows you to add and subtract time values using days, hours, minutes, and seconds. Learn about the different concepts of time here as well."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.calculator.io/time-calculator/"
+    />
+    <meta name="twitter:image:alt" content="Time Calculator" />
+    <meta
+      name="twitter:image"
+      content="https://www.calculator.io/time-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.calculator.io/time-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.calculator.io/time-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      name="thumbnail"
+      content="https://www.calculator.io/assets/images/thumbnails/time-calculator.png"
+    />
+    <meta
+      itemprop="image"
+      content="https://www.calculator.io/assets/images/thumbnails/time-calculator.png"
+    />
+    <meta
+      class="swiftype"
+      name="image"
+      data-type="enum"
+      content="https://www.calculator.io/assets/images/thumbnails/time-calculator.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="2de05c5740862e81dcb078cd-text/javascript"
+    ></script>
+    <script type="2de05c5740862e81dcb078cd-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+    <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2652191922412683"
+      crossorigin="anonymous"
+      async
+      type="2de05c5740862e81dcb078cd-text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="Calculator.iO">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+            </nav>
+            
+            
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="Calculator.io"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg
+            ></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <a
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              href="/time-and-date-calculators/"
+              title="Time &amp; Date Calculators"
+              >Time &amp; Date Calculators</a
+            >
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >Time Calculator</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Calculator.io",
+                  "item": "https://www.calculator.io/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Time &amp; Date Calculators",
+                  "item": "https://www.calculator.io/time-and-date-calculators/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Time Calculator"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+      
+      <div class="calculator">
+        <div
+          class="container calculator__container calculator__container--title row"
+        >
+          <div class="calculator__logo">
+            <img
+              src="/time-calculator/assets/images/icon-96.png"
+              alt="Time Calculator Logo"
+            />
+          </div>
+          <div class="calculator__info col">
+            <h1 class="calculator__title">Time Calculator</h1>
+            <p class="calculator__subtitle">
+              This free time calculator allows you to add and subtract time
+              values using days, hours, minutes, and seconds. Learn about the
+              different concepts of time here as well.
+            </p>
+          </div>
+        </div>
+        <div
+          class="container calculator__container calculator__container--main row"
+        >
+        <div style="width: 350px; float: left; padding: 15px">
+            <div class="calculator-settings">
+              <div class="calculator-setting" id="calculator_form">
+                <div class="calculator-content col">
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <p class="input__title">Day</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="one_day"
+                          value="125"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_day', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_day', '1')"
+                        >
+                          1
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_day', '5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Hour</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="one_hour"
+                          value="7"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_hour', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_hour', '5')"
+                        >
+                          5
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_hour', '10')"
+                        >
+                          10
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Minute</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="one_minute"
+                          value="15"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_minute', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_minute', '15')"
+                        >
+                          15
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_minute', '30')"
+                        >
+                          30
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Second</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="one_second"
+                          value="30"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_second', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_second', '15')"
+                        >
+                          15
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('one_second', '30')"
+                        >
+                          30
+                        </button>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <input type="hidden" value="add" id="add_subtract" />
+    
+                      <button
+                        class="button-switcher button-switcher--active"
+                        type="button"
+                        onclick="switcher(this, 'add_subtract', '')"
+                        value="add"
+                        id="add_subtract-a"
+                      >
+                        <svg
+                          width="21"
+                          height="20"
+                          viewBox="0 0 21 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="js-add-button"
+                        >
+                          <path
+                            fill="#9CA3AF"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M10.25 3C10.8023 3 11.25 3.44772 11.25 4V9H16.25C16.8023 9 17.25 9.44772 17.25 10C17.25 10.5523 16.8023 11 16.25 11H11.25V16C11.25 16.5523 10.8023 17 10.25 17C9.69772 17 9.25 16.5523 9.25 16V11H4.25C3.69772 11 3.25 10.5523 3.25 10C3.25 9.44771 3.69772 9 4.25 9L9.25 9V4C9.25 3.44772 9.69772 3 10.25 3Z"
+                          ></path>
+                        </svg>
+                        <span
+                          class="button-switcher__text button-switcher__text--active"
+                          >Add</span
+                        >
+                      </button>
+                    </label>
+                    <label class="input col">
+                      <button
+                        class="button-switcher"
+                        type="button"
+                        onclick="switcher(this, 'add_subtract', '')"
+                        value="subtract"
+                        id="add_subtract-b"
+                      >
+                        <svg
+                          width="21"
+                          height="20"
+                          viewBox="0 0 21 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill="#9CA3AF"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M3.75 10C3.75 9.73478 3.85536 9.48043 4.04289 9.29289C4.23043 9.10536 4.48478 9 4.75 9H16.75C17.0152 9 17.2696 9.10536 17.4571 9.29289C17.6446 9.48043 17.75 9.73478 17.75 10C17.75 10.2652 17.6446 10.5196 17.4571 10.7071C17.2696 10.8946 17.0152 11 16.75 11H4.75C4.48478 11 4.23043 10.8946 4.04289 10.7071C3.85536 10.5196 3.75 10.2652 3.75 10Z"
+                          ></path>
+                        </svg>
+                        <span class="button-switcher__text">Subtract</span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="input-wrapper row">
+                    <label class="input col">
+                      <p class="input__title">Day</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="two_day"
+                          value="225"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_day', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_day', '1')"
+                        >
+                          1
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_day', '5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Hour</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="two_hour"
+                          value="12"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_hour', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_hour', '5')"
+                        >
+                          5
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_hour', '10')"
+                        >
+                          10
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Minute</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="two_minute"
+                          value="25"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_minute', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_minute', '15')"
+                        >
+                          15
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_minute', '30')"
+                        >
+                          30
+                        </button>
+                      </div>
+                    </label>
+                    <label class="input col">
+                      <p class="input__title">Second</p>
+                      <div class="input-field row">
+                        <input
+                          type="text"
+                          class="input-field__input"
+                          placeholder=""
+                          id="two_second"
+                          value="20"
+                        />
+                      </div>
+    
+                      <div class="input-hints row">
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_second', '0')"
+                        >
+                          0
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_second', '15')"
+                        >
+                          15
+                        </button>
+                        <span class="input-hints__hint input-hints__hint--comma"
+                          >,</span
+                        >
+                        <button
+                          class="input-hints__hint"
+                          onclick="setValue('two_second', '30')"
+                        >
+                          30
+                        </button>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+    
+                <div
+                  class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row"
+                >
+                  <button
+                    class="button button--primary ml-auto"
+                    onclick="calculate(this)"
+                  >
+                    Calculate
+                  </button>
+                </div>
+    
+                <script
+                  type="text/javascript"
+                  src="./assets/js/calculator.js"
+                ></script>
+              </div>
+            </div>
+            <div
+              class="calculator-aside__container calculator-aside__container--pc col" style="margin-top: 20px;"
+            >
+              <p class="calculator-aside__title">Related Calculators</p>
+              <a href="/age-calculator/" class="row calculator-related">
+                <img
+                  src="/age-calculator/assets/images/icon-96.png"
+                  alt="Age Calculator"
+                  class="calculator-related__img"
+                  alt="Age Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Age Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a
+                href="/time-duration-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/time-duration-calculator/assets/images/icon-96.png"
+                  alt="Time Duration Calculator"
+                  class="calculator-related__img"
+                  alt="Time Duration Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Time Duration Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a href="/date-calculator/" class="row calculator-related">
+                <img
+                  src="/date-calculator/assets/images/icon-96.png"
+                  alt="Date Calculator"
+                  class="calculator-related__img"
+                  alt="Date Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Date Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a
+                href="/time-to-decimal-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/time-to-decimal-calculator/assets/images/icon-96.png"
+                  alt="Time to Decimal Calculator"
+                  class="calculator-related__img"
+                  alt="Time to Decimal Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Time to Decimal Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a href="/days-calculator/" class="row calculator-related">
+                <img
+                  src="/days-calculator/assets/images/icon-96.png"
+                  alt="Days Calculator"
+                  class="calculator-related__img"
+                  alt="Days Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Days Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="calculator-main col" id="result-container">
+            <div style="float: left; padding: 15px; overflow: scroll">
+                <div
+                  class="calculator-result calculator-result--error col"
+                  id="error-box"
+                >
+                  <div class="row">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+                                        7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+                                        12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+                                        11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z"
+                        fill="#F87171"
+                        class="dark:fill-red-200"
+                      ></path>
+                    </svg>
+                    <p class="calculator-error__title">
+                      There was an error with your calculation.
+                    </p>
+                  </div>
+                  <div class="col" id="error-list"></div>
+                </div>
+                <span id="calculator_result"
+                  ><div class="calculator-result col">
+                    <p class="table-cell table-cell--dark table-cell--only-title">
+                      Time
+                    </p>
+                    <div class="table-cell table-cell--only row">
+                      <div class="col result-age__text">
+                        <p class="result-text" id="result">
+                          350 days 19 hours 40 minutes 50 seconds
+                        </p>
+                        <p class="result-text" id="result-in-days">
+                          or 350.82002315 days
+                        </p>
+                        <p class="result-text" id="result-in-hours">
+                          or 8419.68056 hours
+                        </p>
+                        <p class="result-text" id="result-in-minutes">
+                          or 505180.83333 minutes
+                        </p>
+                        <p class="result-text" id="result-in-seconds">
+                          or 30310850 seconds
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            <div
+              class="calculator-result calculator-result--error col"
+              id="error-box"
+            >
+              <div class="row">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+									7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+									12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+									11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z"
+                    fill="#F87171"
+                    class="dark:fill-red-200"
+                  ></path>
+                </svg>
+                <p class="calculator-error__title">
+                  There was an error with your calculation.
+                </p>
+              </div>
+              <div class="col" id="error-list"></div>
+            </div>
+            
+            <section id="blockText" class="col">
+              <div class="calculator-about">
+                <h2>Table of Contents</h2>
+                <ol>
+                  <li>
+                    <a href="#subtract-or-add-time-from-a-given-date-1"
+                      >Subtract or add time from a given date</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#calculating-time-with-an-expression-2"
+                      >Calculating Time with an Expression</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#how-do-we-measure-time?-3"
+                      >How do we measure time?</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#invention-of-the-second-minute-and-24-hour-day-4"
+                      >Invention of the second, minute, and 24-hour day</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#early-instruments-for-measuring-time-5"
+                      >Early instruments for measuring time</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#time-concepts-6">Time Concepts</a>
+                    <ol style="padding-top: 10px; list-style-type: upper-roman">
+                      <li><a href="#aristotle-7">Aristotle</a></li>
+                      <li><a href="#newton-8">Newton</a></li>
+                      <li><a href="#leibniz-9">Leibniz</a></li>
+                      <li><a href="#einstein-10">Einstein</a></li>
+                    </ol>
+                  </li>
+                </ol>
+                <svg
+                  width="404"
+                  height="404"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="calculator-main__decoration"
+                >
+                  <path
+                    d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                    fill="#E5E7EB"
+                    class="fill-gray-200 dark:fill-gray-700"
+                  ></path>
+                </svg>
+                <p class="calculator-illustration">
+                  <img
+                    src="/time-calculator/assets/images/illustration-and.svg"
+                    alt="Time Calculator"
+                  />
+                </p>
+                <div class="calculator-about__wrapper">
+                  <p>
+                    You may use this calculator to “add” or “subtract” two
+                    different time measurements. You can leave the input
+                    sections blank, which will result in a default value of
+                    zero.
+                  </p>
+                  <h2>
+                    Subtract or add time from a given date
+                    <a name="subtract-or-add-time-from-a-given-date-1"></a>
+                  </h2>
+                  <p>
+                    Use the Time Duration Calculator to compute the time between
+                    two dates. Try this calculator to add or subtract time from
+                    a beginning time and date. Depending on the time deducted or
+                    added, the new time and date will be the outcome.
+                  </p>
+                  <h2>
+                    Calculating Time with an Expression<a
+                      name="calculating-time-with-an-expression-2"
+                    ></a>
+                  </h2>
+                  <p>
+                    This calculator can add or subtract two or more time points
+                    with an equation. The following are acceptable inputs: d, h,
+                    m, and s. D represents days, h represents hours, m
+                    represents minutes, and s represents seconds. The only
+                    proper functions are + and -. A proper formula would be “1d
+                    2h 3m 4s + 4h 5s - 2030s.”
+                  </p>
+                  <p>
+                    Time, like other variables, can be added or removed. But
+                    there is a difference in computing with decimal and time
+                    units. The table below shows several popular units for
+                    measuring time.
+                  </p>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Unit</th>
+                        <th>Definition</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>millennium</td>
+                        <td>1,000 years</td>
+                      </tr>
+                      <tr>
+                        <td>century</td>
+                        <td>100 years</td>
+                      </tr>
+                      <tr>
+                        <td>decade</td>
+                        <td>10 years</td>
+                      </tr>
+                      <tr>
+                        <td>year (average)</td>
+                        <td>365,242 days or 12 months</td>
+                      </tr>
+                      <tr>
+                        <td>common year</td>
+                        <td>365 days or 12 months</td>
+                      </tr>
+                      <tr>
+                        <td>leap year</td>
+                        <td>366 days or 12 months</td>
+                      </tr>
+                      <tr>
+                        <td>quarter</td>
+                        <td>3 months</td>
+                      </tr>
+                      <tr>
+                        <td>month</td>
+                        <td>
+                          28-31 days; Jan., Mar., May, Jul., Aug. Oct., Dec. —
+                          31 days; Apr., Jun., Sep., Nov. — 30 days; Feb. — 28
+                          days for a common year and 29 days for a leap year
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>week</td>
+                        <td>7 days</td>
+                      </tr>
+                      <tr>
+                        <td>day</td>
+                        <td>24 hours or 1,440 minutes or 86,400 seconds</td>
+                      </tr>
+                      <tr>
+                        <td>hour</td>
+                        <td>60 minutes or 3,600 seconds</td>
+                      </tr>
+                      <tr>
+                        <td>minute</td>
+                        <td>60 seconds</td>
+                      </tr>
+                      <tr>
+                        <td>second</td>
+                        <td>base unit</td>
+                      </tr>
+                      <tr>
+                        <td>millisecond</td>
+                        <td>10⁻³ second</td>
+                      </tr>
+                      <tr>
+                        <td>microsecond</td>
+                        <td>10⁻⁶ second</td>
+                      </tr>
+                      <tr>
+                        <td>nanosecond</td>
+                        <td>10⁻⁹ second</td>
+                      </tr>
+                      <tr>
+                        <td>picosecond</td>
+                        <td>10⁻¹² second</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>
+                    How do we measure time?<a
+                      name="how-do-we-measure-time?-3"
+                    ></a>
+                  </h2>
+                  <p>
+                    The calendar and the clock are two distinct systems of time
+                    quantification that are commonly employed today. These time
+                    measures are based on the sexagesimal numeral system, with
+                    the number 60 as its foundation. This system was developed
+                    in ancient Sumer around the third millennium B.C. and was
+                    adopted by the Babylonians.
+                  </p>
+                  <p>
+                    We use the base 60 because the number 60 is the highest
+                    composite number with 12 coefficients. The highest composite
+                    number is a natural number that has the greatest ratio of
+                    the number of divisors to some positive degree of itself
+                    than any other number.
+                  </p>
+                  <p>
+                    The mathematical advantage of the number 60 makes it
+                    convenient in practice. The number 60 has many divisors,
+                    which simplifies operations with fractions. We can divide
+                    one hour into 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, and
+                    30-minute intervals without a remainder.
+                  </p>
+                  <h2>
+                    Invention of the second, minute, and 24-hour day<a
+                      name="invention-of-the-second-minute-and-24-hour-day-4"
+                    ></a>
+                  </h2>
+                  <p>
+                    Egyptian culture was the first civilization to split the day
+                    into smaller halves. The first sundials split the time
+                    between dawn and sundown into 12 segments.
+                  </p>
+                  <p>
+                    People could not use sundials after sundown, so determining
+                    the length of the night was more complicated. Egyptian
+                    astronomers spotted patterns in a group of stars, and used
+                    12 of them to construct 12 segments of the night.
+                  </p>
+                  <p>
+                    One argument for the genesis of the notion of a 24-hour day
+                    is the existence of these two 12-part splits of day and
+                    night. The Egyptians’ classifiers fluctuated according to
+                    the season, with summer hours lasting significantly longer
+                    than winter.
+                  </p>
+                  <p>
+                    Later, between 147 and 127 B.C., a Greek astronomer named
+                    Hipparchus recommended dividing the day into 12 hours of
+                    daylight hours and 12 hours of darkness, depending on the
+                    days of the equinox.
+                  </p>
+                  <p>
+                    Hipparchus also developed a model of longitude lines
+                    containing 360 degrees, which Claudius Ptolemy eventually
+                    divided into 360 degrees of latitude and longitude. He
+                    divided each degree into 60 parts, each divided into 60
+                    smaller pieces, now called a minute and a second.
+                  </p>
+                  <p>
+                    While various civilizations have changed alternative
+                    calendar systems over time, the Gregorian calendar is the
+                    most widely used globally. It was founded in 1582 by Pope
+                    Gregory XIII and is based primarily on the Julian calendar,
+                    a Roman solar calendar suggested by Julius Caesar in 45 B.C.
+                  </p>
+                  <p>
+                    The Julian calendar was flawed, and the astronomical
+                    equinoxes and solstices were about 11 minutes ahead of it
+                    per year. The Gregorian calendar considerably reduced this
+                    disparity.
+                  </p>
+                  <h2>
+                    Early instruments for measuring time<a
+                      name="early-instruments-for-measuring-time-5"
+                    ></a>
+                  </h2>
+                  <p>
+                    Early clocks varied by culture and region, and were often
+                    intended to divide the day or night into distinct phases to
+                    control labor or religious routines. Oil lamps and candle
+                    clocks, for example, would show the flow of time from one
+                    event to the next instead of telling the time of day.
+                  </p>
+                  <p>
+                    The water clock, also called the clepsydra, is often
+                    regarded as the most accurate timepiece of the ancient
+                    world. Clepsydra regulates water flow from or into the
+                    vessel, which is then analyzed to calculate the time
+                    duration.
+                  </p>
+                  <p>
+                    Hourglasses, also known as sandglasses, emerged in the 14th
+                    century and served a role comparable to oil lamps and candle
+                    clocks. As the clock's precision increased, it began to be
+                    used to calibrate the hourglass to accurately record the
+                    length of time.
+                  </p>
+                  <p>
+                    Christiaan Huygens invented the first pendulum mechanical
+                    clock in 1656. It was the first clock controlled by a device
+                    with a &quot;natural&quot; period of oscillation. Huygens
+                    refined his pendulum clock to have inaccuracies of less than
+                    10 seconds every day.
+                  </p>
+                  <p>
+                    Atomic clocks are the most accurate time-measuring tools
+                    available today. Even though there are various types of
+                    atomic clocks, cesium atomic clocks are the most popular and
+                    precise. They are calibrated by observing the emission
+                    periods of the cesium atoms. Atomic clocks use an electrical
+                    oscillator to measure time using cesium nuclear resonance.
+                  </p>
+                  <h2>Time Concepts<a name="time-concepts-6"></a></h2>
+                  <h3>Aristotle<a name="aristotle-7"></a></h3>
+                  <p>
+                    Throughout history, various scientists and philosophers have
+                    proposed several constructions of time. Aristotle (384–322
+                    B.C.) described it as &quot;various movements relative to
+                    before and after.&quot; This ancient Greek philosopher said
+                    that time quantifies changes that require some change or
+                    movement. He also believed that time was unlimited and
+                    constant, and that the cosmos had existed and would continue
+                    to exist indefinitely.
+                  </p>
+                  <h3>Newton<a name="newton-8"></a></h3>
+                  <p>
+                    In his Philosophiae Naturalis Principia Mathematica, Newton
+                    addressed the notions of space and time as absolutes. He
+                    contended that absolute time exists and moves without regard
+                    to external causes, and he referred to this as
+                    &quot;duration.&quot; Absolute time, according to Newton,
+                    can only be comprehended theoretically since it is
+                    indistinguishable.
+                  </p>
+                  <p>
+                    Relative time is what people experience and is a value of
+                    &quot;duration&quot; based on moving objects like the sun
+                    and the moon. Newtonian time is a term that refers to
+                    Newton’s realist viewpoint.
+                  </p>
+                  <h3>Leibniz<a name="leibniz-9"></a></h3>
+                  <p>
+                    Time, as per Leibniz, is nothing more than a notion, like
+                    space and numbers, that enables humans to assess and arrange
+                    experiences. It is how humans subjectively view and sequence
+                    the things, events, and experiences they have gathered
+                    during their existence. Unlike Newton, Leibniz believed that
+                    time is only important when there are entities with which it
+                    can interact.
+                  </p>
+                  <h3>Einstein<a name="einstein-10"></a></h3>
+                  <p>
+                    Unlike Newton, who believed that time flowed the same for
+                    all observers regardless of point of reference, Einstein
+                    presented the concept of spacetime as interconnected rather
+                    than separate concepts of space and time.
+                  </p>
+                  <p>
+                    Einstein suggested that the speed of light, c, is a constant
+                    for all viewers in a vacuum, regardless of the speed of the
+                    light source. He stated that it connects distances recorded
+                    in space to distances recorded in time.
+                  </p>
+                  <p>
+                    Ultimately, for viewers in different inertial
+                    conceptualizations (different relative velocities), both the
+                    structure of space and the characteristics of time change
+                    simultaneously because of the speed constant of light.
+                  </p>
+                  <p>
+                    A typical example illustrating this involves a spacecraft
+                    traveling at close to the speed of light.
+                  </p>
+                  <p>
+                    For an observer on another spacecraft traveling at a
+                    different speed, time on a spaceship traveling near light
+                    speed will go slower. It will theoretically stop if the
+                    spacecraft can reach the speed of light.
+                  </p>
+                  <p>
+                    If an object moves faster in space, it will move slower in
+                    time; if it moves slower in space, it will move faster in
+                    time. This must happen for the speed of light to remain
+                    constant.
+                  </p>
+                  <p>
+                    Numerous perceptions of time throughout human history show
+                    that scientists can debunk even the most perfect hypotheses
+                    formulated earlier.
+                  </p>
+                  <p>
+                    Even after all the advances in quantum physics and other
+                    fields of knowledge, time remains an enigma. It may happen
+                    that Einstein’s universal constant of light will be
+                    invalidated after a while, and humanity will be able to
+                    travel back in time.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <div
+              class="calculator-aside__container calculator-aside__container--mobile col"
+            >
+              <p class="calculator-aside__title">Related Calculators</p>
+              <a href="/age-calculator/" class="row calculator-related">
+                <img
+                  src="/age-calculator/assets/images/icon-96.png"
+                  alt="Age Calculator"
+                  class="calculator-related__img"
+                  alt="Age Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Age Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a
+                href="/time-duration-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/time-duration-calculator/assets/images/icon-96.png"
+                  alt="Time Duration Calculator"
+                  class="calculator-related__img"
+                  alt="Time Duration Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Time Duration Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a href="/date-calculator/" class="row calculator-related">
+                <img
+                  src="/date-calculator/assets/images/icon-96.png"
+                  alt="Date Calculator"
+                  class="calculator-related__img"
+                  alt="Date Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Date Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a
+                href="/time-to-decimal-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/time-to-decimal-calculator/assets/images/icon-96.png"
+                  alt="Time to Decimal Calculator"
+                  class="calculator-related__img"
+                  alt="Time to Decimal Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Time to Decimal Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+              <a href="/days-calculator/" class="row calculator-related">
+                <img
+                  src="/days-calculator/assets/images/icon-96.png"
+                  alt="Days Calculator"
+                  class="calculator-related__img"
+                  alt="Days Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Days Calculator</span
+                  >
+                  <span class="calculator-related__text">Time &amp; Date</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <link rel="stylesheet" href="/assets/js/lib/katex/katex.min.css" />
+      <script
+        defer
+        src="/assets/js/lib/katex/katex.min.js"
+        type="2de05c5740862e81dcb078cd-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/lib/katex/auto-render.min.js"
+        onload="renderMathInElement(
+	document.getElementById('blockText'),
+	{ delimiters: [
+	  {left: '$$', right: '$$', display: true},
+	  {left: '\\$', right: '\\$', display: false},
+	  {left: '\\(', right: '\\)', display: false},
+	  {left: '\\[', right: '\\]', display: true}
+	]});
+"
+        type="2de05c5740862e81dcb078cd-text/javascript"
+      ></script>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.calculator.io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="2de05c5740862e81dcb078cd-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="2de05c5740862e81dcb078cd-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="2de05c5740862e81dcb078cd-text/javascript"
+      ></script>
+
+      <script type="2de05c5740862e81dcb078cd-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+
+    <script async src="./assets/js/lib/math.min.js"></script>
+    <script defer src="./assets/js/functions.js"></script>
+    
+  </body>
+</html>

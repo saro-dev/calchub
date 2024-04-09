@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>BMR Calculator &mdash; Calculator.iO</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Free BMR calculator uses well-known algorithms to calculate the basal metabolic rate. Also, find out more about the factors that influence BMR."
+    />
+    <meta
+      name="keywords"
+      content="bmr calculator, basal metabolic rate tool, calculate bmr online, bmr formula calculation, daily calorie burn, resting metabolic rate estimator, calorie intake calculator, bmr for weight management, energy expenditure calculator, metabolism rate checker"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/assets/css/main.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.min.css" />
+    <script src="./assets/js/all-calculators.js" defer></script>
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-regular.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-500.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-600.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-800.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <script
+      src="/assets/js/all-calculators.js"
+      defer
+      type="69d61237adba0090614a2639-text/javascript"
+    ></script>
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/bmr-calculator/"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/es/calculadora-de-tmb/"
+      hreflang="es"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fr/calculateur-bmr/"
+      hreflang="fr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/de/bmr-rechner/"
+      hreflang="de"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pt/calculadora-de-tmb/"
+      hreflang="pt"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/it/calcolatore-mb/"
+      hreflang="it"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/hi/bmr-%E0%A4%95%E0%A5%88%E0%A4%B2%E0%A4%95%E0%A5%81%E0%A4%B2%E0%A5%87%E0%A4%9F%E0%A4%B0/"
+      hreflang="hi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/id/kalkulator-bmr/"
+      hreflang="id"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ar/%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9-%D9%85%D8%B9%D8%AF%D9%84-%D8%A7%D9%84%D8%A3%D9%8A%D8%B6-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A/"
+      hreflang="ar"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ru/%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-bmr/"
+      hreflang="ru"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ja/bmr%E8%A8%88%E7%AE%97%E6%A9%9F/"
+      hreflang="ja"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/zh/bmr-%E8%AE%A1%E7%AE%97%E5%99%A8/"
+      hreflang="zh"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pl/kalkulator-bmr/"
+      hreflang="pl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fa/%D9%85%D8%A7%D8%B4%DB%8C%D9%86-%D8%AD%D8%B3%D8%A7%D8%A8-bmr/"
+      hreflang="fa"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/nl/bmr-calculator/"
+      hreflang="nl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ko/bmr-%EA%B3%84%EC%82%B0%EA%B8%B0/"
+      hreflang="ko"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/th/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%93%E0%B8%84%E0%B9%88%E0%B8%B2-bmr/"
+      hreflang="th"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/tr/bmr-hesaplay%C4%B1c%C4%B1/"
+      hreflang="tr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/vi/m%C3%A1y-t%C3%ADnh-bmr/"
+      hreflang="vi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/bmr-calculator/"
+      hreflang="x-default"
+    />
+    <link
+      rel="canonical"
+      href="https://www.calculator.io/bmr-calculator/"
+      hreflang="en"
+    />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/bmr-calculator/assets/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/bmr-calculator/assets/images/icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/bmr-calculator/assets/images/icon-128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/bmr-calculator/assets/images/icon-192.png"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="/bmr-calculator/assets/images/icon-196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/bmr-calculator/assets/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="BMR Calculator" />
+    <meta
+      property="og:description"
+      content="Free BMR calculator uses well-known algorithms to calculate the basal metabolic rate. Also, find out more about the factors that influence BMR."
+    />
+    <meta
+      property="og:url"
+      content="https://www.calculator.io/bmr-calculator/"
+    />
+    <meta property="og:determiner" content="the" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Calculator.iO" />
+    <meta property="og:locale:alternate" content="en" />
+    <meta property="og:locale:alternate" content="es" />
+    <meta property="og:locale:alternate" content="fr" />
+    <meta property="og:locale:alternate" content="de" />
+    <meta property="og:locale:alternate" content="pt" />
+    <meta property="og:locale:alternate" content="it" />
+    <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="id" />
+    <meta property="og:locale:alternate" content="ar" />
+    <meta property="og:locale:alternate" content="ru" />
+    <meta property="og:locale:alternate" content="ja" />
+    <meta property="og:locale:alternate" content="zh" />
+    <meta property="og:locale:alternate" content="pl" />
+    <meta property="og:locale:alternate" content="fa" />
+    <meta property="og:locale:alternate" content="nl" />
+    <meta property="og:locale:alternate" content="ko" />
+    <meta property="og:locale:alternate" content="th" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="vi" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="BMR Calculator" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="BMR Calculator" />
+    <meta
+      name="twitter:description"
+      content="Free BMR calculator uses well-known algorithms to calculate the basal metabolic rate. Also, find out more about the factors that influence BMR."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.calculator.io/bmr-calculator/"
+    />
+    <meta name="twitter:image:alt" content="BMR Calculator" />
+    <meta
+      name="twitter:image"
+      content="https://www.calculator.io/bmr-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.calculator.io/bmr-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.calculator.io/bmr-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      name="thumbnail"
+      content="https://www.calculator.io/assets/images/thumbnails/bmr-calculator.png"
+    />
+    <meta
+      itemprop="image"
+      content="https://www.calculator.io/assets/images/thumbnails/bmr-calculator.png"
+    />
+    <meta
+      class="swiftype"
+      name="image"
+      data-type="enum"
+      content="https://www.calculator.io/assets/images/thumbnails/bmr-calculator.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="69d61237adba0090614a2639-text/javascript"
+    ></script>
+    <script type="69d61237adba0090614a2639-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+    <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2652191922412683"
+      crossorigin="anonymous"
+      async
+      type="69d61237adba0090614a2639-text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="Calculator.iO">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+              
+            </nav>
+            
+           
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="Calculator.io"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg
+            ></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <a
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              href="/health-and-fitness-calculators/"
+              title="Health &amp; Fitness Calculators"
+              >Health &amp; Fitness Calculators</a
+            >
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >BMR Calculator</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Calculator.io",
+                  "item": "https://www.calculator.io/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Health &amp; Fitness Calculators",
+                  "item": "https://www.calculator.io/health-and-fitness-calculators/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "BMR Calculator"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+      <div class="modal-window" style="opacity: 0; pointer-events: none">
+        <div class="modal-menu">
+          <div class="modal-menu__header">
+            <a href="/">
+              <svg
+                width="38"
+                height="38"
+                viewBox="0 0 38 38"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                  fill="#FF8802"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                  fill="#FF8802"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                  fill="#FF8802"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                  fill="#FF8802"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                  fill="#FF8802"
+                ></path>
+              </svg>
+            </a>
+          
+          </div>
+          <div class="col modal-menu__nav">
+            
+            <a
+              tabindex="0"
+              class="modal-menu__link"
+              href="/time-and-date-calculators/"
+              >Time &amp; Date</a
+            >
+            
+            <a
+              tabindex="0"
+              class="modal-menu__link"
+              href="/health-and-fitness-calculators/"
+              >Health</a
+            >
+            
+          </div>
+        </div>
+
+        
+
+
+      </div>
+      
+      <div class="calculator">
+        <div
+          class="container calculator__container calculator__container--title row"
+        >
+          <div class="calculator__logo">
+            <img
+              src="/bmr-calculator/assets/images/icon-96.png"
+              alt="BMR Calculator Logo"
+            />
+          </div>
+          <div class="calculator__info col">
+            <h1 class="calculator__title">BMR Calculator</h1>
+            <p class="calculator__subtitle">
+              Free BMR calculator uses well-known algorithms to calculate the
+              basal metabolic rate. Also, find out more about the factors that
+              influence BMR.
+            </p>
+          </div>
+        </div>
+        <div
+          class="container calculator__container calculator__container--main row"
+        >
+        <div style="width:350px;float:left;padding: 15px;">
+            <div class="calculator-settings">
+                <div class="calculator-setting" id="calculator_form">
+                    <div class="calculator-content col">
+                        <div class="input-wrapper row">
+                            <label class="input col">
+                                <input type="hidden" value="male" id="gender"/>
+                                <p class="input__title">Gender</p>
+                                <button class="button-switcher button-switcher--active" type="button" onclick="switcher(this, 'gender', '')" value="male" id="gender-a">
+                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke='#9CA3AF' d="M8.875 17.5C11.9816 17.5 14.5 14.9816 14.5 11.875C14.5 8.7684 11.9816 6.25 8.875 6.25C5.7684 6.25 3.25 8.7684 3.25 11.875C3.25 14.9816 5.7684 17.5 8.875 17.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path stroke='#9CA3AF' d="M12.8516 7.89844L17.625 3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path stroke='#9CA3AF' d="M13.875 3.125H17.625V6.875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                                    <span class="button-switcher__text button-switcher__text--active">Male</span>
+                                </button>
+                            </label>
+                            <label class="input col">
+                                <p class="input__title"></p>
+                                <button class="button-switcher" type="button" onclick="switcher(this, 'gender', '')" value="female" id="gender-b">
+                                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke='#9CA3AF' d="M10.75 13.125C13.8566 13.125 16.375 10.6066 16.375 7.5C16.375 4.3934 13.8566 1.875 10.75 1.875C7.6434 1.875 5.125 4.3934 5.125 7.5C5.125 10.6066 7.6434 13.125 10.75 13.125Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path stroke='#9CA3AF' d="M10.75 13.125V18.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path stroke='#9CA3AF' d="M7.625 16.25H13.875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                                    <span class="button-switcher__text">Female</span>
+                                </button>
+                            </label>
+                        </div>
+                        <div class="input-wrapper row">
+                            <label class="input col   ">
+                                <p class="input__title">Age</p>
+                                <div class="input-field row">
+                                    <input type="text" class="input-field__input" placeholder=""  id="age" value="30"  />
+                                        <span class="input-field__hint">years</span>
+                                </div>
+                            
+                            
+                            </label>	</div>
+                        <div class="input-wrapper row">
+                            <label class="input col">
+                                <p class="input__title">Height</p>
+                                <div class="input-field input-field--height row">
+                                    <input type="text" class="input-field__input imperial-system-item" id="height_ft" data-target="height" value="5" onchange="updateHeight(this)" />
+                                    <span class="input-field__hint imperial-system-item">ft</span>
+                            
+                                    <input type="text" class="input-field__input imperial-system-item" id="height_in" data-target="height"  value="11.65" onchange="updateHeight(this)" />
+                                    <span class="input-field__hint imperial-system-item">in</span>
+                            
+                                    <input type="text" class="input-field__input metric-system-item system-item-hidden" id="height" data-target="height"  value="182" onchange="updateHeight(this)" />
+                                    <span class="input-field__hint metric-system-item">cm</span>
+                                </div>
+                            </label>
+                            <label class="input col ">
+                                <p class="input__title">Weight</p>
+                                <div class="input-field row">
+                                    
+                                    <input type="text" class="input-field__input imperial-system-item" id="weight_imperial" data-target="weight" data-formula="value * 2.20462262185" value="176.4" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint imperial-system-item">pounds</span>
+                            
+                                    
+                                    <input type="text" class="input-field__input metric-system-item system-item-hidden" id="weight" data-target="weight" data-formula="value / 2.20462262185" value="80" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint metric-system-item system-item-hidden">kg</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-content calculator-content--options calculator-content--gray col  "  >
+                        <div class="calculator-content-head row">
+                            <p class="calculator-content-head__title">Options</p>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"></path>
+                    </svg>
+                        </div>
+                            <div class="calculator-content-body col">
+                                    <div class="input-wrapper row">
+                                        <label class="input col ">
+                                            <p class="input__title">BMR Estimation Formula</p>
+                                            <div class="dropdown-wrapper">
+                                                <div class="input-field row " tabindex="0">
+                                                    <select class="input-field__text" onchange="toggleRelatedInputs(this)" id="formula">
+                                                            <option value="Mifflin St Jeor" >
+                                                            Mifflin St Jeor
+                                                            </option>
+                                                            <option value="Revised Harris-Benedict" >
+                                                            Revised Harris-Benedict
+                                                            </option>
+                                                            <option value="Katch-McArdle" >
+                                                            Katch-McArdle
+                                                            </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </label></div>
+                                    
+                                    <div class="input-wrapper row formula related-item-hidden related-to-formula-2">
+                                        <label class="input col   ">
+                                            <p class="input__title">Body Fat</p>
+                                            <div class="input-field row">
+                                                <input type="text" class="input-field__input" placeholder=""  id="fat" value="20"  />
+                                                    <span class="input-field__hint">%</span>
+                                            </div>
+                                        
+                                            <div class="input-hints row">
+                                                <span class="input-hints__hint input-hints__hint--comma">Used in Katch-McArdle Formula</span>
+                                            </div>
+                                        
+                                        </label></div>
+                            </div>
+                    </div>
+                    
+                    <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row  " >
+                    
+                    
+                            <button class="system-switcher" onclick="toggleSystem(this)">
+                                <div class="system-switcher__circle"></div>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 9.5H10C9.44772 9.5 9 9.05228 9 8.5V2.5M4.5 2.5H3.5C2.94772 2.5 2.5 2.94772 2.5 3.5L2.5 9.5M7.5 4.5L10.5 4.5M1.5 5.5L4.5 5.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3.5L2 8.5M2 8L2 5.5C2 4.39543 2.89543 3.5 4 3.5C5.10457 3.5 6 4.39543 6 5.5M6 5.5L6 8.5M6 5.5L6 8M6 5.5C6 4.39543 6.89543 3.5 8 3.5C9.10457 3.5 10 4.39543 10 5.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                            </button>
+                    
+                            <script type="text/javascript">
+                                $$(".imperial-system-item, .metric-system-item").forEach(function(element, index){
+                                    element.classList.remove("system-item-hidden");
+                                });
+                                $$((defaultSystem == "metric") ? ".imperial-system-item" : ".metric-system-item").forEach(function(element, index){
+                                    element.classList.add("system-item-hidden");
+                                });
+                                if(defaultSystem == "metric") $('.system-switcher').classList.add('system-switcher--active');
+                            </script>
+                    
+                    
+                        <button class="button button--primary ml-auto" onclick="calculate(this)">Calculate</button>
+                    </div>
+                    
+                    
+                    
+                    
+                        <script type="text/javascript" src="./assets/js/calculator.js"></script>
+                </div>
+            </div>
+            <!-- related -->
+
+            <div class="calculator-aside__container calculator-aside__container--pc col" style="margin-top: 20px;">
+                <p class="calculator-aside__title">Related Calculators</p>
+                <a href="/bmi-calculator/" class="row calculator-related">
+                <img src="/bmi-calculator/assets/images/icon-96.png" alt="BMI Calculator" class="calculator-related__img" alt="BMI Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">BMI Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/calorie-calculator/" class="row calculator-related">
+                <img src="/calorie-calculator/assets/images/icon-96.png" alt="Calorie Calculator" class="calculator-related__img" alt="Calorie Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Calorie Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/body-fat-percentage-calculator/" class="row calculator-related">
+                <img src="/body-fat-percentage-calculator/assets/images/icon-96.png" alt="Body Fat Percentage Calculator" class="calculator-related__img" alt="Body Fat Percentage Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Body Fat Percentage Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/ideal-weight-calculator/" class="row calculator-related">
+                <img src="/ideal-weight-calculator/assets/images/icon-96.png" alt="Ideal Weight Calculator" class="calculator-related__img" alt="Ideal Weight Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Ideal Weight Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/tdee-calculator/" class="row calculator-related">
+                <img src="/tdee-calculator/assets/images/icon-96.png" alt="TDEE Calculator" class="calculator-related__img" alt="TDEE Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">TDEE Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/macro-calculator/" class="row calculator-related">
+                <img src="/macro-calculator/assets/images/icon-96.png" alt="Macro Calculator" class="calculator-related__img" alt="Macro Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Macro Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/body-type-calculator/" class="row calculator-related">
+                <img src="/body-type-calculator/assets/images/icon-96.png" alt="Body Type Calculator" class="calculator-related__img" alt="Body Type Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Body Type Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/calories-burned-calculator/" class="row calculator-related">
+                <img src="/calories-burned-calculator/assets/images/icon-96.png" alt="Calories Burned Calculator" class="calculator-related__img" alt="Calories Burned Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Calories Burned Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/protein-calculator/" class="row calculator-related">
+                <img src="/protein-calculator/assets/images/icon-96.png" alt="Protein Calculator" class="calculator-related__img" alt="Protein Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Protein Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                </div>
+        </div>
+          <div class="calculator-main col" id="result-container">
+            <div style="float:left;padding: 15px; overflow: scroll;">
+                <div class="calculator-result calculator-result--error col" id="error-box">
+                    <div class="row">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+                                        7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+                                        12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+                                        11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z" fill="#F87171" class="dark:fill-red-200"></path>
+                </svg>
+                        <p class="calculator-error__title">There was an error with your calculation.</p>
+                    </div>
+                    <div class="col" id="error-list">
+                    </div>
+                </div>        <span id="calculator_result"><div class="calculator-result col">
+            <p class="table-cell table-cell--dark table-cell--small table-cell--only-title">BASAL METABOLIC RATE</p>
+            <p class="table-cell table-cell--big table-cell--age table-cell--only table-cell--nogap row">BMR = <span id="bmr">1,793</span> calories per day</p>
+            <div class="result-table__wrapper">
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th class="indigo">ACTIVITY LEVEL</th>
+                            <th class="indigo">TIME</th>
+                            <th class="indigo">FREQUENCY</th>
+                            <th class="indigo">CALORIES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="tag">No Activity</p>
+                            </td>
+                            <td>0 minutes</td>
+                            <td>Little or no exercise</td>
+                            <td id="bmr-no-exercise">2,151</td>
+                        </tr>
+                        <tr>
+                            <td><p class="tag tag--green">Low Activity</p></td>
+                            <td>15-30 minutes</td>
+                            <td>1-3 times per week</td>
+                            <td id="bmr-low">2,465</td>
+                        </tr>
+                        <tr>
+                            <td><p class="tag tag--green">Light Activity</p></td>
+                            <td>15-30 minutes</td>
+                            <td>4-5 times per week</td>
+                            <td id="bmr-light">2,626</td>
+                        </tr>
+                        <tr>
+                            <td><p class="tag tag--yellow">Medium Activity</p></td>
+                            <td>15-30 minutes</td>
+                            <td>3-4 times per week</td>
+                            <td id="bmr-medium">2,778</td>
+                        </tr>
+                        <tr>
+                            <td><p class="tag tag--red">High Activity</p></td>
+                            <td>45-120 minutes</td>
+                            <td>6-7 times per week</td>
+                            <td id="bmr-high">3,092</td>
+                        </tr>
+                        <tr>
+                            <td><p class="tag tag--red">Very High Activity</p></td>
+                            <td>2+ hours</td>
+                            <td>Daily</td>
+                            <td id="bmr-very-high">3,406</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </span>
+            </div>
+          
+            <section id="blockText" class="col">
+              <div class="calculator-about">
+                <h2>Table of Contents</h2>
+                <ol>
+                  <li>
+                    <a href="#the-equation-of-mifflin-st-jeor-1"
+                      >The Equation of Mifflin-St. Jeor</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#the-revised-equation-of-harris-benedict-2"
+                      >The Revised Equation of Harris-Benedict</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#the-formula-of-katch-mcardle-3"
+                      >The Formula of Katch-McArdle</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#variables-affecting-base-metabolic-rate-4"
+                      >Variables Affecting Base Metabolic Rate</a
+                    >
+                    <ol style="padding-top: 10px; list-style-type: upper-roman">
+                      <li><a href="#age-5">Age</a></li>
+                      <li><a href="#genetics-6">Genetics</a></li>
+                      <li><a href="#muscle-mass-7">Muscle Mass</a></li>
+                      <li><a href="#diet-8">Diet</a></li>
+                      <li><a href="#pregnancy-9">Pregnancy</a></li>
+                      <li><a href="#supplements-10">Supplements</a></li>
+                      <li><a href="#weather-11">Weather</a></li>
+                      <li><a href="#exercise-12">Exercise</a></li>
+                      <li><a href="#gender-13">Gender</a></li>
+                      <li><a href="#health-status-14">Health status</a></li>
+                      <li>
+                        <a href="#macronutrient-intake-15"
+                          >Macronutrient intake</a
+                        >
+                      </li>
+                    </ol>
+                  </li>
+                  <li><a href="#bmr-tests-16">BMR Tests</a></li>
+                  <li>
+                    <a href="#metabolism-and-basal-metabolism-17"
+                      >Metabolism and Basal Metabolism</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#the-calculation-of-basal-metabolic-rate-18"
+                      >The Calculation of Basal Metabolic Rate</a
+                    >
+                    <ol style="padding-top: 10px; list-style-type: upper-roman">
+                      <li>
+                        <a href="#calculation-example-19"
+                          >Calculation Example</a
+                        >
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <a href="#the-rules-for-weight-management-20"
+                      >The Rules for Weight Management</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#bmr-and-rmr-21">BMR and RMR</a>
+                    <ol style="padding-top: 10px; list-style-type: upper-roman">
+                      <li>
+                        <a href="#the-similarities-between-rmr-and-bmr-22"
+                          >The Similarities between RMR and BMR</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#the-differences-between-bmr-and-rmr-23"
+                          >The Differences between BMR and RMR</a
+                        >
+                      </li>
+                    </ol>
+                  </li>
+                  <li><a href="#modern-knowledge-24">Modern Knowledge</a></li>
+                </ol>
+                <svg
+                  width="404"
+                  height="404"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="calculator-main__decoration"
+                >
+                  <path
+                    d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                    fill="#E5E7EB"
+                    class="fill-gray-200 dark:fill-gray-700"
+                  ></path>
+                </svg>
+                <p class="calculator-illustration">
+                  <img
+                    src="/bmr-calculator/assets/images/illustration-els.svg"
+                    alt="BMR Calculator"
+                  />
+                </p>
+                <div class="calculator-about__wrapper">
+                  <p>
+                    The Basal Metabolic Rate (BMR) calculator estimates your
+                    basal metabolic rate. This term refers to the energy
+                    expended at rest in a moderate neutral environment.
+                  </p>
+                  <p>
+                    The amount of energy required during rest under moderate
+                    conditions when the digestive system is at rest is known as
+                    the basal metabolic rate (BMR). It’s the same as calculating
+                    how much fuel an idling automobile uses while stopped. Only
+                    essential organs, such as the heart, lungs, kidneys, nervous
+                    system, intestines, liver, lungs, sex organs, muscles, and
+                    skin, will consume energy in this condition.
+                  </p>
+                  <p>
+                    Upkeep accounts for up to 70% of total energy (calories)
+                    spent by most people daily. Physical activity accounts for
+                    20% of expenditure, whereas food digestion, commonly known
+                    as thermogenesis, accounts for 10%.
+                  </p>
+                  <p>
+                    For accurate BMR measurement, a person’s sympathetic nervous
+                    system must be inactive; that is, the person must be fully
+                    rested.
+                  </p>
+                  <p>
+                    Basal metabolism accounts for most of a person’s overall
+                    caloric requirements. We can calculate the daily caloric
+                    requirement by multiplying the BMR by a factor of 1.2 to
+                    1.9, depending on activity level.
+                  </p>
+                  <p>
+                    In most cases, we can calculate BMR using formulas based on
+                    statistical data. One of the first equations proposed was
+                    the Harris-Benedict Equation. It was updated in 1984 to make
+                    it more accurate and used until the Mifflin-St. Jeor
+                    Equation was developed in 1990.
+                  </p>
+                  <p>
+                    The Katch-McArdle Formula is unique because it estimates
+                    resting daily energy expenditure (RDEE). It considers lean
+                    body mass, which the Mifflin-St. Jeor and the
+                    Harris-Benedict Equations do not do.
+                  </p>
+                  <p>
+                    The Mifflin-St. Jeor is the most accurate for determining
+                    BMR, except the Katch-McArdle Formula may be more accurate
+                    for slimmer persons who know their body fat percentage.
+                  </p>
+                  <p>
+                    The calculator uses three equations, which are stated below:
+                  </p>
+                  <h2>
+                    The Equation of Mifflin-St. Jeor<a
+                      name="the-equation-of-mifflin-st-jeor-1"
+                    ></a>
+                  </h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Gender</th>
+                        <th>Formula</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Males</td>
+                        <td>BMR = 10W + 6.25H - 5A + 5</td>
+                      </tr>
+                      <tr>
+                        <td>Females</td>
+                        <td>BMR = 10W + 6.25H - 5A - 161</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>
+                    The Revised Equation of Harris-Benedict<a
+                      name="the-revised-equation-of-harris-benedict-2"
+                    ></a>
+                  </h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Gender</th>
+                        <th>Formula</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Males</td>
+                        <td>BMR = 13.397W + 4.799H - 5.677A + 88.362</td>
+                      </tr>
+                      <tr>
+                        <td>Females</td>
+                        <td>BMR = 9.247W + 3.098H - 4.330A + 447.593</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>
+                    The Formula of Katch-McArdle<a
+                      name="the-formula-of-katch-mcardle-3"
+                    ></a>
+                  </h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Gender</th>
+                        <th>Formula</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Universal</td>
+                        <td>BMR = 370 + 21.6(1 - F)W</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ul>
+                    <li>W - body weight in kg</li>
+                    <li>H - body height in cm</li>
+                    <li>A - age</li>
+                    <li>F - body fat in percentage</li>
+                  </ul>
+                  <h2>
+                    Variables Affecting Base Metabolic Rate<a
+                      name="variables-affecting-base-metabolic-rate-4"
+                    ></a>
+                  </h2>
+                  <h3>Age<a name="age-5"></a></h3>
+                  <p>
+                    The older and leaner a person gets, the lower their BMR or
+                    the minimum calorie intake required to keep organs
+                    functioning at a certain level.
+                  </p>
+                  <h3>Genetics<a name="genetics-6"></a></h3>
+                  <p>
+                    Genetic traits passed down from past generations affect BMR.
+                  </p>
+                  <h3>Muscle Mass<a name="muscle-mass-7"></a></h3>
+                  <p>
+                    Aerobic training such as running or cycling does not affect
+                    BMR. However, anaerobic exercise, such as weight lifting,
+                    increases BMR by building muscle mass and increasing resting
+                    energy expenditure. Greater muscle mass corresponds to
+                    higher BMR levels needed to maintain the body at a certain
+                    level.
+                  </p>
+                  <h3>Diet<a name="diet-8"></a></h3>
+                  <p>
+                    We can increase BMR by eating small meals at frequent
+                    intervals. You should also avoid starvation. The smartphone
+                    enters power-saving mode when the battery level reaches 5%.
+                    Similarly, the human body will sacrifice energy levels,
+                    emotions, physical appearance, and mental operations to use
+                    the limited caloric energy better. Starvation can lower BMR
+                    by as much as 30%.
+                  </p>
+                  <h3>Pregnancy <a name="pregnancy-9"></a></h3>
+                  <p>
+                    Ensuring the survival of a viable fetus raises BMR. This
+                    explains why pregnant women consume more than usual. Also,
+                    based on hormonal changes, menopause can increase or
+                    decrease BMR.
+                  </p>
+                  <h3>Supplements <a name="supplements-10"></a></h3>
+                  <p>
+                    To help lose weight, people take certain supplements or
+                    medications that increase BMR. One of the most prevalent is
+                    caffeine.
+                  </p>
+                  <h3>Weather<a name="weather-11"></a></h3>
+                  <p>
+                    The energy needed to maintain homeostatic body temperature
+                    increases BMR in colder conditions. Similarly, excessive
+                    exterior heat might elevate BMR when the body uses energy to
+                    cool internal organs. For every 1.36 degrees Fahrenheit
+                    increase in the body’s internal temperature, BMR increases
+                    by around 7%.
+                  </p>
+                  <h3>Exercise<a name="exercise-12"></a></h3>
+                  <p>
+                    Aerobic exercise, such as running or cycling, does not
+                    affect BMR. But anaerobic exercise, such as weight training,
+                    indirectly leads to a higher BMR. The fact is that anaerobic
+                    exercise builds muscle mass and thereby increases the body's
+                    energy intake at rest. And the higher the percentage of
+                    muscle mass in a person's body composition, the higher the
+                    BMR.
+                  </p>
+                  <h3>Gender<a name="gender-13"></a></h3>
+                  <p>
+                    On average, due to having a higher muscle mass and lower
+                    body fat percentage, men typically have a higher BMR
+                    compared to women. The exact difference in BMR varies based
+                    on individual body composition, age, and other factors.
+                  </p>
+                  <h3>Health status<a name="health-status-14"></a></h3>
+                  <p>
+                    Illnesses or wounds can increase your metabolic rate by
+                    about 2 times because the body needs more energy to recover
+                    when sick.
+                  </p>
+                  <h3>
+                    Macronutrient intake<a name="macronutrient-intake-15"></a>
+                  </h3>
+                  <p>
+                    Protein increases BMR by 20% to 30%, fat increases BMR by
+                    5%, and carbohydrates increase BMR by 5% to 10%.
+                  </p>
+                  <h2>BMR Tests <a name="bmr-tests-16"></a></h2>
+                  <p>
+                    Online BMR tests based on strict equations are not the most
+                    reliable way to determine a person’s BMR. It is preferable
+                    to seek medical advice or use a calorimetry instrument to
+                    determine BMR.
+                  </p>
+                  <h2>
+                    Metabolism and Basal Metabolism<a
+                      name="metabolism-and-basal-metabolism-17"
+                    ></a>
+                  </h2>
+                  <p>
+                    Basal BMR measures our body's energy expenditure when we
+                    have just woken up, have not eaten in the past 12 hours, and
+                    our body temperature is at a minimum. Basal metabolism shows
+                    how much energy the human body uses to perform basic
+                    functions.
+                  </p>
+                  <p>
+                    Metabolism is a complex process that converts food into
+                    energy. This is how our body can function. Our energy
+                    expenditures are related to four types of metabolism:
+                  </p>
+                  <ol>
+                    <li>
+                      Resting or basal metabolism. This process maintains total
+                      life activity at rest and expends between 50%-75% of total
+                      energy.
+                    </li>
+                    <li>
+                      Non-exercise activity thermogenesis (NEAT). It involves
+                      simple body movements such as walking, standing, or
+                      changing your posture. Even with this activity, the energy
+                      expenditure of the body is substantial. And in some cases,
+                      they may be equal to intense physical activity.
+                    </li>
+                    <li>
+                      Food thermogenesis or TEF (thermic effect of food). This
+                      includes the processing and digestion of food. Food
+                      thermogenesis accounts for about 10% of the body's total
+                      energy expenditures.
+                    </li>
+                    <li>
+                      Thermogenesis from vigorous exercise or TEE (Thermic
+                      effect of exercise). This includes energy expenditure from
+                      exercise, which is 5%-15% of the body's total energy
+                      expenditure.
+                    </li>
+                  </ol>
+                  <p>
+                    Basal metabolic rate or BMR (basal metabolic rate) reflects
+                    the minimum amount of energy (calories) expended by the
+                    human body to sustain itself at rest. Processes involved in
+                    metabolism include:
+                  </p>
+                  <ul>
+                    <li>blood circulation,</li>
+                    <li>respiration,</li>
+                    <li>brain activity,</li>
+                    <li>protein synthesis,</li>
+                    <li>cellular repair and other processes.</li>
+                  </ul>
+                  <p>
+                    BMR is the rate at which your body converts calories into
+                    energy to support life at rest. This factor also affects
+                    weight gain or loss and determines the rate of aging.
+                    Maximum calorie burn is in providing your body with basic
+                    functions. And these functions make up the basal metabolism.
+                  </p>
+                  <p>
+                    It's commonly understood that most adults have a BMR that
+                    requires them to consume somewhere between 1,200 and 1,500
+                    calories per day for women and 1,500 to 1,800 for men to
+                    maintain physiological functions at rest. It's important to
+                    note that these figures are just for BMR and do not include
+                    additional calories needed for daily activities and
+                    exercise.
+                  </p>
+                  <h2>
+                    The Calculation of Basal Metabolic Rate<a
+                      name="the-calculation-of-basal-metabolic-rate-18"
+                    ></a>
+                  </h2>
+                  <p>
+                    Knowing data such as sex, weight, age, and height, we can
+                    determine a person's BMR with an 80-85% accuracy. To
+                    calculate this, we will need a formula and data:
+                  </p>
+                  <ul>
+                    <li>W - body weight,</li>
+                    <li>A - age,</li>
+                    <li>H - height in centimeters.</li>
+                  </ul>
+                  <p>
+                    To get the data, let's take the most popular and accurate
+                    formula for BMR calculation to date, the Mifflin-St. Jeor
+                    formula. It turned out to be the most accurate of all
+                    invented to date. And that is why the Mifflin-St. Jeor
+                    formula is most often used in BMR calculators.
+                  </p>
+                  <ul>
+                    <li>BMR for men = 10W + 6.25H - 5A + 5</li>
+                    <li>BMR for women = 10W + 6.25H - 5A - 161</li>
+                  </ul>
+                  <p>
+                    Next, we will need to multiply the resulting baseline
+                    metabolic index by the physical activity ratio to get the
+                    number of calories required for the day. Physical activity
+                    is divided into 6 categories:
+                  </p>
+                  <ol>
+                    <li>
+                      Passive activity (complete absence of physical activity or
+                      minimal level - BMR × 1.2).
+                    </li>
+                    <li>
+                      Minimal activity (training 1-3 times weekly - BMR ×
+                      1.375).
+                    </li>
+                    <li>
+                      Light activity (training 4-5 times weekly - BMR × 1.46).
+                    </li>
+                    <li>
+                      Moderate activity (daily exercise or vigorous exercise 3-4
+                      times a week - BMR × 1.55).
+                    </li>
+                    <li>
+                      Intense activity (exercising 6-7 times a week - BMR ×
+                      1.725).
+                    </li>
+                    <li>
+                      Super-intensive activity (high-intensity work, daily and
+                      very intense workouts, or professional sports - BMR ×
+                      1.9).
+                    </li>
+                  </ol>
+                  <h3>
+                    Calculation Example<a name="calculation-example-19"></a>
+                  </h3>
+                  <p>
+                    Let's take Maria as an example. She is 160 centimeters tall,
+                    weighs 66 kilograms, is 40 years old, and is lightly active
+                    as she works in an office and trains in a gym once or twice
+                    a week.
+                  </p>
+                  <p>
+                    Using the BMR formula for women, we calculate her baseline
+                    metabolic rate:
+                  </p>
+                  <p>
+                    <em
+                      >BMR = 10W + 6.25H - 5A - 161 = 10 × 66 + 6.25 × 160 - 5 ×
+                      40 - 161 = 1299 kcal</em
+                    >
+                  </p>
+                  <p>
+                    To find her Total Daily Energy Expenditure (TDEE), we
+                    multiply her BMR by her activity factor. Assuming light
+                    activity, we get:
+                  </p>
+                  <p>
+                    <em
+                      >TDEE = 1299 kcal × 1.375 (activity factor) = 1786
+                      kcal</em
+                    >
+                  </p>
+                  <p>
+                    For weight loss, it's recommended to create a caloric
+                    deficit. A safe deficit is generally around 500 kcal per
+                    day, which would typically result in losing about 0.5 kg per
+                    week.
+                  </p>
+                  <p>
+                    Maria should therefore aim for a daily caloric intake of:
+                  </p>
+                  <p>
+                    <em
+                      >Daily Caloric Intake = TDEE - Calorie Deficit = 1786 kcal
+                      - 500 kcal = 1286 kcal</em
+                    >
+                  </p>
+                  <p>
+                    By consuming around 1286 kcal per day, Maria can aim to lose
+                    approximately 0.5 kg per week. Note that these are only
+                    estimates, and individual results can vary. It's important
+                    for Maria to not consume fewer calories than her BMR and to
+                    ensure she's getting adequate nutrition. Regular check-ins
+                    and adjustments might be necessary for a healthy and
+                    sustainable weight loss journey.
+                  </p>
+                  <h2>
+                    The Rules for Weight Management<a
+                      name="the-rules-for-weight-management-20"
+                    ></a>
+                  </h2>
+                  <p>
+                    When you know your BMR, you understand how many calories you
+                    burn during the day while at rest or doing some physical
+                    activity. With your BMR, you can learn how many calories you
+                    need to take to gain muscle mass, lose weight, or maintain
+                    weight. Suppose you know how many calories you are getting
+                    and burning. In that case, it will be easier for you to
+                    reach an optimal and healthy weight.
+                  </p>
+                  <p>
+                    If the basal metabolism is high and a person is on a
+                    low-calorie diet and still leads at least a relatively
+                    active lifestyle, exhaustion, eating disorders, and all
+                    kinds of diseases related to metabolic disorders may appear.
+                    The body will try with all its might not to give up a single
+                    calorie, putting everything into action - first and
+                    foremost, to serve vital processes.
+                  </p>
+                  <p>
+                    A low-calorie diet and skipping meals will not give you the
+                    desired result. This approach to weight loss can lead to
+                    health problems. The fact is that the body is prohibitively
+                    intelligent and programmed to survive. Severe caloric
+                    restriction is guaranteed to make the body feel that hunger
+                    is coming.
+                  </p>
+                  <p>
+                    The body will adapt to the limited caloric intake and use
+                    less energy to accomplish the same tasks. You will end up
+                    with a disturbed metabolism, low stamina, and frequent and
+                    rapid fatigue. The worst consequence can be malfunctions of
+                    vital systems or the development of chronic diseases.
+                  </p>
+                  <p>
+                    Maybe the situation is the opposite: a person consumes
+                    significantly more calories than required. Then it can lead
+                    them not only to obesity but also to more dangerous
+                    disorders - thyroid disease or metabolic syndrome.
+                  </p>
+                  <p>
+                    It is not recommended that women eat less than 1,200 kcal
+                    per day and men less than 1,800 kcal per day. Rather than
+                    starving yourself, balance your diet without any major
+                    hikes.
+                  </p>
+                  <p>
+                    The easiest way to maintain a healthy weight is to balance
+                    your calories consumed and your food intake carefully.
+                  </p>
+                  <p>
+                    To increase your weight, you must increase your calorie
+                    intake. If you want to gain weight slowly and steadily,
+                    increase your calorie intake by 300 - 500 kilocalories
+                    daily. If you're going to gain weight faster, increase your
+                    daily calorie intake by 700 - 1,000 kilocalories.
+                  </p>
+                  <h2>BMR and RMR<a name="bmr-and-rmr-21"></a></h2>
+                  <p>
+                    In the literature on metabolism, you may come across a term
+                    such as RMR (Resting metabolic rate), which means resting
+                    metabolic rate.
+                  </p>
+                  <p>
+                    Resting metabolic rate is the amount of energy your body
+                    needs to function at rest. In addition to the body's basic
+                    functions, RMR considers additional daily activities that do
+                    not require much effort. Such activities include:
+                  </p>
+                  <ul>
+                    <li>eating,</li>
+                    <li>walking for short periods of time,</li>
+                    <li>using to the bathroom,</li>
+                    <li>consuming caffeine,</li>
+                    <li>sweating,</li>
+                    <li>shivering.</li>
+                  </ul>
+                  <p>
+                    RMR can be measured by equations or by laboratory tests. The
+                    lab test will require the subject to get a good night's
+                    sleep, restrict food intake, and restrict exercise.
+                  </p>
+                  <h3>
+                    The Similarities between RMR and BMR<a
+                      name="the-similarities-between-rmr-and-bmr-22"
+                    ></a>
+                  </h3>
+                  <p>
+                    BMR and RMR indicate the number of calories your body burns
+                    when a person is not exercising. This is often about the
+                    same number for each person.
+                  </p>
+                  <h3>
+                    The Differences between BMR and RMR<a
+                      name="the-differences-between-bmr-and-rmr-23"
+                    ></a>
+                  </h3>
+                  <p>
+                    RMR already considers the minimum activity a person engages
+                    in during the day. The BMR does not take such activity into
+                    account. But that's why BMR allows you more flexibility in
+                    calculating the calories you need.
+                  </p>
+                  <p>
+                    The BMR is usually slightly lower than the RMR precisely
+                    because the BMR doesn't take activity metrics into account.
+                    And RMR takes into account the light activity during the
+                    day.
+                  </p>
+                  <p>
+                    BMR allows you to use ratios that indicate the type of
+                    physical activity during the day. Having a baseline
+                    metabolic rate, you can choose the activity level you do and
+                    calculate the amount of calories you need. To do this, you
+                    must multiply your BMR by the coefficient corresponding to
+                    one of the six physical activity levels.
+                  </p>
+                  <h2>Modern Knowledge<a name="modern-knowledge-24"></a></h2>
+                  <p>
+                    An average individual consuming a standard diet will have
+                    expected BMR numbers. However, some aspects that
+                    specifically affect BMR are still not sufficiently
+                    explained. Even if scientists control all known metabolic
+                    rate factors in studies, that still leaves 26% of the
+                    unknown differences between the BMRs of different people.
+                  </p>
+                  <p>
+                    As a result, even the most exact BMR estimates performed by
+                    professionals will not be entirely accurate in their
+                    readings. Not all functions of the human body are yet well
+                    understood, so the calculation of total daily energy
+                    expenditure (TDEE) derived from the BMR estimate is only an
+                    estimate.
+                  </p>
+                  <p>
+                    To achieve any wellness or fitness aim, BMR can help
+                    establish the groundwork, but it doesn’t have much to give
+                    beyond that.
+                  </p>
+                  <p>
+                    Keeping a daily log of exercise, food intake, and so on can
+                    assist in tracing the aspects that contribute to any given
+                    outcome and help you discover what works and what needs
+                    improvement.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <div
+              class="calculator-aside__container calculator-aside__container--mobile col"
+            >
+              <p class="calculator-aside__title">Related Calculators</p>
+              <a href="/bmi-calculator/" class="row calculator-related">
+                <img
+                  src="/bmi-calculator/assets/images/icon-96.png"
+                  alt="BMI Calculator"
+                  class="calculator-related__img"
+                  alt="BMI Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >BMI Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/calorie-calculator/" class="row calculator-related">
+                <img
+                  src="/calorie-calculator/assets/images/icon-96.png"
+                  alt="Calorie Calculator"
+                  class="calculator-related__img"
+                  alt="Calorie Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Calorie Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a
+                href="/body-fat-percentage-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/body-fat-percentage-calculator/assets/images/icon-96.png"
+                  alt="Body Fat Percentage Calculator"
+                  class="calculator-related__img"
+                  alt="Body Fat Percentage Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Body Fat Percentage Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a
+                href="/ideal-weight-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/ideal-weight-calculator/assets/images/icon-96.png"
+                  alt="Ideal Weight Calculator"
+                  class="calculator-related__img"
+                  alt="Ideal Weight Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Ideal Weight Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/tdee-calculator/" class="row calculator-related">
+                <img
+                  src="/tdee-calculator/assets/images/icon-96.png"
+                  alt="TDEE Calculator"
+                  class="calculator-related__img"
+                  alt="TDEE Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >TDEE Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/macro-calculator/" class="row calculator-related">
+                <img
+                  src="/macro-calculator/assets/images/icon-96.png"
+                  alt="Macro Calculator"
+                  class="calculator-related__img"
+                  alt="Macro Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Macro Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/body-type-calculator/" class="row calculator-related">
+                <img
+                  src="/body-type-calculator/assets/images/icon-96.png"
+                  alt="Body Type Calculator"
+                  class="calculator-related__img"
+                  alt="Body Type Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Body Type Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a
+                href="/calories-burned-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/calories-burned-calculator/assets/images/icon-96.png"
+                  alt="Calories Burned Calculator"
+                  class="calculator-related__img"
+                  alt="Calories Burned Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Calories Burned Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/protein-calculator/" class="row calculator-related">
+                <img
+                  src="/protein-calculator/assets/images/icon-96.png"
+                  alt="Protein Calculator"
+                  class="calculator-related__img"
+                  alt="Protein Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Protein Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <link rel="stylesheet" href="/assets/js/lib/katex/katex.min.css" />
+      <script
+        defer
+        src="/assets/js/lib/katex/katex.min.js"
+        type="69d61237adba0090614a2639-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/lib/katex/auto-render.min.js"
+        onload="renderMathInElement(
+	document.getElementById('blockText'),
+	{ delimiters: [
+	  {left: '$$', right: '$$', display: true},
+	  {left: '\\$', right: '\\$', display: false},
+	  {left: '\\(', right: '\\)', display: false},
+	  {left: '\\[', right: '\\]', display: true}
+	]});
+"
+        type="69d61237adba0090614a2639-text/javascript"
+      ></script>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.calculator.io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="69d61237adba0090614a2639-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="69d61237adba0090614a2639-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="69d61237adba0090614a2639-text/javascript"
+      ></script>
+
+      <script type="69d61237adba0090614a2639-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+
+<script async src="./assets/js/lib/math.min.js"></script>
+<script defer src="./assets/js/functions.js"></script>
+    
+  </body>
+</html>

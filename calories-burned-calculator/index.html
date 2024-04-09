@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Calories Burned Calculator &mdash; Calculator.iO</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Track your calorie burn with our free calorie calculator. Quickly estimate your calories burned based on activity and duration."
+    />
+    <meta
+      name="keywords"
+      content="calories burned calculator, exercise calorie counter, workout calorie tracker, burn calories, activity calorie burn, fitness calculator, calorie expenditure, walking calorie burn, running calorie calculator, gym workout calorie estimator"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="/assets/css/main.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.min.css" />
+    <script src="./assets/js/all-calculators.js" defer></script>
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-regular.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-500.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-600.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-v12-latin-800.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <script
+      src="/assets/js/all-calculators.js"
+      defer
+      type="febcd457bc7ab92bc1b9061f-text/javascript"
+    ></script>
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/calories-burned-calculator/"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/es/calculadora-de-calor%C3%ADas-quemadas/"
+      hreflang="es"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fr/calculateur-de-calories-br%C3%BBl%C3%A9es/"
+      hreflang="fr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/de/kalorienverbrauchs-rechner/"
+      hreflang="de"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pt/calculadora-de-calorias-queimadas/"
+      hreflang="pt"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/it/calcolatore-di-calorie-bruciate/"
+      hreflang="it"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/hi/%E0%A4%95%E0%A5%88%E0%A4%B2%E0%A5%8B%E0%A4%B0%E0%A5%80%E0%A4%B8-%E0%A4%AC%E0%A4%B0%E0%A5%8D%E0%A4%A8%E0%A5%8D%E0%A4%A1-%E0%A4%95%E0%A5%88%E0%A4%B2%E0%A4%95%E0%A5%81%E0%A4%B2%E0%A5%87%E0%A4%9F%E0%A4%B0/"
+      hreflang="hi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/id/kalkulator-pembakaran-kalori/"
+      hreflang="id"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ar/%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9-%D8%A7%D9%84%D8%B3%D8%B9%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D8%B1%D8%A7%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D8%B1%D9%88%D9%82%D8%A9/"
+      hreflang="ar"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ru/%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-%D1%81%D0%BE%D0%B6%D0%B6%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%BA%D0%B0%D0%BB%D0%BE%D1%80%D0%B8%D0%B9/"
+      hreflang="ru"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ja/%E6%B6%88%E8%B2%BB%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC%E8%A8%88%E7%AE%97%E6%A9%9F/"
+      hreflang="ja"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/zh/%E5%8D%A1%E8%B7%AF%E9%87%8C%E6%B6%88%E8%80%97%E9%87%8F%E8%AE%A1%E7%AE%97%E5%99%A8/"
+      hreflang="zh"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/pl/kalkulator-spalonych-kalorii/"
+      hreflang="pl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/fa/%D9%85%D8%AD%D8%A7%D8%B3%D8%A8%D9%87%E2%80%8C%DA%AF%D8%B1-%DA%A9%D8%A7%D9%84%D8%B1%DB%8C-%D8%B3%D9%88%D8%B2%DB%8C/"
+      hreflang="fa"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/nl/calorie%C3%ABn-verbrand-calculator/"
+      hreflang="nl"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/ko/%EC%97%B0%EC%86%8C-%EC%B9%BC%EB%A1%9C%EB%A6%AC-%EA%B3%84%EC%82%B0%EA%B8%B0/"
+      hreflang="ko"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/th/%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%93%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%9C%E0%B8%B2%E0%B8%9C%E0%B8%A5%E0%B8%B2%E0%B8%8D%E0%B9%81%E0%B8%84%E0%B8%A5%E0%B8%AD%E0%B8%A3%E0%B8%B5%E0%B9%88/"
+      hreflang="th"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/tr/yak%C4%B1lan-kalori-hesaplay%C4%B1c%C4%B1/"
+      hreflang="tr"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/vi/m%C3%A1y-t%C3%ADnh-calo-%C4%91%C3%A3-%C4%91%E1%BB%91t-ch%C3%A1y/"
+      hreflang="vi"
+    />
+    <link
+      rel="alternate"
+      href="https://www.calculator.io/calories-burned-calculator/"
+      hreflang="x-default"
+    />
+    <link
+      rel="canonical"
+      href="https://www.calculator.io/calories-burned-calculator/"
+      hreflang="en"
+    />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/calories-burned-calculator/assets/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/calories-burned-calculator/assets/images/icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/calories-burned-calculator/assets/images/icon-128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/calories-burned-calculator/assets/images/icon-192.png"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="/calories-burned-calculator/assets/images/icon-196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/calories-burned-calculator/assets/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Calories Burned Calculator" />
+    <meta
+      property="og:description"
+      content="Track your calorie burn with our free calorie calculator. Quickly estimate your calories burned based on activity and duration."
+    />
+    <meta
+      property="og:url"
+      content="https://www.calculator.io/calories-burned-calculator/"
+    />
+    <meta property="og:determiner" content="the" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Calculator.iO" />
+    <meta property="og:locale:alternate" content="en" />
+    <meta property="og:locale:alternate" content="es" />
+    <meta property="og:locale:alternate" content="fr" />
+    <meta property="og:locale:alternate" content="de" />
+    <meta property="og:locale:alternate" content="pt" />
+    <meta property="og:locale:alternate" content="it" />
+    <meta property="og:locale:alternate" content="hi" />
+    <meta property="og:locale:alternate" content="id" />
+    <meta property="og:locale:alternate" content="ar" />
+    <meta property="og:locale:alternate" content="ru" />
+    <meta property="og:locale:alternate" content="ja" />
+    <meta property="og:locale:alternate" content="zh" />
+    <meta property="og:locale:alternate" content="pl" />
+    <meta property="og:locale:alternate" content="fa" />
+    <meta property="og:locale:alternate" content="nl" />
+    <meta property="og:locale:alternate" content="ko" />
+    <meta property="og:locale:alternate" content="th" />
+    <meta property="og:locale:alternate" content="tr" />
+    <meta property="og:locale:alternate" content="vi" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="Calories Burned Calculator" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="Calories Burned Calculator" />
+    <meta
+      name="twitter:description"
+      content="Track your calorie burn with our free calorie calculator. Quickly estimate your calories burned based on activity and duration."
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.calculator.io/calories-burned-calculator/"
+    />
+    <meta name="twitter:image:alt" content="Calories Burned Calculator" />
+    <meta
+      name="twitter:image"
+      content="https://www.calculator.io/calories-burned-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.calculator.io/calories-burned-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.calculator.io/calories-burned-calculator/assets/images/illustration-og.png"
+    />
+    <meta
+      name="thumbnail"
+      content="https://www.calculator.io/assets/images/thumbnails/calories-burned-calculator.png"
+    />
+    <meta
+      itemprop="image"
+      content="https://www.calculator.io/assets/images/thumbnails/calories-burned-calculator.png"
+    />
+    <meta
+      class="swiftype"
+      name="image"
+      data-type="enum"
+      content="https://www.calculator.io/assets/images/thumbnails/calories-burned-calculator.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="febcd457bc7ab92bc1b9061f-text/javascript"
+    ></script>
+    <script type="febcd457bc7ab92bc1b9061f-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+    <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2652191922412683"
+      crossorigin="anonymous"
+      async
+      type="febcd457bc7ab92bc1b9061f-text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="Calculator.iO">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+              
+            </nav>
+        
+        
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="Calculator.io"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg
+            ></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <a
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              href="/health-and-fitness-calculators/"
+              title="Health &amp; Fitness Calculators"
+              >Health &amp; Fitness Calculators</a
+            >
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >Calories Burned Calculator</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Calculator.io",
+                  "item": "https://www.calculator.io/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Health &amp; Fitness Calculators",
+                  "item": "https://www.calculator.io/health-and-fitness-calculators/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calories Burned Calculator"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+      
+     
+      <div class="calculator">
+        <div
+          class="container calculator__container calculator__container--title row"
+        >
+          <div class="calculator__logo">
+            <img
+              src="/calories-burned-calculator/assets/images/icon-96.png"
+              alt="Calories Burned Calculator Logo"
+            />
+          </div>
+          <div class="calculator__info col">
+            <h1 class="calculator__title">Calories Burned Calculator</h1>
+            <p class="calculator__subtitle">
+              Track your calorie burn with our free calorie calculator. Quickly
+              estimate your calories burned based on activity and duration.
+            </p>
+          </div>
+        </div>
+        <div
+          class="container calculator__container calculator__container--main row"
+        >
+        <div style="width:350px;float:left;padding: 15px;">
+            <div class="calculator-settings">
+                <div class="calculator-setting" id="calculator_form">
+                    <div class="calculator-content calculator-content--bookmarks">
+                        <button class="tab-item tab-item--active" onclick="switchTab(event, 0)">Duration</button>
+                        <button class="tab-item" onclick="switchTab(event, 1)">Distance</button>
+                    </div>
+                    <div class="calculator-content col tab tab--active" data-tab="0">
+                        <div class="input-wrapper row">
+                            <label class="input col ">
+                                <p class="input__title">Activity</p>
+                                <div class="dropdown-wrapper">
+                                    <div class="input-field row " tabindex="0">
+                                        <select class="input-field__text" onchange="toggleRelatedInputs(this)" id="activity_1">
+                                                <option value="Walking" >
+                                                Walking
+                                                </option>
+                                                <option value="Running" >
+                                                Running
+                                                </option>
+                                                <option value="Cycling" >
+                                                Cycling
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </label>	</div>
+                        <div class="input-wrapper row">
+                            <label class="input col   ">
+                                <p class="input__title">Duration</p>
+                                <div class="input-field row">
+                                    <input type="text" class="input-field__input" placeholder=""  id="duration_hours" value="1"  />
+                                        <span class="input-field__hint">hours</span>
+                                </div>
+                            
+                            
+                            </label>		<label class="input col   ">
+                                
+                                <div class="input-field row">
+                                    <input type="text" class="input-field__input" placeholder=""  id="duration_minutes" value="45"  />
+                                        <span class="input-field__hint">minutes</span>
+                                </div>
+                            
+                            
+                            </label>	</div>
+                        <div class="input-wrapper row">
+                            <label class="input col ">
+                                <p class="input__title">Weight</p>
+                                <div class="input-field row">
+                                    
+                                    <input type="text" class="input-field__input imperial-system-item" id="weight_imperial" data-target="weight" data-formula="value * 2.20462262185" value="176.4" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint imperial-system-item">pounds</span>
+                            
+                                    
+                                    <input type="text" class="input-field__input metric-system-item system-item-hidden" id="weight" data-target="weight" data-formula="value / 2.20462262185" value="80" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint metric-system-item system-item-hidden">kg</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="calculator-content col tab" data-tab="1">
+                        <div class="input-wrapper row">
+                            <label class="input col ">
+                                <p class="input__title">Activity</p>
+                                <div class="dropdown-wrapper">
+                                    <div class="input-field row " tabindex="0">
+                                        <select class="input-field__text" onchange="toggleRelatedInputs(this)" id="activity_2">
+                                                <option value="Walking" >
+                                                Walking
+                                                </option>
+                                                <option value="Running" >
+                                                Running
+                                                </option>
+                                                <option value="Cycling" >
+                                                Cycling
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </label>	</div>
+                        <div class="input-wrapper row">
+                            <label class="input col ">
+                                <p class="input__title">Speed mph</p>
+                                <div class="dropdown-wrapper">
+                                    <div class="input-field row " tabindex="0">
+                                        <select class="input-field__text" onchange="toggleRelatedInputs(this)" id="speed">
+                                                <option value="Slow" >
+                                                Slow
+                                                </option>
+                                                <option value="Moderate" selected>
+                                                Moderate
+                                                </option>
+                                                <option value="Fast" >
+                                                Fast
+                                                </option>
+                                                <option value="Very Fast" >
+                                                Very Fast
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </label>		<label class="input col   ">
+                                <p class="input__title">Distance</p>
+                                <div class="input-field row">
+                                    <input type="text" class="input-field__input" placeholder=""  id="distance" value="5"  />
+                                        <span class="input-field__hint">miles</span>
+                                </div>
+                            
+                            
+                            </label>	</div>
+                        <div class="input-wrapper row">
+                            <label class="input col ">
+                                <p class="input__title">Weight</p>
+                                <div class="input-field row">
+                                    
+                                    <input type="text" class="input-field__input imperial-system-item" id="weight_2_imperial" data-target="weight_2" data-formula="value * 2.20462262185" value="176.4" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint imperial-system-item">pounds</span>
+                            
+                                    
+                                    <input type="text" class="input-field__input metric-system-item system-item-hidden" id="weight_2" data-target="weight_2" data-formula="value / 2.20462262185" value="80" onchange="sysnumconv(this)"  />
+                                    <span class="input-field__hint metric-system-item system-item-hidden">kg</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row tab tab--active" data-tab="0">
+                    
+                    
+                            <button class="system-switcher" onclick="toggleSystem(this)">
+                                <div class="system-switcher__circle"></div>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 9.5H10C9.44772 9.5 9 9.05228 9 8.5V2.5M4.5 2.5H3.5C2.94772 2.5 2.5 2.94772 2.5 3.5L2.5 9.5M7.5 4.5L10.5 4.5M1.5 5.5L4.5 5.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3.5L2 8.5M2 8L2 5.5C2 4.39543 2.89543 3.5 4 3.5C5.10457 3.5 6 4.39543 6 5.5M6 5.5L6 8.5M6 5.5L6 8M6 5.5C6 4.39543 6.89543 3.5 8 3.5C9.10457 3.5 10 4.39543 10 5.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                            </button>
+                    
+                            <script type="text/javascript">
+                                $$(".imperial-system-item, .metric-system-item").forEach(function(element, index){
+                                    element.classList.remove("system-item-hidden");
+                                });
+                                $$((defaultSystem == "metric") ? ".imperial-system-item" : ".metric-system-item").forEach(function(element, index){
+                                    element.classList.add("system-item-hidden");
+                                });
+                                if(defaultSystem == "metric") $('.system-switcher').classList.add('system-switcher--active');
+                            </script>
+                    
+                    
+                        <button class="button button--primary ml-auto" onclick="calculate(this)">Calculate</button>
+                    </div>
+                    
+                    
+                    
+                    
+                        <script type="text/javascript" src="./assets/js/calculator.js"></script>
+                    <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row tab " data-tab="1">
+                    
+                    
+                            <button class="system-switcher" onclick="toggleSystem(this)">
+                                <div class="system-switcher__circle"></div>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5 9.5H10C9.44772 9.5 9 9.05228 9 8.5V2.5M4.5 2.5H3.5C2.94772 2.5 2.5 2.94772 2.5 3.5L2.5 9.5M7.5 4.5L10.5 4.5M1.5 5.5L4.5 5.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3.5L2 8.5M2 8L2 5.5C2 4.39543 2.89543 3.5 4 3.5C5.10457 3.5 6 4.39543 6 5.5M6 5.5L6 8.5M6 5.5L6 8M6 5.5C6 4.39543 6.89543 3.5 8 3.5C9.10457 3.5 10 4.39543 10 5.5V8.5" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                            </button>
+                    
+                            <script type="text/javascript">
+                                $$(".imperial-system-item, .metric-system-item").forEach(function(element, index){
+                                    element.classList.remove("system-item-hidden");
+                                });
+                                $$((defaultSystem == "metric") ? ".imperial-system-item" : ".metric-system-item").forEach(function(element, index){
+                                    element.classList.add("system-item-hidden");
+                                });
+                                if(defaultSystem == "metric") $('.system-switcher').classList.add('system-switcher--active');
+                            </script>
+                    
+                    
+                        <button class="button button--primary ml-auto" onclick="calculateByDistance(this)">Calculate</button>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+            <!-- related -->
+            <div class="calculator-aside__container calculator-aside__container--pc col">
+                <p class="calculator-aside__title">Related Calculators</p>
+                <a href="/calorie-calculator/" class="row calculator-related">
+                <img src="/calorie-calculator/assets/images/icon-96.png" alt="Calorie Calculator" class="calculator-related__img" alt="Calorie Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Calorie Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/bmr-calculator/" class="row calculator-related">
+                <img src="/bmr-calculator/assets/images/icon-96.png" alt="BMR Calculator" class="calculator-related__img" alt="BMR Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">BMR Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/ideal-weight-calculator/" class="row calculator-related">
+                <img src="/ideal-weight-calculator/assets/images/icon-96.png" alt="Ideal Weight Calculator" class="calculator-related__img" alt="Ideal Weight Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Ideal Weight Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/tdee-calculator/" class="row calculator-related">
+                <img src="/tdee-calculator/assets/images/icon-96.png" alt="TDEE Calculator" class="calculator-related__img" alt="TDEE Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">TDEE Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/macro-calculator/" class="row calculator-related">
+                <img src="/macro-calculator/assets/images/icon-96.png" alt="Macro Calculator" class="calculator-related__img" alt="Macro Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Macro Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                <a href="/protein-calculator/" class="row calculator-related">
+                <img src="/protein-calculator/assets/images/icon-96.png" alt="Protein Calculator" class="calculator-related__img" alt="Protein Calculator">
+                <div class="calculator-related__info col">
+                <span class="calculator-related__text calculator-related__text--title">Protein Calculator</span>
+                <span class="calculator-related__text">Health</span>
+                </div>
+                </a>
+                </div>
+        </div>
+          <div class="calculator-main col" id="result-container">
+            <div style="float:left;padding: 15px; overflow: scroll;">
+                <div class="calculator-result calculator-result--error col" id="error-box">
+                    <div class="row">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+                                        7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+                                        12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+                                        11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z" fill="#F87171" class="dark:fill-red-200"></path>
+                </svg>
+                        <p class="calculator-error__title">There was an error with your calculation.</p>
+                    </div>
+                    <div class="col" id="error-list">
+                    </div>
+                </div>        <span id="calculator_result"><div class="calculator-result col">
+            <p class="table-cell table-cell--dark table-cell--only-title">Result</p>
+            <p class="table-cell" id="result">377 calories</p>
+        </div>
+        </span>
+            </div>
+        
+            <section id="blockText" class="col">
+              <div class="calculator-about">
+                <h2>Table of Contents</h2>
+                <ol>
+                  <li>
+                    <a href="#factors-that-affect-your-calories-burned-1"
+                      >Factors That Affect Your Calories Burned</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#body-mass-activity-duration-and-intensity-2"
+                      >Body Mass, Activity Duration, and Intensity</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#the-measurement-of-metabolic-equivalent-of-task-met-3"
+                      >The Measurement of Metabolic Equivalent of Task (MET)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#basal-metabolic-rate-bmr-4"
+                      >Basal Metabolic Rate (BMR)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#a-person-s-age-gender-and-muscle-mass-5"
+                      >A Person&#x27;s Age, Gender, and Muscle Mass</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#environmental-factors-6">Environmental Factors</a>
+                  </li>
+                  <li>
+                    <a href="#current-fitness-levels-7"
+                      >Current Fitness Levels</a
+                    >
+                  </li>
+                  <li><a href="#hormonal-status-8">Hormonal Status</a></li>
+                  <li>
+                    <a href="#pre-existing-medical-conditions-9"
+                      >Pre-Existing Medical Conditions</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#how-the-daily-calorie-burn-calculator-works-10"
+                      >How the Daily Calorie Burn Calculator Works</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#estimating-daily-calories-burned-is-important-11"
+                      >Estimating Daily Calories Burned is Important</a
+                    >
+                    <ol style="padding-top: 10px; list-style-type: upper-roman">
+                      <li>
+                        <a href="#improving-overall-health-12"
+                          >Improving Overall Health</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#setting-realistic-goals-13"
+                          >Setting Realistic Goals</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#tracking-progress-14">Tracking Progress</a>
+                      </li>
+                      <li>
+                        <a
+                          href="#understanding-the-impact-of-different-activities-15"
+                          >Understanding the Impact of Different Activities</a
+                        >
+                      </li>
+                      <li><a href="#motivation-16">Motivation</a></li>
+                    </ol>
+                  </li>
+                </ol>
+                <svg
+                  width="404"
+                  height="404"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="calculator-main__decoration"
+                >
+                  <path
+                    d="M0 0h4v4H0V0ZM20 0h4v4h-4V0ZM40 0h4v4h-4V0ZM60 0h4v4h-4V0ZM80 0h4v4h-4V0ZM100 0h4v4h-4V0ZM120 0h4v4h-4V0ZM140 0h4v4h-4V0ZM160 0h4v4h-4V0ZM180 0h4v4h-4V0ZM200 0h4v4h-4V0ZM220 0h4v4h-4V0ZM240 0h4v4h-4V0ZM260 0h4v4h-4V0ZM280 0h4v4h-4V0ZM300 0h4v4h-4V0ZM320 0h4v4h-4V0ZM340 0h4v4h-4V0ZM360 0h4v4h-4V0ZM380 0h4v4h-4V0ZM400 0h4v4h-4V0ZM0 20h4v4H0v-4ZM20 20h4v4h-4v-4ZM40 20h4v4h-4v-4ZM60 20h4v4h-4v-4ZM80 20h4v4h-4v-4ZM100 20h4v4h-4v-4ZM120 20h4v4h-4v-4ZM140 20h4v4h-4v-4ZM160 20h4v4h-4v-4ZM180 20h4v4h-4v-4ZM200 20h4v4h-4v-4ZM220 20h4v4h-4v-4ZM240 20h4v4h-4v-4ZM260 20h4v4h-4v-4ZM280 20h4v4h-4v-4ZM300 20h4v4h-4v-4ZM320 20h4v4h-4v-4ZM340 20h4v4h-4v-4ZM360 20h4v4h-4v-4ZM380 20h4v4h-4v-4ZM400 20h4v4h-4v-4ZM0 40h4v4H0v-4ZM20 40h4v4h-4v-4ZM40 40h4v4h-4v-4ZM60 40h4v4h-4v-4ZM80 40h4v4h-4v-4ZM100 40h4v4h-4v-4ZM120 40h4v4h-4v-4ZM140 40h4v4h-4v-4ZM160 40h4v4h-4v-4ZM180 40h4v4h-4v-4ZM200 40h4v4h-4v-4ZM220 40h4v4h-4v-4ZM240 40h4v4h-4v-4ZM260 40h4v4h-4v-4ZM280 40h4v4h-4v-4ZM300 40h4v4h-4v-4ZM320 40h4v4h-4v-4ZM340 40h4v4h-4v-4ZM360 40h4v4h-4v-4ZM380 40h4v4h-4v-4ZM400 40h4v4h-4v-4ZM0 60h4v4H0v-4ZM20 60h4v4h-4v-4ZM40 60h4v4h-4v-4ZM60 60h4v4h-4v-4ZM80 60h4v4h-4v-4ZM100 60h4v4h-4v-4ZM120 60h4v4h-4v-4ZM140 60h4v4h-4v-4ZM160 60h4v4h-4v-4ZM180 60h4v4h-4v-4ZM200 60h4v4h-4v-4ZM220 60h4v4h-4v-4ZM240 60h4v4h-4v-4ZM260 60h4v4h-4v-4ZM280 60h4v4h-4v-4ZM300 60h4v4h-4v-4ZM320 60h4v4h-4v-4ZM340 60h4v4h-4v-4ZM360 60h4v4h-4v-4ZM380 60h4v4h-4v-4ZM400 60h4v4h-4v-4ZM0 80h4v4H0v-4ZM20 80h4v4h-4v-4ZM40 80h4v4h-4v-4ZM60 80h4v4h-4v-4ZM80 80h4v4h-4v-4ZM100 80h4v4h-4v-4ZM120 80h4v4h-4v-4ZM140 80h4v4h-4v-4ZM160 80h4v4h-4v-4ZM180 80h4v4h-4v-4ZM200 80h4v4h-4v-4ZM220 80h4v4h-4v-4ZM240 80h4v4h-4v-4ZM260 80h4v4h-4v-4ZM280 80h4v4h-4v-4ZM300 80h4v4h-4v-4ZM320 80h4v4h-4v-4ZM340 80h4v4h-4v-4ZM360 80h4v4h-4v-4ZM380 80h4v4h-4v-4ZM400 80h4v4h-4v-4ZM0 100h4v4H0v-4ZM20 100h4v4h-4v-4ZM40 100h4v4h-4v-4ZM60 100h4v4h-4v-4ZM80 100h4v4h-4v-4ZM100 100h4v4h-4v-4ZM120 100h4v4h-4v-4ZM140 100h4v4h-4v-4ZM160 100h4v4h-4v-4ZM180 100h4v4h-4v-4ZM200 100h4v4h-4v-4ZM220 100h4v4h-4v-4ZM240 100h4v4h-4v-4ZM260 100h4v4h-4v-4ZM280 100h4v4h-4v-4ZM300 100h4v4h-4v-4ZM320 100h4v4h-4v-4ZM340 100h4v4h-4v-4ZM360 100h4v4h-4v-4ZM380 100h4v4h-4v-4ZM400 100h4v4h-4v-4ZM0 120h4v4H0v-4ZM20 120h4v4h-4v-4ZM40 120h4v4h-4v-4ZM60 120h4v4h-4v-4ZM80 120h4v4h-4v-4ZM100 120h4v4h-4v-4ZM120 120h4v4h-4v-4ZM140 120h4v4h-4v-4ZM160 120h4v4h-4v-4ZM180 120h4v4h-4v-4ZM200 120h4v4h-4v-4ZM220 120h4v4h-4v-4ZM240 120h4v4h-4v-4ZM260 120h4v4h-4v-4ZM280 120h4v4h-4v-4ZM300 120h4v4h-4v-4ZM320 120h4v4h-4v-4ZM340 120h4v4h-4v-4ZM360 120h4v4h-4v-4ZM380 120h4v4h-4v-4ZM400 120h4v4h-4v-4ZM0 140h4v4H0v-4ZM20 140h4v4h-4v-4ZM40 140h4v4h-4v-4ZM60 140h4v4h-4v-4ZM80 140h4v4h-4v-4ZM100 140h4v4h-4v-4ZM120 140h4v4h-4v-4ZM140 140h4v4h-4v-4ZM160 140h4v4h-4v-4ZM180 140h4v4h-4v-4ZM200 140h4v4h-4v-4ZM220 140h4v4h-4v-4ZM240 140h4v4h-4v-4ZM260 140h4v4h-4v-4ZM280 140h4v4h-4v-4ZM300 140h4v4h-4v-4ZM320 140h4v4h-4v-4ZM340 140h4v4h-4v-4ZM360 140h4v4h-4v-4ZM380 140h4v4h-4v-4ZM400 140h4v4h-4v-4ZM0 160h4v4H0v-4ZM20 160h4v4h-4v-4ZM40 160h4v4h-4v-4ZM60 160h4v4h-4v-4ZM80 160h4v4h-4v-4ZM100 160h4v4h-4v-4ZM120 160h4v4h-4v-4ZM140 160h4v4h-4v-4ZM160 160h4v4h-4v-4ZM180 160h4v4h-4v-4ZM200 160h4v4h-4v-4ZM220 160h4v4h-4v-4ZM240 160h4v4h-4v-4ZM260 160h4v4h-4v-4ZM280 160h4v4h-4v-4ZM300 160h4v4h-4v-4ZM320 160h4v4h-4v-4ZM340 160h4v4h-4v-4ZM360 160h4v4h-4v-4ZM380 160h4v4h-4v-4ZM400 160h4v4h-4v-4ZM0 180h4v4H0v-4ZM20 180h4v4h-4v-4ZM40 180h4v4h-4v-4ZM60 180h4v4h-4v-4ZM80 180h4v4h-4v-4ZM100 180h4v4h-4v-4ZM120 180h4v4h-4v-4ZM140 180h4v4h-4v-4ZM160 180h4v4h-4v-4ZM180 180h4v4h-4v-4ZM200 180h4v4h-4v-4ZM220 180h4v4h-4v-4ZM240 180h4v4h-4v-4ZM260 180h4v4h-4v-4ZM280 180h4v4h-4v-4ZM300 180h4v4h-4v-4ZM320 180h4v4h-4v-4ZM340 180h4v4h-4v-4ZM360 180h4v4h-4v-4ZM380 180h4v4h-4v-4ZM400 180h4v4h-4v-4ZM0 200h4v4H0v-4ZM20 200h4v4h-4v-4ZM40 200h4v4h-4v-4ZM60 200h4v4h-4v-4ZM80 200h4v4h-4v-4ZM100 200h4v4h-4v-4ZM120 200h4v4h-4v-4ZM140 200h4v4h-4v-4ZM160 200h4v4h-4v-4ZM180 200h4v4h-4v-4ZM200 200h4v4h-4v-4ZM220 200h4v4h-4v-4ZM240 200h4v4h-4v-4ZM260 200h4v4h-4v-4ZM280 200h4v4h-4v-4ZM300 200h4v4h-4v-4ZM320 200h4v4h-4v-4ZM340 200h4v4h-4v-4ZM360 200h4v4h-4v-4ZM380 200h4v4h-4v-4ZM400 200h4v4h-4v-4ZM0 220h4v4H0v-4ZM20 220h4v4h-4v-4ZM40 220h4v4h-4v-4ZM60 220h4v4h-4v-4ZM80 220h4v4h-4v-4ZM100 220h4v4h-4v-4ZM120 220h4v4h-4v-4ZM140 220h4v4h-4v-4ZM160 220h4v4h-4v-4ZM180 220h4v4h-4v-4ZM200 220h4v4h-4v-4ZM220 220h4v4h-4v-4ZM240 220h4v4h-4v-4ZM260 220h4v4h-4v-4ZM280 220h4v4h-4v-4ZM300 220h4v4h-4v-4ZM320 220h4v4h-4v-4ZM340 220h4v4h-4v-4ZM360 220h4v4h-4v-4ZM380 220h4v4h-4v-4ZM400 220h4v4h-4v-4ZM0 240h4v4H0v-4ZM20 240h4v4h-4v-4ZM40 240h4v4h-4v-4ZM60 240h4v4h-4v-4ZM80 240h4v4h-4v-4ZM100 240h4v4h-4v-4ZM120 240h4v4h-4v-4ZM140 240h4v4h-4v-4ZM160 240h4v4h-4v-4ZM180 240h4v4h-4v-4ZM200 240h4v4h-4v-4ZM220 240h4v4h-4v-4ZM240 240h4v4h-4v-4ZM260 240h4v4h-4v-4ZM280 240h4v4h-4v-4ZM300 240h4v4h-4v-4ZM320 240h4v4h-4v-4ZM340 240h4v4h-4v-4ZM360 240h4v4h-4v-4ZM380 240h4v4h-4v-4ZM400 240h4v4h-4v-4ZM0 260h4v4H0v-4ZM20 260h4v4h-4v-4ZM40 260h4v4h-4v-4ZM60 260h4v4h-4v-4ZM80 260h4v4h-4v-4ZM100 260h4v4h-4v-4ZM120 260h4v4h-4v-4ZM140 260h4v4h-4v-4ZM160 260h4v4h-4v-4ZM180 260h4v4h-4v-4ZM200 260h4v4h-4v-4ZM220 260h4v4h-4v-4ZM240 260h4v4h-4v-4ZM260 260h4v4h-4v-4ZM280 260h4v4h-4v-4ZM300 260h4v4h-4v-4ZM320 260h4v4h-4v-4ZM340 260h4v4h-4v-4ZM360 260h4v4h-4v-4ZM380 260h4v4h-4v-4ZM400 260h4v4h-4v-4ZM0 280h4v4H0v-4ZM20 280h4v4h-4v-4ZM40 280h4v4h-4v-4ZM60 280h4v4h-4v-4ZM80 280h4v4h-4v-4ZM100 280h4v4h-4v-4ZM120 280h4v4h-4v-4ZM140 280h4v4h-4v-4ZM160 280h4v4h-4v-4ZM180 280h4v4h-4v-4ZM200 280h4v4h-4v-4ZM220 280h4v4h-4v-4ZM240 280h4v4h-4v-4ZM260 280h4v4h-4v-4ZM280 280h4v4h-4v-4ZM300 280h4v4h-4v-4ZM320 280h4v4h-4v-4ZM340 280h4v4h-4v-4ZM360 280h4v4h-4v-4ZM380 280h4v4h-4v-4ZM400 280h4v4h-4v-4ZM0 300h4v4H0v-4ZM20 300h4v4h-4v-4ZM40 300h4v4h-4v-4ZM60 300h4v4h-4v-4ZM80 300h4v4h-4v-4ZM100 300h4v4h-4v-4ZM120 300h4v4h-4v-4ZM140 300h4v4h-4v-4ZM160 300h4v4h-4v-4ZM180 300h4v4h-4v-4ZM200 300h4v4h-4v-4ZM220 300h4v4h-4v-4ZM240 300h4v4h-4v-4ZM260 300h4v4h-4v-4ZM280 300h4v4h-4v-4ZM300 300h4v4h-4v-4ZM320 300h4v4h-4v-4ZM340 300h4v4h-4v-4ZM360 300h4v4h-4v-4ZM380 300h4v4h-4v-4ZM400 300h4v4h-4v-4ZM0 320h4v4H0v-4ZM20 320h4v4h-4v-4ZM40 320h4v4h-4v-4ZM60 320h4v4h-4v-4ZM80 320h4v4h-4v-4ZM100 320h4v4h-4v-4ZM120 320h4v4h-4v-4ZM140 320h4v4h-4v-4ZM160 320h4v4h-4v-4ZM180 320h4v4h-4v-4ZM200 320h4v4h-4v-4ZM220 320h4v4h-4v-4ZM240 320h4v4h-4v-4ZM260 320h4v4h-4v-4ZM280 320h4v4h-4v-4ZM300 320h4v4h-4v-4ZM320 320h4v4h-4v-4ZM340 320h4v4h-4v-4ZM360 320h4v4h-4v-4ZM380 320h4v4h-4v-4ZM400 320h4v4h-4v-4ZM0 340h4v4H0v-4ZM20 340h4v4h-4v-4ZM40 340h4v4h-4v-4ZM60 340h4v4h-4v-4ZM80 340h4v4h-4v-4ZM100 340h4v4h-4v-4ZM120 340h4v4h-4v-4ZM140 340h4v4h-4v-4ZM160 340h4v4h-4v-4ZM180 340h4v4h-4v-4ZM200 340h4v4h-4v-4ZM220 340h4v4h-4v-4ZM240 340h4v4h-4v-4ZM260 340h4v4h-4v-4ZM280 340h4v4h-4v-4ZM300 340h4v4h-4v-4ZM320 340h4v4h-4v-4ZM340 340h4v4h-4v-4ZM360 340h4v4h-4v-4ZM380 340h4v4h-4v-4ZM400 340h4v4h-4v-4ZM0 360h4v4H0v-4ZM20 360h4v4h-4v-4ZM40 360h4v4h-4v-4ZM60 360h4v4h-4v-4ZM80 360h4v4h-4v-4ZM100 360h4v4h-4v-4ZM120 360h4v4h-4v-4ZM140 360h4v4h-4v-4ZM160 360h4v4h-4v-4ZM180 360h4v4h-4v-4ZM200 360h4v4h-4v-4ZM220 360h4v4h-4v-4ZM240 360h4v4h-4v-4ZM260 360h4v4h-4v-4ZM280 360h4v4h-4v-4ZM300 360h4v4h-4v-4ZM320 360h4v4h-4v-4ZM340 360h4v4h-4v-4ZM360 360h4v4h-4v-4ZM380 360h4v4h-4v-4ZM400 360h4v4h-4v-4ZM0 380h4v4H0v-4ZM20 380h4v4h-4v-4ZM40 380h4v4h-4v-4ZM60 380h4v4h-4v-4ZM80 380h4v4h-4v-4ZM100 380h4v4h-4v-4ZM120 380h4v4h-4v-4ZM140 380h4v4h-4v-4ZM160 380h4v4h-4v-4ZM180 380h4v4h-4v-4ZM200 380h4v4h-4v-4ZM220 380h4v4h-4v-4ZM240 380h4v4h-4v-4ZM260 380h4v4h-4v-4ZM280 380h4v4h-4v-4ZM300 380h4v4h-4v-4ZM320 380h4v4h-4v-4ZM340 380h4v4h-4v-4ZM360 380h4v4h-4v-4ZM380 380h4v4h-4v-4ZM400 380h4v4h-4v-4ZM0 400h4v4H0v-4ZM20 400h4v4h-4v-4ZM40 400h4v4h-4v-4ZM60 400h4v4h-4v-4ZM80 400h4v4h-4v-4ZM100 400h4v4h-4v-4ZM120 400h4v4h-4v-4ZM140 400h4v4h-4v-4ZM160 400h4v4h-4v-4ZM180 400h4v4h-4v-4ZM200 400h4v4h-4v-4ZM220 400h4v4h-4v-4ZM240 400h4v4h-4v-4ZM260 400h4v4h-4v-4ZM280 400h4v4h-4v-4ZM300 400h4v4h-4v-4ZM320 400h4v4h-4v-4ZM340 400h4v4h-4v-4ZM360 400h4v4h-4v-4ZM380 400h4v4h-4v-4ZM400 400h4v4h-4v-4Z"
+                    fill="#E5E7EB"
+                    class="fill-gray-200 dark:fill-gray-700"
+                  ></path>
+                </svg>
+                <p class="calculator-illustration">
+                  <img
+                    src="/calories-burned-calculator/assets/images/illustration-els.svg"
+                    alt="Calories Burned Calculator"
+                  />
+                </p>
+                <div class="calculator-about__wrapper">
+                  <p>
+                    Looking for an effective tool to track your fitness
+                    progress? Congratulations! You've found our calorie-burning
+                    calculator.
+                  </p>
+                  <p>
+                    Whether it's walking, running, or cycling, this calorie
+                    calculator estimates your calories burned based on the type
+                    and duration of your activity. So, if you’re looking for a
+                    great way to track your fitness progress, keep reading to
+                    learn more!
+                  </p>
+                  <h2>
+                    Factors That Affect Your Calories Burned<a
+                      name="factors-that-affect-your-calories-burned-1"
+                    ></a>
+                  </h2>
+                  <p>
+                    Determining the amount of calories burned through physical
+                    activity involves considering various factors. In fact, our
+                    calorie burn calculator accounts for several key elements,
+                    from your body weight and duration of activity to the
+                    Metabolic Equivalent of Task (MET). In this section, we'll
+                    take a closer look at each factor.
+                  </p>
+                  <h2>
+                    Body Mass, Activity Duration, and Intensity<a
+                      name="body-mass-activity-duration-and-intensity-2"
+                    ></a>
+                  </h2>
+                  <p>
+                    An individual's body weight plays a crucial role in
+                    determining the number of calories burned, even at rest. A
+                    person with a higher proportion of muscle, fat, or height
+                    will burn more calories. This is also evident during
+                    physical activity, as the body expends more energy to
+                    sustain a larger person compared to a smaller one.
+                    Therefore, a person weighing 200 pounds will burn more
+                    calories by running 1 mile than someone who weighs 100
+                    pounds, assuming all other conditions are equal.
+                  </p>
+                  <p>
+                    Exercise duration also significantly impacts calorie burn.
+                    As the duration of exercise increases, so does the number of
+                    calories burned. However, the intensity of the exercise also
+                    plays a role. For example, a person who walks 1 mile in 1
+                    hour will burn fewer calories than someone who walks 5 miles
+                    in the same amount of time at a higher intensity.
+                  </p>
+                  <h2>
+                    The Measurement of Metabolic Equivalent of Task (MET)<a
+                      name="the-measurement-of-metabolic-equivalent-of-task-met-3"
+                    ></a>
+                  </h2>
+                  <p>
+                    The most accurate measure of intensity is through oxygen
+                    consumption during exercise. The intensity of exercise and
+                    oxygen consumption have a direct correlation. As exercise
+                    intensity increases, so do the levels of oxygen that are
+                    consumed.
+                  </p>
+                  <p>
+                    Oxygen consumption during exercise, compared to consumption
+                    at rest, gives a clear representation of the metabolic
+                    requirements of a given exercise. Furthermore, unlike heart
+                    rate, oxygen consumption is closely related to body mass,
+                    allowing for a standard of oxygen consumption to be
+                    established for specific exercises based on body mass.
+                  </p>
+                  <p>
+                    Oxygen consumption is measured in MET (metabolic equivalent
+                    of a task). The original definition of MET is based on
+                    oxygen utilization and body mass. It represents the ratio of
+                    the rate at which a person expends energy (relative to their
+                    body mass) while performing a given physical task compared
+                    to a reference. The reference is the energy expended by an
+                    average person while sitting quietly, roughly equivalent to
+                    3.5 mL of oxygen per kilogram per minute.
+                  </p>
+                  <p>
+                    Scientists found this value experimentally by measuring the
+                    MET of a healthy 40-year-old male who weighed 154 pounds. A
+                    MET value of 1 represents the energy expended by an average
+                    person at rest, a value of 2 requires twice as much energy
+                    as an average person expends at rest, a value of 8 requires
+                    eight times as much energy, and so on.
+                  </p>
+                  <p>
+                    Exercises are commonly classified as light intensity,
+                    moderate intensity, or vigorous intensity exercises.
+                    Higher-intensity exercises have a higher MET. For example,
+                    walking slowly is a light-intensity exercise with a 2.0 MET,
+                    playing doubles in tennis is a moderate-intensity exercise
+                    with a 5.0 MET, and going at a rate of 100 jumps per minute
+                    while jumping rope is a vigorous-intensity exercise with an
+                    11.0 MET.
+                  </p>
+                  <h2>
+                    Basal Metabolic Rate (BMR)<a
+                      name="basal-metabolic-rate-bmr-4"
+                    ></a>
+                  </h2>
+                  <p>
+                    Basal metabolic rate (BMR) is the amount of energy expended
+                    by the body at rest to maintain basic life-sustaining
+                    functions such as breathing and circulation. It is
+                    responsible for the majority of the calories a person burns
+                    in a day and is affected by factors such as muscle mass,
+                    age, height, and weight.
+                  </p>
+                  <p>
+                    A person with a higher BMR burns more calories at rest than
+                    someone with a lower BMR. Therefore, if a person wants to
+                    increase the number of calories they burn, they can work on
+                    increasing their BMR through activities such as strength
+                    training and muscle building.
+                  </p>
+                  <h2>
+                    A Person's Age, Gender, and Muscle Mass<a
+                      name="a-person-s-age-gender-and-muscle-mass-5"
+                    ></a>
+                  </h2>
+                  <p>
+                    A person's age, gender, and muscle mass can all affect the
+                    number of calories burned during physical activity.
+                  </p>
+                  <ul>
+                    <li>
+                      Age: As a person gets older, their body may not be as
+                      efficient in burning calories during exercise. This is
+                      partly due to the natural decline of muscle mass as we
+                      age.
+                    </li>
+                    <li>
+                      Muscle mass: The more muscle a person has, the more
+                      calories they will burn during physical activity. This is
+                      because muscle tissue is more metabolically active than
+                      fat tissue, meaning it requires more energy to move. This
+                      is why strength training and muscle building can increase
+                      the number of calories burned.
+                    </li>
+                    <li>
+                      Gender: Men tend to burn more calories than women during
+                      physical activity due to having a higher muscle mass and a
+                      higher percentage of lean muscle mass. Men also have a
+                      higher metabolism than women, which means they burn more
+                      calories at rest and during activity.
+                    </li>
+                  </ul>
+                  <h2>
+                    Environmental Factors<a name="environmental-factors-6"></a>
+                  </h2>
+                  <p>
+                    Environmental factors, such as temperature, altitude, and
+                    humidity, can also play a role in the number of calories
+                    burned during physical activity.
+                  </p>
+                  <ul>
+                    <li>
+                      Temperature: When exercising in hot temperatures, the body
+                      has to work harder to cool itself, which can increase the
+                      number of calories burned. However, exercising in
+                      extremely hot or cold temperatures can also be dangerous
+                      and may make it difficult for a person to sustain the
+                      level of intensity they need to burn a significant amount
+                      of calories.
+                    </li>
+                    <li>
+                      Altitude: As altitude increases, the concentration of
+                      oxygen in the air decreases, making it more difficult for
+                      the body to obtain the oxygen it needs during physical
+                      exertion. The body may have to increase its metabolic rate
+                      to facilitate oxygen delivery to the muscles and maintain
+                      energy production. This can result in a higher caloric
+                      expenditure compared to performing the same activity at
+                      sea level. However, the extent to which additional
+                      calories are burned varies widely among individuals and
+                      acclimatization to altitude can reduce this effect over
+                      time.
+                    </li>
+                    <li>
+                      Humidity: High humidity can make it harder for the body to
+                      cool itself, which can increase the number of calories
+                      burned during physical activity. However, it can also make
+                      it difficult to breathe, which can reduce the intensity
+                      and duration of exercise, thus reducing the number of
+                      calories burned. Low humidity can make it easier for the
+                      body to cool itself, but it can also cause dehydration,
+                      which can be dangerous and can also make it difficult to
+                      maintain high-intensity exercise.
+                    </li>
+                  </ul>
+                  <h2>
+                    Current Fitness Levels<a
+                      name="current-fitness-levels-7"
+                    ></a>
+                  </h2>
+                  <p>
+                    An individual's fitness level can have an impact on their
+                    exercise intensity and, therefore, the number of calories
+                    they burn. A person who is in better physical condition will
+                    burn fewer calories when performing the same exercise as
+                    someone who is less fit. This is due to the body of a person
+                    who is in better shape being more efficient and requiring
+                    less energy to perform the same activity.
+                  </p>
+                  <h2>Hormonal Status<a name="hormonal-status-8"></a></h2>
+                  <p>
+                    Hormonal levels can also play a role in the number of
+                    calories burned during physical activity. Pregnancy, for
+                    example, causes a shift in a woman's hormonal levels and can
+                    affect the number of calories burned. Pregnant women often
+                    experience an increase in appetite, which can make it more
+                    difficult to maintain a calorie deficit, making it harder to
+                    burn calories.
+                  </p>
+                  <p>
+                    Menopause is another hormonal change that can affect the
+                    number of calories burned. As women go through menopause,
+                    their estrogen levels decrease, which can cause a decline in
+                    muscle mass and an increase in body fat. This can lead to a
+                    reduction in the number of calories burned during physical
+                    activity.
+                  </p>
+                  <h2>
+                    Pre-Existing Medical Conditions<a
+                      name="pre-existing-medical-conditions-9"
+                    ></a>
+                  </h2>
+                  <p>
+                    Certain medical conditions can also affect the number of
+                    calories burned during physical activity.
+                  </p>
+                  <ul>
+                    <li>
+                      Thyroid disorders: The thyroid gland is responsible for
+                      regulating metabolism, so when it's not functioning
+                      properly, it can lead to a slower metabolism, which means
+                      fewer calories burned. People with hypothyroidism, or an
+                      underactive thyroid, may find it harder to lose weight and
+                      burn calories.
+                    </li>
+                    <li>
+                      Diabetes: People with diabetes may have difficulty burning
+                      calories due to insulin resistance, which can make it
+                      harder for the body to use glucose for energy. This can
+                      cause a person to burn fewer calories during physical
+                      activity.
+                    </li>
+                    <li>
+                      Cardiovascular Conditions: Some cardiovascular conditions
+                      can make it difficult for a person to sustain
+                      high-intensity exercise, which can reduce the number of
+                      calories burned.
+                    </li>
+                  </ul>
+                  <h2>
+                    How the Daily Calorie Burn Calculator Works<a
+                      name="how-the-daily-calorie-burn-calculator-works-10"
+                    ></a>
+                  </h2>
+                  <p>
+                    Our calculator uses the following formula to estimate
+                    calories burned:
+                  </p>
+                  <p><em>Calories = (Time × MET × Body Weight) / 200</em></p>
+                  <p>
+                    The principles behind using a calories burned calculator are
+                    based on the idea that physical activity requires energy and
+                    that energy is measured in calories. The more intense the
+                    activity and the longer it is performed, the more calories
+                    will be burned.
+                  </p>
+                  <p>
+                    Calories burned calculators use data from scientific studies
+                    to determine the metabolic equivalent of a task (MET) for
+                    various activities. The MET is a ratio of the energy
+                    expended during an activity to the energy expended at rest.
+                    This value is then used in conjunction with the duration of
+                    the activity and the person's body weight to estimate the
+                    number of calories burned.
+                  </p>
+                  <p>
+                    It's important to note that the estimate provided by the
+                    metabolic calculator is just an approximation, and
+                    individual results may vary. Factors such as a person's
+                    fitness level, hormonal levels, and medical conditions can
+                    affect the number of calories burned.
+                  </p>
+                  <p>
+                    It's always recommended to consult with a healthcare
+                    professional before starting any exercise routine.
+                  </p>
+                  <h2>
+                    Estimating Daily Calories Burned is Important<a
+                      name="estimating-daily-calories-burned-is-important-11"
+                    ></a>
+                  </h2>
+                  <p>
+                    There are many reasons a person should be concerned with
+                    estimating their daily calories burned. Here are some of the
+                    top reasons:
+                  </p>
+                  <h3>
+                    Improving Overall Health<a
+                      name="improving-overall-health-12"
+                    ></a>
+                  </h3>
+                  <p>
+                    Staying at a healthy weight is crucial for your overall
+                    health and well-being. By understanding the number of
+                    calories burned during the day, a person can make informed
+                    decisions about their diet and exercise routine that can
+                    help them maintain a healthy weight and improve their
+                    overall health.
+                  </p>
+                  <p>
+                    The truth is that regular physical activity has been linked
+                    to a lower risk of chronic diseases such as heart disease,
+                    type 2 diabetes, and certain types of cancer. By
+                    understanding how many calories are burned during the day, a
+                    person can make sure that they are getting enough physical
+                    activity to maintain a healthy weight and improve their
+                    overall health.
+                  </p>
+                  <h3>
+                    Setting Realistic Goals<a
+                      name="setting-realistic-goals-13"
+                    ></a>
+                  </h3>
+                  <p>
+                    Knowing the number of calories burned during the day can
+                    help a person set realistic goals for weight loss or weight
+                    management. For example, if a person burns 2000 calories per
+                    day, they can set a goal to burn an additional 500 calories
+                    through exercise in order to create a calorie deficit.
+                  </p>
+                  <h3>Tracking Progress<a name="tracking-progress-14"></a></h3>
+                  <p>
+                    Keeping track of the number of calories burned during the
+                    day can also help a person track their progress and make
+                    adjustments to their routine as needed.
+                  </p>
+                  <h3>
+                    Understanding the Impact of Different Activities<a
+                      name="understanding-the-impact-of-different-activities-15"
+                    ></a>
+                  </h3>
+                  <p>
+                    Knowing how many calories are burned during different
+                    activities can help a person choose activities that will
+                    help them reach their goals more efficiently.
+                  </p>
+                  <h3>Motivation<a name="motivation-16"></a></h3>
+                  <p>
+                    Seeing the number of calories burned during the day can be
+                    motivating and can help a person to stay committed to their
+                    weight loss or weight management goals.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <div
+              class="calculator-aside__container calculator-aside__container--mobile col"
+            >
+              <p class="calculator-aside__title">Related Calculators</p>
+              <a href="/calorie-calculator/" class="row calculator-related">
+                <img
+                  src="/calorie-calculator/assets/images/icon-96.png"
+                  alt="Calorie Calculator"
+                  class="calculator-related__img"
+                  alt="Calorie Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Calorie Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/bmr-calculator/" class="row calculator-related">
+                <img
+                  src="/bmr-calculator/assets/images/icon-96.png"
+                  alt="BMR Calculator"
+                  class="calculator-related__img"
+                  alt="BMR Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >BMR Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a
+                href="/ideal-weight-calculator/"
+                class="row calculator-related"
+              >
+                <img
+                  src="/ideal-weight-calculator/assets/images/icon-96.png"
+                  alt="Ideal Weight Calculator"
+                  class="calculator-related__img"
+                  alt="Ideal Weight Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Ideal Weight Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/tdee-calculator/" class="row calculator-related">
+                <img
+                  src="/tdee-calculator/assets/images/icon-96.png"
+                  alt="TDEE Calculator"
+                  class="calculator-related__img"
+                  alt="TDEE Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >TDEE Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/macro-calculator/" class="row calculator-related">
+                <img
+                  src="/macro-calculator/assets/images/icon-96.png"
+                  alt="Macro Calculator"
+                  class="calculator-related__img"
+                  alt="Macro Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Macro Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+              <a href="/protein-calculator/" class="row calculator-related">
+                <img
+                  src="/protein-calculator/assets/images/icon-96.png"
+                  alt="Protein Calculator"
+                  class="calculator-related__img"
+                  alt="Protein Calculator"
+                />
+                <div class="calculator-related__info col">
+                  <span
+                    class="calculator-related__text calculator-related__text--title"
+                    >Protein Calculator</span
+                  >
+                  <span class="calculator-related__text">Health</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <center class="ads-hero-bottom">
+        <div>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-2652191922412683"
+            data-ad-slot="6452811756"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script type="febcd457bc7ab92bc1b9061f-text/javascript">
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </center>
+      <link rel="stylesheet" href="/assets/js/lib/katex/katex.min.css" />
+      <script
+        defer
+        src="/assets/js/lib/katex/katex.min.js"
+        type="febcd457bc7ab92bc1b9061f-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/lib/katex/auto-render.min.js"
+        onload="renderMathInElement(
+	document.getElementById('blockText'),
+	{ delimiters: [
+	  {left: '$$', right: '$$', display: true},
+	  {left: '\\$', right: '\\$', display: false},
+	  {left: '\\(', right: '\\)', display: false},
+	  {left: '\\[', right: '\\]', display: true}
+	]});
+"
+        type="febcd457bc7ab92bc1b9061f-text/javascript"
+      ></script>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.calculator.io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="febcd457bc7ab92bc1b9061f-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="febcd457bc7ab92bc1b9061f-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="febcd457bc7ab92bc1b9061f-text/javascript"
+      ></script>
+
+      <script type="febcd457bc7ab92bc1b9061f-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+
+<script async src="./assets/js/lib/math.min.js"></script>
+<script defer src="./assets/js/functions.js"></script>
+  </body>
+</html>
