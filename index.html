@@ -619,63 +619,40 @@
               <div class="intro__calculator">
                 <div class="calculator-wrapper">
                   <div class="calculator-content calculator-content--basic col">
-                    <input
-                      class="calculator-basic__input"
-                      id="input_field"
-                      value="0"
-                      type="text"
-                      onkeydown="if (!window.__cfRLUnblockHandlers) return false; BasicCalculator.inputKeydown(event)"
-                      data-cf-modified-bf4691bf96bdca6b5efb86f4-
-                    />
-                    <div
-                      class="calculator-basic"
-                      onclick="if (!window.__cfRLUnblockHandlers) return false; BasicCalculator.buttonClick(event)"
-                      data-cf-modified-bf4691bf96bdca6b5efb86f4-
-                    >
-                      <div>
-                        <button class="gray-main text-xl" data-action="AC">
-                          AC
-                        </button>
-                        <button class="gray-main text-2xl" data-action="±">
-                          ±
-                        </button>
-                        <button class="gray-main text-2xl" data-action="%">
-                          %
-                        </button>
-                        <button class="action text-2xl" data-action="/">
-                          ÷
-                        </button>
+                      <input class="calculator-basic__input" id="input_field" value="0" type="text" />
+                      <div class="calculator-basic">
+                          <div>
+                              <button class="gray-main text-xl" data-action="AC">AC</button>
+                              <button class="gray-main text-2xl" data-action="±">±</button>
+                              <button class="gray-main text-2xl" data-action="%">%</button>
+                              <button class="action text-2xl" data-action="/">÷</button>
+                          </div>
+                          <div>
+                              <button>7</button>
+                              <button>8</button>
+                              <button>9</button>
+                              <button class="action" data-action="*">×</button>
+                          </div>
+                          <div>
+                              <button>4</button>
+                              <button>5</button>
+                              <button>6</button>
+                              <button class="action" data-action="-">−</button>
+                          </div>
+                          <div>
+                              <button>1</button>
+                              <button>2</button>
+                              <button>3</button>
+                              <button class="action" data-action="+">+</button>
+                          </div>
+                          <div>
+                              <button class="long">0</button>
+                              <button>.</button>
+                              <button class="indigo" data-action="=">=</button>
+                          </div>
                       </div>
-                      <div>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button class="action" data-action="*">×</button>
-                      </div>
-                      <div>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button class="action" data-action="-">−</button>
-                      </div>
-                      <div>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button class="action" data-action="+">+</button>
-                      </div>
-                      <div>
-                        <button class="long">0</button>
-                        <button>.</button>
-                        <button class="indigo" data-action="=">=</button>
-                      </div>
-                    </div>
                   </div>
-                  <script
-                    type="bf4691bf96bdca6b5efb86f4-text/javascript"
-                    src="/basic-calculator/assets/js/calculator.js"
-                  ></script>
-                </div>
+              </div>
                 <p class="calculator-basic__text">
                   Looking for scientific functions? Use the
                   <a href="/scientific-calculator/">Scientific Calculator</a>.
@@ -1059,6 +1036,70 @@
           /></div
       ></noscript>
     </div>
-    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const inputField = document.getElementById('input_field');
+
+    document.querySelector('.calculator-basic').addEventListener('click', (event) => {
+        const action = event.target.getAttribute('data-action');
+        const value = event.target.textContent;
+
+        switch (action) {
+            case 'AC':
+                inputField.value = '0';
+                break;
+            case '±':
+                inputField.value = parseFloat(inputField.value) * -1;
+                break;
+            case '%':
+                inputField.value = parseFloat(inputField.value) / 100;
+                break;
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+                inputField.value += action;
+                break;
+            case '=':
+                try {
+                    inputField.value = eval(inputField.value);
+                } catch (error) {
+                    inputField.value = 'Error';
+                }
+                break;
+            default:
+                if (value !== '.') {
+                    inputField.value += value;
+                }
+                break;
+        }
+    });
+
+    inputField.addEventListener('keydown', (event) => {
+        let key = event.key;
+
+        // Allow only specific keys
+        if (!/[0-9]|\.|\+|\-|\*|\/|Enter|Backspace|Delete|%/i.test(key)) {
+            event.preventDefault();
+            return;
+        }
+
+        // Handle arithmetic operations and calculate result
+        if (key === '=' || event.key === 'Enter') {
+            try {
+                inputField.value = eval(inputField.value);
+            } catch (error) {
+                inputField.value = 'Error';
+            }
+        } else if (key === 'Backspace' || key === 'Delete') {
+            inputField.value = inputField.value.slice(0, -1);
+        } else if (key === '%') {
+            inputField.value = parseFloat(inputField.value) / 100;
+        } else {
+            inputField.value += key;
+        }
+    });
+});
+    </script>
   </body>
 </html>

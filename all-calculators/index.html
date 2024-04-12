@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>All Calculators &mdash; CalcHub</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Make time calculations easy with our date and time calculators. Accurately compute time intervals, create time cards, and manage your planner effortlessly!"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="../assets/css/main.min.css" />
+    <script data-cfasync="false" type="text/javascript">
+      window._ = document.getElementById.bind(document);
+      window.$ = document.querySelector.bind(document);
+      window.$$ = document.querySelectorAll.bind(document);
+      window.defaultSystem = localStorage.getItem("system") || "imperial";
+      window.locale = "en";
+      const setActiveThemeButton = (theme) => {
+        document.querySelectorAll(".header-popup__button").forEach((button) => {
+          if (button.classList.contains(`${theme}-theme`))
+            button.classList.add("header-popup__button--active");
+          else button.classList.remove("header-popup__button--active");
+        });
+      };
+
+      switch (localStorage.getItem("theme")) {
+        case "light":
+          document.documentElement.classList = "";
+          console.log("Theme: Light");
+          localStorage.setItem("theme", "light");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("light");
+          });
+          break;
+        case "dark":
+          document.documentElement.classList = "dark";
+          console.log("Theme: Dark");
+          localStorage.setItem("theme", "dark");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("dark");
+          });
+          break;
+        case "system":
+        default:
+          document.documentElement.classList = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches
+            ? "dark"
+            : "";
+          console.log("Theme: System");
+          localStorage.setItem("theme", "system");
+          window.addEventListener("DOMContentLoaded", () => {
+            setActiveThemeButton("system");
+          });
+      }
+    </script>
+    <style type="text/css">
+      .system-item-hidden,
+      .related-item-hidden,
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-v12-latin-regular.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-v12-latin-500.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-v12-latin-600.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-v12-latin-800.woff2"
+      as="font"
+      crossorigin
+      type="font/woff2"
+    />
+    <script
+      src="./assets/js/all-calculators.js"
+      defer
+      type="a2736cb5c642abc336ebdef3-text/javascript"
+    ></script>
+
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/time-and-date-calculators/assets/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/time-and-date-calculators/assets/images/icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/time-and-date-calculators/assets/images/icon-128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/time-and-date-calculators/assets/images/icon-192.png"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="/time-and-date-calculators/assets/images/icon-196.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/time-and-date-calculators/assets/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8802" />
+    <meta name="msapplication-TileColor" content="#ff8802" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Time &amp; Date Calculators" />
+    <meta
+      property="og:description"
+      content="Make time calculations easy with our date and time calculators. Accurately compute time intervals, create time cards, and manage your planner effortlessly!"
+    />
+    <meta
+      property="og:url"
+      content="https://www.CalcHub/time-and-date-calculators/"
+    />
+    <meta property="og:determiner" content="the" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="CalcHub" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="196" />
+    <meta property="og:image:height" content="196" />
+    <meta property="og:image:alt" content="Time &amp; Date Calculators" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@CalculatorIo" />
+    <meta name="twitter:title" content="Time &amp; Date Calculators" />
+    <meta
+      name="twitter:description"
+      content="Make time calculations easy with our date and time calculators. Accurately compute time intervals, create time cards, and manage your planner effortlessly!"
+    />
+    <meta
+      name="twitter:url"
+      content="https://www.CalcHub/time-and-date-calculators/"
+    />
+    <meta name="twitter:image:alt" content="Time &amp; Date Calculators" />
+    <meta
+      name="twitter:image"
+      content="https://www.CalcHub/time-and-date-calculators/assets/images/icon-og.png"
+    />
+    <meta
+      property="og:image"
+      content="https://www.CalcHub/time-and-date-calculators/assets/images/icon-og.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://www.CalcHub/time-and-date-calculators/assets/images/icon-og.png"
+    />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RJVZERT32S"
+      type="a2736cb5c642abc336ebdef3-text/javascript"
+    ></script>
+    <script type="a2736cb5c642abc336ebdef3-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RJVZERT32S');
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container header__container">
+          <div class="header-wrapper">
+            <nav class="header-nav">
+              <a class="header-nav__logo" href="/" title="CalcHub">
+                <svg
+                  width="38"
+                  height="38"
+                  viewBox="0 0 38 38"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.03815 34.91C1.40915 33.2524 1.43239 30.5869 3.08991 28.9578C4.74773 27.3287 7.41336 27.3519 9.04238 29.0096C10.6714 30.6672 10.6481 33.3328 8.99043 34.9619C7.33269 36.5909 4.66707 36.5677 3.03815 34.91Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.9101 34.9619C33.2525 36.5909 30.587 36.5677 28.9579 34.9101C27.3289 33.2523 27.352 30.5867 29.0098 28.9577C30.6673 27.3287 33.333 27.3519 34.962 29.0096C36.591 30.6674 36.5679 33.333 34.9101 34.9619Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M34.962 3.08995C36.591 4.74754 36.5678 7.4131 34.9103 9.0422C33.2525 10.6712 30.5868 10.6481 28.9578 8.99033C27.3288 7.33274 27.352 4.66707 29.0097 3.03808C30.6675 1.40904 33.3331 1.43221 34.962 3.08995Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M36.1686 19.0369C36.1484 21.3609 34.2471 23.2293 31.9231 23.2092C30.9518 23.2007 30.0599 22.8635 29.3524 22.3043C28.3532 21.5147 27.0324 21.3591 25.7556 21.3896C22.9701 21.4565 21.3136 23.153 21.3222 25.9846C21.3256 27.1163 21.4514 28.3995 22.1777 29.2774C22.7884 30.0151 23.1522 30.964 23.1433 31.9963C23.123 34.3204 21.2218 36.1889 18.8978 36.1685C16.5738 36.1483 14.7054 34.247 14.7255 31.923C14.7343 30.9121 15.0992 29.9874 15.6997 29.2667C16.4083 28.4171 16.5316 27.1771 16.5528 26.0788C16.6109 23.0679 14.8236 21.3053 11.7833 21.4016C10.7058 21.4358 9.55328 21.5576 8.71895 22.2465C7.98184 22.8554 7.03449 23.2181 6.00383 23.2092C3.6798 23.1889 1.81123 21.2877 1.83162 18.9637C1.85065 16.772 3.54272 14.9857 5.68461 14.8063C5.90492 14.7888 6.12656 14.7866 6.34699 14.8022C7.20921 14.8645 7.99877 15.1862 8.63849 15.689C9.56505 16.4172 10.6864 16.573 11.8748 16.5972C14.7196 16.6556 16.4377 15.0603 16.5414 12.3267C16.5848 11.1819 16.4743 9.64782 15.7219 8.75916C15.0926 8.01644 14.7164 7.05309 14.7255 6.00367C14.7457 3.67957 16.6471 1.81107 18.971 1.83146C21.295 1.85163 23.1634 3.75293 23.1433 6.07691C23.1345 7.08249 22.7735 8.00283 22.1787 8.72156C21.4088 9.65285 21.2885 11.1503 21.3407 12.343C21.4575 15.007 23.1154 16.5812 25.8396 16.6108C27.1111 16.6245 28.3751 16.4594 29.3711 15.6818C30.0945 15.1164 31.0073 14.7828 31.9964 14.7914C34.3205 14.8116 36.189 16.7129 36.1686 19.0369Z"
+                    fill="#FF8802"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.09006 3.03805C4.74765 1.40901 7.4132 1.43229 9.0423 3.0898C10.6713 4.74762 10.6482 7.41325 8.99043 9.04228C7.33285 10.6713 4.66718 10.648 3.03819 8.99029C1.40915 7.33258 1.43232 4.66696 3.09006 3.03805Z"
+                    fill="#FF8802"
+                  ></path>
+                </svg>
+              </a>
+
+              <!-- <a tabindex="0" class="header-nav__link" href="/math-calculators/">Math</a>
+<a tabindex="0" class="header-nav__link" href="/statistics-calculators/">Statistics</a> -->
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/time-and-date-calculators/"
+                >Time &amp; Date</a
+              >
+              <!-- <a tabindex="0" class="header-nav__link" href="/financial-calculators/">Finance</a> -->
+              <a
+                tabindex="0"
+                class="header-nav__link"
+                href="/health-and-fitness-calculators/"
+                >Health</a
+              >
+              <!-- <a tabindex="0" class="header-nav__link" href="/miscellaneous-calculators/">Miscellaneous</a> -->
+            </nav>
+            
+          </div>
+          <hr class="header-line" />
+          <div class="header-breadcrumbs">
+            <a class="header-breadcrumbs__link" href="/" title="CalcHub"
+              ><svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.7071 2.29289C10.3166 1.90237 9.68342 1.90237 9.29289 2.29289L2.29289 9.29289C1.90237 9.68342 1.90237 10.3166 2.29289 10.7071C2.68342 11.0976 3.31658 11.0976 3.70711 10.7071L4 10.4142V17C4 17.5523 4.44772 18 5 18H7C7.55228 18 8 17.5523 8 17V15C8 14.4477 8.44772 14 9 14H11C11.5523 14 12 14.4477 12 15V17C12 17.5523 12.4477 18 13 18H15C15.5523 18 16 17.5523 16 17V10.4142L16.2929 10.7071C16.6834 11.0976 17.3166 11.0976 17.7071 10.7071C18.0976 10.3166 18.0976 9.68342 17.7071 9.29289L10.7071 2.29289Z"
+                  fill="#9CA3AF"
+                ></path></svg></a>
+            <div class="header-breadcrumbs__separate">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.55499 17.776L13.555 1.776L14.449 2.224L6.44899 18.224L5.55499 17.776Z"
+                  fill="#D1D5DB"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="header-breadcrumbs__link header-breadcrumbs__link--text"
+              >all Calculators</span
+            >
+          </div>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "CalcHub",
+                  "item": "https://www.CalcHub/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Time &amp; Date Calculators"
+                }
+              ]
+            }
+          </script>
+        </div>
+      </header>
+
+      
+      <section class="categories">
+        <div class="container categories__container">
+          <h3 class="categories__suptitle">28 Calculators</h3>
+          <h1 class="categories__title">All Calculators</h1>
+          <p class="categories__description">
+            Our intuitive calculators are made for practical use, and they help us better understand the world around us. Numbers can make our lives easier, tell a fascinating story, or make remarkable findings. Make the discoveries a part of your life!
+          </p>
+          <div class="categories__grid">
+            <a href="/age-calculator/" class="category">
+              <img
+                src="/age-calculator/assets/images/icon-96.png"
+                alt="Age Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Age Calculator</h4>
+                <p class="category__description">
+                  An online age calculator calculates age and date of birth by
+                  adding and subtracting time, including years, days, hours,
+                  minutes, and seconds.
+                </p>
+              </div>
+            </a>
+            <a href="/time-calculator/" class="category">
+              <img
+                src="/time-calculator/assets/images/icon-96.png"
+                alt="Time Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Time Calculator</h4>
+                <p class="category__description">
+                  This free time calculator allows you to add and subtract time
+                  values using days, hours, minutes, and seconds. Learn about
+                  the different concepts of time here as well.
+                </p>
+              </div>
+            </a>
+            <a href="/hours-calculator/" class="category">
+              <img
+                src="/hours-calculator/assets/images/icon-96.png"
+                alt="Hours Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Hours Calculator</h4>
+                <p class="category__description">
+                  This online hour calculator is ideal for determining hours
+                  worked so that employers can determine pay accurately.
+                </p>
+              </div>
+            </a>
+            <a href="/time-duration-calculator/" class="category">
+              <img
+                src="/time-duration-calculator/assets/images/icon-96.png"
+                alt="Time Duration Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Time Duration Calculator</h4>
+                <p class="category__description">
+                  Use our time duration calculator to determine how much time
+                  has passed between two events. It is perfect for tracking work
+                  time for your business.
+                </p>
+              </div>
+            </a>
+            <a href="/date-calculator/" class="category">
+              <img
+                src="/date-calculator/assets/images/icon-96.png"
+                alt="Date Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Date Calculator</h4>
+                <p class="category__description">
+                  Free calculator to effortlessly evaluate the difference
+                  between dates. Easily add or subtract days from any date, with
+                  or without holidays and weekends.
+                </p>
+              </div>
+            </a>
+            <a href="/hours-and-minutes-calculator/" class="category">
+              <img
+                src="/hours-and-minutes-calculator/assets/images/icon-96.png"
+                alt="Hours and Minutes Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Hours and Minutes Calculator</h4>
+                <p class="category__description">
+                  This online hours calculator is an easy way to count hours and
+                  minutes at the touch of a button.
+                </p>
+              </div>
+            </a>
+            <a href="/time-to-decimal-calculator/" class="category">
+              <img
+                src="/time-to-decimal-calculator/assets/images/icon-96.png"
+                alt="Time to Decimal Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Time to Decimal Calculator</h4>
+                <p class="category__description">
+                  Time to decimal calculator can convert the time format from
+                  hh:mm:ss to decimal hours, minutes, and seconds. Learn to
+                  convert hours to decimal form.
+                </p>
+              </div>
+            </a>
+            <a href="/days-calculator/" class="category">
+              <img
+                src="/days-calculator/assets/images/icon-96.png"
+                alt="Days Calculator"
+                class="category__icon"
+              />
+              <div class="category__info">
+                <h4 class="category__title">Days Calculator</h4>
+                <p class="category__description">
+                  The free days calculator makes it easy to figure out how many
+                  days between two dates. This day tracker can include or
+                  exclude weekends and holidays.
+                </p>
+              </div>
+            </a>
+            <a href="/bmi-calculator/" class="category">
+                <img
+                  src="/bmi-calculator/assets/images/icon-96.png"
+                  alt="BMI Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">BMI Calculator</h4>
+                  <p class="category__description">
+                    The free Body Mass Index calculator, also known as BMI,
+                    computes and classifies BMI for children and adults using data
+                    obtained from WHO and CDC.
+                  </p>
+                </div>
+              </a>
+              <a href="/calorie-calculator/" class="category">
+                <img
+                  src="/calorie-calculator/assets/images/icon-96.png"
+                  alt="Calorie Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Calorie Calculator</h4>
+                  <p class="category__description">
+                    This calorie calculator computes how many calories are
+                    required daily to maintain, decrease, or gain weight. Learn
+                    about the different types of calories and how they affect you.
+                  </p>
+                </div>
+              </a>
+              <a href="/bmr-calculator/" class="category">
+                <img
+                  src="/bmr-calculator/assets/images/icon-96.png"
+                  alt="BMR Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">BMR Calculator</h4>
+                  <p class="category__description">
+                    Free BMR calculator uses well-known algorithms to calculate
+                    the basal metabolic rate. Also, find out more about the
+                    factors that influence BMR.
+                  </p>
+                </div>
+              </a>
+              <a href="/body-fat-percentage-calculator/" class="category">
+                <img
+                  src="/body-fat-percentage-calculator/assets/images/icon-96.png"
+                  alt="Body Fat Percentage Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Body Fat Percentage Calculator</h4>
+                  <p class="category__description">
+                    This free body fat calculator uses the US Navy and BMI methods
+                    to approximate body fat percentage. It provides weight loss
+                    information to help you achieve your ideal body fat.
+                  </p>
+                </div>
+              </a>
+              <a href="/ideal-weight-calculator/" class="category">
+                <img
+                  src="/ideal-weight-calculator/assets/images/icon-96.png"
+                  alt="Ideal Weight Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Ideal Weight Calculator</h4>
+                  <p class="category__description">
+                    Based on many famous equations, this free ideal weight
+                    calculator determines an optimal healthy body weight based on
+                    age, gender, and height.
+                  </p>
+                </div>
+              </a>
+              <a href="/pregnancy-calculator/" class="category">
+                <img
+                  src="/pregnancy-calculator/assets/images/icon-96.png"
+                  alt="Pregnancy Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Pregnancy Calculator</h4>
+                  <p class="category__description">
+                    Using the due date, last period date, ultrasound date,
+                    conception date, or IVF transfer date, this calculator
+                    generates an expected pregnancy timeline.
+                  </p>
+                </div>
+              </a>
+              <a href="/bra-size-calculator/" class="category">
+                <img
+                  src="/bra-size-calculator/assets/images/icon-96.png"
+                  alt="Bra Size Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Bra Size Calculator</h4>
+                  <p class="category__description">
+                    To get a bra that fits properly, it is vital to measure your
+                    bra size. This free calculator will tell you how to measure
+                    your breast size.
+                  </p>
+                </div>
+              </a>
+              <a href="/tdee-calculator/" class="category">
+                <img
+                  src="/tdee-calculator/assets/images/icon-96.png"
+                  alt="TDEE Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">TDEE Calculator</h4>
+                  <p class="category__description">
+                    The TDEE calculator provides an accurate estimate of your
+                    daily caloric expenditure using your BMR and several other
+                    personal characteristics.
+                  </p>
+                </div>
+              </a>
+              <a href="/bac-calculator/" class="category">
+                <img
+                  src="/bac-calculator/assets/images/icon-96.png"
+                  alt="BAC Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">BAC Calculator</h4>
+                  <p class="category__description">
+                    The Blood Alcohol Concentration Calculator provides an
+                    accurate estimate of your current blood alcohol concentration
+                    based on several key inputs and personal characteristics.
+                  </p>
+                </div>
+              </a>
+              <a href="/conception-date-calculator/" class="category">
+                <img
+                  src="/conception-date-calculator/assets/images/icon-96.png"
+                  alt="Conception Date Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Conception Date Calculator</h4>
+                  <p class="category__description">
+                    This conception calculator calculates your conception date
+                    based on the date of your last period, your ultrasound date,
+                    or your due date.
+                  </p>
+                </div>
+              </a>
+              <a href="/macro-calculator/" class="category">
+                <img
+                  src="/macro-calculator/assets/images/icon-96.png"
+                  alt="Macro Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Macro Calculator</h4>
+                  <p class="category__description">
+                    This macronutrient calculator computes macronutrient
+                    requirements relative to age, physical attributes, exercise
+                    level, and body weight objectives.
+                  </p>
+                </div>
+              </a>
+              <a href="/body-type-calculator/" class="category">
+                <img
+                  src="/body-type-calculator/assets/images/icon-96.png"
+                  alt="Body Type Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Body Type Calculator</h4>
+                  <p class="category__description">
+                    Discover your body shape with our easy and accurate body type
+                    calculator. Learn how to flatter your unique proportions with
+                    our helpful guide.
+                  </p>
+                </div>
+              </a>
+              <a href="/calories-burned-calculator/" class="category">
+                <img
+                  src="/calories-burned-calculator/assets/images/icon-96.png"
+                  alt="Calories Burned Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Calories Burned Calculator</h4>
+                  <p class="category__description">
+                    Track your calorie burn with our free calorie calculator.
+                    Quickly estimate your calories burned based on activity and
+                    duration.
+                  </p>
+                </div>
+              </a>
+              <a href="/protein-calculator/" class="category">
+                <img
+                  src="/protein-calculator/assets/images/icon-96.png"
+                  alt="Protein Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Protein Calculator</h4>
+                  <p class="category__description">
+                    Relying on certain statistics and recommendations, this free
+                    protein calculator predicts how much protein a person needs
+                    each day to be healthy.
+                  </p>
+                </div>
+              </a>
+              <a href="/period-calculator/" class="category">
+                <img
+                  src="/period-calculator/assets/images/icon-96.png"
+                  alt="Period Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Period Calculator</h4>
+                  <p class="category__description">
+                    With our free period calculator, you can find out more about
+                    your menstrual cycle and accurately predict when your next
+                    period will be.
+                  </p>
+                </div>
+              </a>
+              <a href="/pace-calculator/" class="category">
+                <img
+                  src="/pace-calculator/assets/images/icon-96.png"
+                  alt="Pace Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Pace Calculator</h4>
+                  <p class="category__description">
+                    This free pace calculator computes pace, distance and time by
+                    setting values of two variables. You can use it for training
+                    purposes.
+                  </p>
+                </div>
+              </a>
+              <a href="/ovulation-calculator/" class="category">
+                <img
+                  src="/ovulation-calculator/assets/images/icon-96.png"
+                  alt="Ovulation Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Ovulation Calculator</h4>
+                  <p class="category__description">
+                    Not sure when you’re ovulating? Use this free ovulation
+                    calculator to estimate your most fertile days and know when
+                    you are most likely to conceive.
+                  </p>
+                </div>
+              </a>
+              <a href="/army-body-fat-calculator/" class="category">
+                <img
+                  src="/army-body-fat-calculator/assets/images/icon-96.png"
+                  alt="Army Body Fat Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Army Body Fat Calculator</h4>
+                  <p class="category__description">
+                    The Army Body Fat Calculator provides users with an accurate
+                    estimate of their body fat percentage using the standards of
+                    the U.S. Army.
+                  </p>
+                </div>
+              </a>
+              <a href="/pregnancy-weight-gain-calculator/" class="category">
+                <img
+                  src="/pregnancy-weight-gain-calculator/assets/images/icon-96.png"
+                  alt="Pregnancy Weight Gain Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">
+                    Pregnancy Weight Gain Calculator
+                  </h4>
+                  <p class="category__description">
+                    This pregnancy weight gain calculator gives a recommended
+                    weight increase plan every week based on the user’s body
+                    weight before pregnancy and the parameters provided by the IOM
+                    (the Institute of Medicine).
+                  </p>
+                </div>
+              </a>
+              <a href="/due-date-calculator/" class="category">
+                <img
+                  src="/due-date-calculator/assets/images/icon-96.png"
+                  alt="Due Date Calculator"
+                  class="category__icon"
+                />
+                <div class="category__info">
+                  <h4 class="category__title">Due Date Calculator</h4>
+                  <p class="category__description">
+                    This online due date calculator helps moms-to-be calculate
+                    their due date based on their last menstrual period or the
+                    date of conception.
+                  </p>
+                </div>
+              </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer__container container">
+          <nav class="footer-nav">
+            <a class="footer-nav__link" href="/about-us/">About Us</a>
+            <a class="footer-nav__link" href="/terms-of-use/">Terms of Use</a>
+            <a class="footer-nav__link" href="/privacy-policy/"
+              >Privacy Policy</a
+            >
+          </nav>
+          <div class="footer-socials">
+            <a
+              class="footer-socials__social"
+              href="https://www.facebook.com/www.CalcHub"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 12C22 6.477 17.523 2 12 2C6.477 2 2 6.477 2 12C2 16.991 5.657 21.128 10.438 21.878V14.891H7.898V12H10.438V9.797C10.438 7.291 11.93 5.907 14.215 5.907C15.309 5.907 16.453 6.102 16.453 6.102V8.562H15.193C13.95 8.562 13.563 9.333 13.563 10.124V12H16.336L15.893 14.89H13.563V21.878C18.343 21.128 22 16.991 22 12Z"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://twitter.com/calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewbox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.29 20.2534C15.837 20.2534 19.965 14.0004 19.965 8.5784C19.965 8.4004 19.965 8.2234 19.953 8.0484C20.7562 7.46693 21.4493 6.74701 22 5.9224C21.2511 6.2544 20.4566 6.47216 19.643 6.5684C20.4996 6.05546 21.1408 5.24875 21.447 4.2984C20.6417 4.77628 19.7607 5.11313 18.842 5.2944C18.2234 4.63616 17.405 4.20023 16.5136 4.0541C15.6222 3.90797 14.7075 4.0598 13.9111 4.48607C13.1147 4.91234 12.4811 5.58927 12.1083 6.41206C11.7355 7.23485 11.6444 8.15758 11.849 9.0374C10.2176 8.95564 8.6216 8.53172 7.16465 7.79317C5.70769 7.05461 4.42233 6.01792 3.392 4.7504C2.86732 5.6536 2.70659 6.72282 2.94254 7.74036C3.17848 8.75791 3.79337 9.64728 4.662 10.2274C4.00926 10.2085 3.37063 10.0329 2.8 9.7154V9.7674C2.80039 10.7147 3.1284 11.6327 3.7284 12.3658C4.3284 13.0988 5.16347 13.6018 6.092 13.7894C5.48781 13.9541 4.85389 13.9781 4.239 13.8594C4.50116 14.6749 5.01168 15.388 5.69913 15.899C6.38658 16.41 7.21657 16.6934 8.073 16.7094C7.22212 17.378 6.24779 17.8722 5.20573 18.1639C4.16367 18.4556 3.07432 18.539 2 18.4094C3.8766 19.6137 6.06019 20.2525 8.29 20.2494"
+                  fill="#9CA3AF"
+                ></path>
+              </svg>
+            </a>
+            <a
+              class="footer-socials__social"
+              href="https://www.youtube.com/@calculator_io"
+              target="_blank"
+            >
+              <svg
+                width="29"
+                height="21"
+                viewBox="0 0 29 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.7882 0.93035C27.0096 1.2589 27.9714 2.22701 28.2979 3.45628C28.8911 5.68451 28.8911 10.3333 28.8911 10.3333C28.8911 10.3333 28.8911 14.982 28.2979 17.2105C27.9714 18.4395 27.0096 19.4076 25.7882 19.7363C23.5744 20.3333 14.6974 20.3333 14.6974 20.3333C14.6974 20.3333 5.82057 20.3333 3.60686 19.7363C2.38544 19.4076 1.4235 18.4396 1.09713 17.2103C0.503906 14.9821 0.503906 10.3333 0.503906 10.3333C0.503906 10.3333 0.503906 5.68451 1.09713 3.45628C1.4235 2.22701 2.38544 1.2589 3.60686 0.93035C5.82057 0.333252 14.6974 0.333252 14.6974 0.333252C14.6974 0.333252 23.5744 0.333252 25.7882 0.93035ZM19.2134 10.3335L11.7939 14.5541V6.11255L19.2134 10.3335Z"
+                  fill="#9CA3AF"
+                />
+              </svg>
+            </a>
+          </div>
+          <p class="footer__copyright">
+            &copy; 2023 CALCULATOR LLC. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script
+        async
+        src="/assets/js/lib/math.min.js"
+        type="a2736cb5c642abc336ebdef3-text/javascript"
+      ></script>
+      <script
+        defer
+        src="/assets/js/app.js"
+        type="a2736cb5c642abc336ebdef3-module"
+      ></script>
+      <script
+        defer
+        src="/assets/js/functions.js"
+        type="a2736cb5c642abc336ebdef3-text/javascript"
+      ></script>
+
+      <script type="a2736cb5c642abc336ebdef3-text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(93448429, "init", {
+             clickmap:true,
+             trackLinks:true,
+             accurateTrackBounce:true
+        });
+      </script>
+      <noscript
+        ><div>
+          <img
+            src="https://mc.yandex.ru/watch/93448429"
+            style="position: absolute; left: -9999px"
+            alt=""
+          /></div
+      ></noscript>
+    </div>
+  </body>
+</html>
