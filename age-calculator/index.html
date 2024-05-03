@@ -71,6 +71,7 @@
       localStorage.setItem("theme", "dark");
     </script>
     <link rel="stylesheet" href="./assets/css/main.min.css" />
+    
     <script src="./assets/js/all-calculators.js" defer></script>
     <style type="text/css">
       .system-item-hidden,
@@ -339,6 +340,9 @@
       gtag('js', new Date());
       gtag('config', 'G-RJVZERT32S');
     </script>
+    <link rel="stylesheet" href="./assets/css/air-datepicker.css" />
+    
+
   </head>
 
   <body>
@@ -536,8 +540,8 @@
 
                       <div class="input-field row">
                         <input
-                          type="text"
-                          class="input-field__input datepicker_us imperial-system-item"
+                          type="date"
+                          class="input-field__input  imperial-system-item"
                           placeholder="mm/dd/yyyy"
                           data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'"
                           data-target="birthday"
@@ -547,7 +551,7 @@
                         />
                         <input
                           type="text"
-                          class="input-field__input datepicker metric-system-item system-item-hidden"
+                          class="input-field__input  metric-system-item system-item-hidden"
                           placeholder="yyyy-mm-dd"
                           data-inputmask="'mask': '9999-99-99', 'placeholder': 'yyyy-mm-dd'"
                           data-target="birthday"
@@ -555,38 +559,7 @@
                           onchange="updateDate(this)"
                           value="1981-03-28"
                         />
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M13.75 1.5625V3.125"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M6.25 1.5625V3.125"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M3.125 6.875H16.875"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                        </svg>
+                        
                       </div>
                     </label>
                   </div>
@@ -596,7 +569,7 @@
 
                       <div class="input-field row">
                         <input
-                          type="text"
+                          type="date"
                           class="input-field__input datepicker_us imperial-system-item"
                           placeholder="mm/dd/yyyy"
                           data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'"
@@ -615,38 +588,7 @@
                           onchange="updateDate(this)"
                           value="2023-03-01"
                         />
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M13.75 1.5625V3.125"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M6.25 1.5625V3.125"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                          <path
-                            d="M3.125 6.875H16.875"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                        </svg>
+                        
                       </div>
 
                       <div class="input-hints row">
@@ -1107,7 +1049,7 @@
           </svg>
           <p class="calculator-illustration">
             <img
-              src="/age-calculator/assets/images/illustration-and.svg"
+              src="./assets/images/icon-128x128.png" style="width: 60px;height: auto;"
               alt="Age Calculator"
             />
           </p>
@@ -1713,5 +1655,7 @@
     </div>
     <script async src="./assets/js/lib/math.min.js"></script>
     <script defer src="./assets/js/functions.js"></script>
+    <script src="./assets/js/lib/air-datepicker.js"></script>
+  
   </body>
 </html>

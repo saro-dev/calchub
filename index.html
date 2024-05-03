@@ -1036,70 +1036,43 @@
           /></div
       ></noscript>
     </div>
-    <script type="text/javscript">
-      document.addEventListener('DOMContentLoaded', () => {
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
     const inputField = document.getElementById('input_field');
+    const buttons = document.querySelectorAll('.calculator-basic button');
 
-    document.querySelector('.calculator-basic').addEventListener('click', (event) => {
-        const action = event.target.getAttribute('data-action');
-        const value = event.target.textContent;
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            const action = button.getAttribute('data-action');
+            const value = button.textContent;
 
-        switch (action) {
-            case 'AC':
-                inputField.value = '0';
-                break;
-            case '±':
+            if (!action) {
+                // If it's a number or a decimal point
+                inputField.value += value;
+            } else if (action === 'AC') {
+                // Clear input
+                inputField.value = '';
+            } else if (action === '±') {
+                // Toggle between positive and negative
                 inputField.value = parseFloat(inputField.value) * -1;
-                break;
-            case '%':
+            } else if (action === '%') {
+                // Percentage calculation
                 inputField.value = parseFloat(inputField.value) / 100;
-                break;
-            case '/':
-            case '*':
-            case '+':
-            case '-':
-                inputField.value += action;
-                break;
-            case '=':
+            } else if (action === '=') {
+                // Evaluate the expression
                 try {
                     inputField.value = eval(inputField.value);
                 } catch (error) {
                     inputField.value = 'Error';
                 }
-                break;
-            default:
-                if (value !== '.') {
-                    inputField.value += value;
-                }
-                break;
-        }
-    });
-
-    inputField.addEventListener('keydown', (event) => {
-        let key = event.key;
-
-        // Allow only specific keys
-        if (!/[0-9]|\.|\+|\-|\*|\/|Enter|Backspace|Delete|%/i.test(key)) {
-            event.preventDefault();
-            return;
-        }
-
-        // Handle arithmetic operations and calculate result
-        if (key === '=' || event.key === 'Enter') {
-            try {
-                inputField.value = eval(inputField.value);
-            } catch (error) {
-                inputField.value = 'Error';
+            } else {
+                // Handle basic arithmetic operations
+                inputField.value += action;
             }
-        } else if (key === 'Backspace' || key === 'Delete') {
-            inputField.value = inputField.value.slice(0, -1);
-        } else if (key === '%') {
-            inputField.value = parseFloat(inputField.value) / 100;
-        } else {
-            inputField.value += key;
-        }
+        });
     });
 });
+
     </script>
   </body>
 </html>

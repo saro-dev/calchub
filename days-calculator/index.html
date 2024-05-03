@@ -519,19 +519,14 @@
                         <button class="tab-item" onclick="switchTab(event, 1)">Add/Subtract</button>
                     </div>
                     <div class="calculator-content col tab tab--active" data-tab="0">
-                        <div class="input-wrapper row">
+                        <div class=" flex justify-center">
                             <label class="input col">
                                     <p class="input__title">Start Date</p>
                             
                                 <div class="input-field row">
-                                    <input type="text" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="start_date" id="start_date_us" onchange="updateDate(this)" value="10/15/1986" />
+                                    <input type="date" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="start_date" id="start_date_us" onchange="updateDate(this)" value="10/15/1986" />
                                     <input type="text" class="input-field__input datepicker metric-system-item system-item-hidden" placeholder="yyyy-mm-dd" data-inputmask="'mask': '9999-99-99', 'placeholder': 'yyyy-mm-dd'" data-target="start_date" id="start_date" onchange="updateDate(this)" value="1986-10-15" />
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M13.75 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M6.25 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M3.125 6.875H16.875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                                    
                                 </div>
                             
                             </label>
@@ -539,14 +534,9 @@
                                     <p class="input__title">End Date</p>
                             
                                 <div class="input-field row">
-                                    <input type="text" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="end_date" id="end_date_us" onchange="updateDate(this)" value="10/15/2022" />
+                                    <input type="date" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="end_date" id="end_date_us" onchange="updateDate(this)" value="10/15/2022" />
                                     <input type="text" class="input-field__input datepicker metric-system-item system-item-hidden" placeholder="yyyy-mm-dd" data-inputmask="'mask': '9999-99-99', 'placeholder': 'yyyy-mm-dd'" data-target="end_date" id="end_date" onchange="updateDate(this)" value="2022-10-15" />
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M13.75 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M6.25 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M3.125 6.875H16.875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                                    
                                 </div>
                             
                             </label>
@@ -558,14 +548,9 @@
                                     <p class="input__title">Start Date</p>
                             
                                 <div class="input-field row">
-                                    <input type="text" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="start_date_two" id="start_date_two_us" onchange="updateDate(this)" value="10/15/1986" />
+                                    <input type="date" class="input-field__input datepicker_us imperial-system-item" placeholder="mm/dd/yyyy" data-inputmask="'mask': '99/99/9999', 'placeholder': 'mm/dd/yyyy'" data-target="start_date_two" id="start_date_two_us" onchange="updateDate(this)" value="10/15/1986" />
                                     <input type="text" class="input-field__input datepicker metric-system-item system-item-hidden" placeholder="yyyy-mm-dd" data-inputmask="'mask': '9999-99-99', 'placeholder': 'yyyy-mm-dd'" data-target="start_date_two" id="start_date_two" onchange="updateDate(this)" value="1986-10-15" />
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M13.75 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M6.25 1.5625V3.125" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                <path d="M3.125 6.875H16.875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                                    
                                 </div>
                             
                             </label>
@@ -1196,7 +1181,7 @@
                 </svg>
                 <p class="calculator-illustration">
                   <img
-                    src="/days-calculator/assets/images/illustration-els.svg"
+                    src="./assets/images/icon-128x128.png" style="width: 60px;"
                     alt="Days Calculator"
                   />
                 </p>
